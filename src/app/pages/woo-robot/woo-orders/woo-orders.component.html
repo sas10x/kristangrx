@@ -1,0 +1,25 @@
+<h4>Orders</h4>
+
+    <nz-table #middleTable nzSize="middle" [nzData]="orders" *ngIf="orders else loading">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of middleTable.data">
+          <td>{{ data.customer_id }}</td>
+          <td>{{ data.date_created }}</td>
+          <td>{{ data.status }}</td>
+          <td>{{ data.total }}</td>  
+        </tr>
+      </tbody>
+    </nz-table>
+    <ng-template #loading>
+      <nz-spin nzTip="Loading...">
+        <nz-alert nzType="info" nzMessage="Roger that!" nzDescription="Highly trained monkeys are still retrieving your data"> </nz-alert>
+      </nz-spin>
+  </ng-template>

@@ -1,0 +1,40 @@
+<div class="social-wrapper">
+    <aside class="aside">
+      <section class="section">
+        <div class="aside__control">
+        </div>
+        <div class="profile-main">
+          <button
+            class="profile-main__setting focus--box-shadow"
+            type="button"
+          >
+            <img
+              class="profile-main__photo"
+              src="../../../../assets/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
+              alt="Profile photo"
+            />
+          </button>
+        </div>
+        <div class="banner">
+            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm(validateForm)">
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your username!">
+                    <nz-input-group nzPrefixIcon="user">
+                      <input type="email" nz-input formControlName="email" placeholder="email" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your Password!">
+                    <nz-input-group nzPrefixIcon="lock">
+                      <input type="password" nz-input formControlName="password" placeholder="Password" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+              </form>
+        </div>
+      </section>
+    </aside>
+</div>
+

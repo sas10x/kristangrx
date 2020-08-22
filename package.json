@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~9.1.9",
+    "@angular/animations": "^9.1.12",
     "@angular/common": "~9.1.9",
     "@angular/compiler": "~9.1.9",
     "@angular/core": "~9.1.9",
@@ -19,8 +19,15 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "@ngrx/effects": "^9.2.0",
+    "@ngrx/schematics": "^9.2.0",
+    "@ngrx/store": "^9.2.0",
+    "crypto-js": "^4.0.0",
+    "ng-zorro-antd": "^9.3.0",
+    "ngx-toastr": "^13.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "xlsx": "^0.16.6",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
@@ -42,5 +49,9 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
+  },
+  "browser": {
+    "crypto": false,
+    "stream": false
   }
 }

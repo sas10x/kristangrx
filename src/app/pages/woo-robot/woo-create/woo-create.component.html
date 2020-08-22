@@ -1,0 +1,46 @@
+<section class="section">
+  <header class="section__header">
+    <h2 class="section__title">Create</h2>
+    <div class="section__control">
+      <input type="file" (change)="onFileChange($event)" />
+      <button
+        (click)="runCreate()"
+        class="section__button focus--box-shadow"
+        type="button"
+        aria-label="Filter projects"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          role="presentation"
+        >
+          <path
+            d="M20,8.18V3a1,1,0,0,0-2,0V8.18a3,3,0,0,0,0,5.64V21a1,1,0,0,0,2,0V13.82a3,3,0,0,0,0-5.64ZM19,12a1,1,0,1,1,1-1A1,1,0,0,1,19,12Zm-6,2.18V3a1,1,0,0,0-2,0V14.18a3,3,0,0,0,0,5.64V21a1,1,0,0,0,2,0V19.82a3,3,0,0,0,0-5.64ZM12,18a1,1,0,1,1,1-1A1,1,0,0,1,12,18ZM6,6.18V3A1,1,0,0,0,4,3V6.18a3,3,0,0,0,0,5.64V21a1,1,0,0,0,2,0V11.82A3,3,0,0,0,6,6.18ZM5,10A1,1,0,1,1,6,9,1,1,0,0,1,5,10Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </header>
+  <nz-table #middleTable nzSize="middle" [nzData]="data">
+    <thead>
+      <tr>
+        <th>SKU</th>
+        <th>BARCODE</th>
+        <th>NAME</th>
+        <th>DESCRIPTION</th>
+        <th>PRICE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of middleTable.data">
+        <td>{{ data.sku }}</td>
+        <td>{{ data.barcode }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.description }}</td>
+        <td>{{ data.price }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</section>
+
+      

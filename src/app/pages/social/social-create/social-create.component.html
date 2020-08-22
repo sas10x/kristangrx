@@ -1,0 +1,19 @@
+<div>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm)">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your title!">
+            <textarea nz-input placeholder="Title" [nzAutosize]="{ minRows: 2}" maxlength="140" formControlName="title"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your story!">
+              <textarea nz-input placeholder="Description" [nzAutosize]="{ minRows: 3}" maxlength="140" formControlName="description"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button nzType="primary">Submit</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+</div>

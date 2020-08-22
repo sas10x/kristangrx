@@ -25,9 +25,15 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "src/theme.less",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +129,11 @@
           }
         }
       }
-    }},
-  "defaultProject": "kristangrx"
+    }
+  },
+  "defaultProject": "kristangrx",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics",
+    "analytics": "dff54fee-0fa9-4c83-becf-1a23a1d27207"
+  }
 }
