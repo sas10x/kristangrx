@@ -4,6 +4,7 @@
     <div class="section__control">
       <input type="file" (change)="onFileChange($event)" />
       <button
+        (click)="updateProduct()"
         class="section__button focus--box-shadow"
         type="button"
         aria-label="Filter projects"

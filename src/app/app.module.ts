@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './root-store';
+import { reducers, metaReducers } from './root-store/index';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AHeaderComponent } from './layout/a-header/a-header.component';
 import { ZFooterComponent } from './layout/z-footer/z-footer.component';
@@ -19,6 +19,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthInterceptor } from './auth/auth.interceptor';
  
 import { ToastrModule } from 'ngx-toastr';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { AppEffects } from './app.effects';
 
 registerLocaleData(en);
 
@@ -46,7 +49,9 @@ registerLocaleData(en);
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    
   ],
   providers: 
   [

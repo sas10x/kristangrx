@@ -41,7 +41,7 @@ constructor(private productService: ProductService) {}
     reader.readAsBinaryString(file);
   }
  
-  updateBrand() {
+  updateProduct() {
     console.log('kristan');
     from(this.data)
     .pipe(tap(() => this.loading = false))
@@ -51,9 +51,14 @@ constructor(private productService: ProductService) {}
   }
   getProduct(product) {
     this.body = {
-      "name": product.name,
-      "description": product.description,
-      "short_description": product.description
+      // "name": product.name,
+      // "description": product.description,
+      // "short_description": product.description,
+      "meta_data": [
+        {
+            "key": "_wpm_gtin_code",
+            "value": product.barcode.toString()
+        }],
     }
     return this.productService.getProductbySku(product.sku);
   }

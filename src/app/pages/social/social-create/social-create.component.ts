@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { ActivitiesService } from 'src/app/services/social/activities.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ActivityState } from 'src/app/root-store/activity-store';
+import { Store } from '@ngrx/store';
+import { addActivity } from 'src/app/root-store/activity-store/activity.actions';
 
 @Component({
   selector: 'app-social-create',
   templateUrl: './social-create.component.html',
-  styleUrls: ['./social-create.component.scss']
+  styleUrls: ['./social-create.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SocialCreateComponent implements OnInit {
 
   validateForm!: FormGroup;
 
   
-  constructor(private modal: NzModalRef, private activitiesService: ActivitiesService, private fb: FormBuilder) {}
+  constructor(private modal: NzModalRef, private activitiesService: ActivitiesService, private fb: FormBuilder, private store: Store<ActivityState>) {}
 
   ngOnInit() {
     this.validateForm = this.fb.group({
@@ -30,8 +34,14 @@ export class SocialCreateComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    this.activitiesService.postActivity(form.value).subscribe(
-      res => {console.log(res);this.modal.destroy();}
-    )
+    this.store.dispatch(addActivity({ activity: form.value}));
+    this.modal.destroy();
+    // this.activitiesService.postActivity(form.value).subscribe(
+    //   res => {console.log(res);this.modal.destroy();}
+    // )
+
+  }
+  handleCancel(): void {
+    console.log('handleCancel');
   }
 }

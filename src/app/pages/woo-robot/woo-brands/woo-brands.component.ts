@@ -16,6 +16,7 @@ export class WooBrandsComponent implements OnInit {
   data: any[];
   update: any[] = [];
   body: {};
+  barcode: string;
   loading: boolean = true;
   constructor(private productService: ProductService) {}
 
@@ -50,7 +51,11 @@ export class WooBrandsComponent implements OnInit {
       {
         this.loading = true;
         if (res && res.length) {
-          var tmpCart = {"id":res[0].id, "brands": "617"};
+          var tmpCart = {"id":res[0].id, "meta_data": [
+            {
+                "key": "_wpm_gtin_code",
+                "value": this.barcode.toString()
+            }]};
           this.update = [
             ...this.update, 
             tmpCart
@@ -61,6 +66,7 @@ export class WooBrandsComponent implements OnInit {
       err => console.error('Observer got an error: ' + err),
       () => console.log('Observer got a complete notification')
   }
+  
   updateBatch() {
     const data = {
       update: this.update
@@ -71,6 +77,29 @@ export class WooBrandsComponent implements OnInit {
     // this.body = {
     //   "brands": "616"
     // }
+    this.barcode = product.barcode;
     return this.productService.getProductbySku(product.sku);
+  }
+
+  updateBrand() {
+    console.log('kristan');
+
+    from(this.data)
+    .pipe(concatMap(res => this.getProduct(res)))
+    .pipe(tap(() => {this.loading = false}))  
+    .subscribe(res => 
+      {
+        this.loading = true;
+        if (res && res.length) {
+          var tmpCart = {"id":res[0].id, "brands": "617"};
+          this.update = [
+            ...this.update, 
+            tmpCart
+            ];
+          console.log(this.update);
+        }
+      }),
+      err => console.error('Observer got an error: ' + err),
+      () => console.log('Observer got a complete notification')
   }
 }

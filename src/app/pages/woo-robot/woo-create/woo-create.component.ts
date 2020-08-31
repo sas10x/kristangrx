@@ -11,37 +11,58 @@ import * as XLSX from 'xlsx';
 })
 export class WooCreateComponent implements OnInit {
   data: any[];
+  create: any[] = [];
+  loading: boolean = false;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
 
   }
-
   runCreate() {
+    this.loading = true;
     from(this.data)
     .pipe(concatMap(res => this.createProduct(res)))
-    .subscribe(res => console.log(res))
-  }
+    .subscribe(res => 
+      {
+        console.log(res)
+      },
+      err => console.error('Observer got an error: ' + err),
+      () => {console.log('Observer got a complete notification');console.log(this.create);this.loading = false;this.batchCreate()}
+  )}
   createProduct(product) {
     let body = {
       "sku": product.sku.toString(),
-      "ean_code": product.barcode.toString(),
       "name": product.name.toString(),
       "type": "simple",
       "regular_price": product.price.toString(),
       "description": product.description.toString(),
       "short_description": product.description.toString(),
-      "categories":
-      [
+      "brands": product.brand.toString(),
+      "meta_data": [
         {
-            "id": 485,
-            "name": "Casters Fixed and Swivel",
-            "slug": "casters-fixed-and-swivel"
+            "key": "_wpm_gtin_code",
+            "value": product.barcode.toString()
+        }],
+      // "brands": product.brand.toString(),
+      "categories": [
+        {
+            "id": 294,
+            "name": "Hand Tools",
+            "slug": "hand-tools"
         }
-      ],
+      ]
     }
-    return this.productService.createProduct(body);
+    this.create = [...this.create, body];
+    // console.log(this.create);
+    // return this.productService.createProduct(body);
+    return this.create;
+  }
+  batchCreate() {
+      const data = {
+        "create": this.create
+      };
+      this.productService.createBatch(data).subscribe(res => console.log(res));
   }
 
   onFileChange(ev) {

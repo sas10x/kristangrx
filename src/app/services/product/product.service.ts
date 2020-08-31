@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../../models/product';
 import { Observable } from 'rxjs';
-import { productStateFeatureKey } from '../../root-store/product-store';
+
 import { WooQryService } from '../../providers/woo-qry.service';
 import { WooCmdService } from '../../providers/woo-cmd.service';
 
@@ -42,6 +42,13 @@ export class ProductService {
     let producturl:string = this.wooCMD.authenticateApi('POST',this.createUrl, params);
     return this.http.post(producturl, body)
   }
+  // CREATE BATCH
+  createBatch(body) {
+    let params = {}
+    let producturl:string = this.wooCMD.authenticateApi('POST',this.baseUrl + 'batch', params);
+    return this.http.post(producturl, body)
+  }
+
   // EDIT PRODUCT
   updateProduct(id: string, body){
     let params = {};
@@ -49,9 +56,10 @@ export class ProductService {
     return this.http.put(producturl, body);
   }
     // UPDATE BATCH
-    updateBatch(body){
-      let params = {};
-      let producturl:string = this.wooCMD.authenticateApi('POST',this.baseUrl + 'batch', params);
-      return this.http.post(producturl, body);
-    }
+  updateBatch(body){
+    let params = {};
+    let producturl:string = this.wooCMD.authenticateApi('POST',this.baseUrl + 'batch', params);
+    return this.http.post(producturl, body);
+  }
+  
 }

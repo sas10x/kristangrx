@@ -20,7 +20,7 @@
     </div>
   </header>
 <ul class="project">
-<li class="project__item" *ngFor="let activity of activities">
+<li class="project__item" *ngFor="let activity of activities$ | async">
     <a href="#" class="project__link focus--box-shadow">
       <div class="project__wrapper">
         <div class="project__element project__icon">

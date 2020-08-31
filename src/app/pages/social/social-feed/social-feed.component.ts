@@ -3,6 +3,10 @@ import { Activity } from 'src/app/models/social/activity';
 import { ActivitiesService } from 'src/app/services/social/activities.service';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { SocialCreateComponent } from '../social-create/social-create.component';
+import { Store, select } from '@ngrx/store';
+import { ActivityState, selectActivities} from 'src/app/root-store/activity-store';
+import * as fromActions from'src/app/root-store/activity-store/activity.actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-social-feed',
@@ -12,17 +16,17 @@ import { SocialCreateComponent } from '../social-create/social-create.component'
 export class SocialFeedComponent implements OnInit {
   isVisible = false;
   isConfirmLoading = false;
-  activities: Activity[];
-  constructor(private activitiesService: ActivitiesService, private modalService: NzModalService) { }
+  activities$: Observable<Activity[]>;
+  constructor(private activitiesService: ActivitiesService, private modalService: NzModalService, private store: Store<ActivityState>) { }
 
   ngOnInit(): void {
-    this.getActivities();
+    this.isVisible = false;
+    this.store.dispatch(fromActions.loadActivities()); 
+    this.loadActivities();
   }
 
-  getActivities() {
-    this.activitiesService.getActivities().subscribe(
-      res => this.activities = res
-    )
+  loadActivities() {
+    this.activities$ = this.store.pipe(select(selectActivities));
   }
   showModal1(): void {
     this.isVisible = true;
@@ -41,9 +45,11 @@ export class SocialFeedComponent implements OnInit {
       this.isVisible = false;
       this.isConfirmLoading = false;
     }, 3000);
+    console.log('handleOk');
   }
 
   handleCancel(): void {
     this.isVisible = false;
+    console.log('handleCancel');
   }
 }

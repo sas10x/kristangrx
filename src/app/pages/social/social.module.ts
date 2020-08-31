@@ -10,11 +10,14 @@ import { SocialLayoutComponent } from './social-layout/social-layout.component';
 import { SocialFeedComponent } from './social-feed/social-feed.component';
 import { SocialCreateComponent } from './social-create/social-create.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { ActivityStoreModule } from 'src/app/root-store/activity-store/activity-store.module';
+import { SocialDetailComponent } from './social-detail/social-detail.component';
 
 
 @NgModule({
-  declarations: [SocialLayoutComponent, SocialFeedComponent, SocialCreateComponent],
+  declarations: [SocialLayoutComponent, SocialFeedComponent, SocialCreateComponent, SocialDetailComponent],
   imports: [
+    ActivityStoreModule,
     CommonModule,
     SocialRoutingModule,
     NzFormModule,

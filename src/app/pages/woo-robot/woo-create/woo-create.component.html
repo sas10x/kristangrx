@@ -4,6 +4,7 @@
     <div class="section__control">
       <input type="file" (change)="onFileChange($event)" />
       <button
+        *ngIf="!loading; else elseLoading"
         (click)="runCreate()"
         class="section__button focus--box-shadow"
         type="button"
@@ -19,6 +20,7 @@
           />
         </svg>
       </button>
+      <ng-template #elseLoading><nz-spin nzSimple></nz-spin></ng-template>
     </div>
   </header>
   <nz-table #middleTable nzSize="middle" [nzData]="data">
@@ -26,6 +28,7 @@
       <tr>
         <th>SKU</th>
         <th>BARCODE</th>
+        <th>BRAND</th>
         <th>NAME</th>
         <th>DESCRIPTION</th>
         <th>PRICE</th>
@@ -35,6 +38,7 @@
       <tr *ngFor="let data of middleTable.data">
         <td>{{ data.sku }}</td>
         <td>{{ data.barcode }}</td>
+        <td>{{ data.brand }}</td>
         <td>{{ data.name }}</td>
         <td>{{ data.description }}</td>
         <td>{{ data.price }}</td>
