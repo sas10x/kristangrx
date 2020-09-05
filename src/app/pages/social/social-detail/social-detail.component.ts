@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-social-detail',
   templateUrl: './social-detail.component.html',
   styleUrls: ['./social-detail.component.scss']
 })
-export class SocialDetailComponent implements OnInit {
+export class SocialDetailComponent {
 
-  constructor() { }
+  @Input() photo;
 
-  ngOnInit(): void {
+  getLargeImageUrl(imageId) {
+    return `https://picsum.photos/500?image=${imageId}`;
   }
 
 }

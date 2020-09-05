@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WooListComponent } from './woo-list.component';
+import { WooUpdateComponent } from './woo-update.component';
 
-describe('WooListComponent', () => {
-  let component: WooListComponent;
-  let fixture: ComponentFixture<WooListComponent>;
+describe('WooUpdateComponent', () => {
+  let component: WooUpdateComponent;
+  let fixture: ComponentFixture<WooUpdateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WooListComponent ]
+      declarations: [ WooUpdateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WooListComponent);
+    fixture = TestBed.createComponent(WooUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

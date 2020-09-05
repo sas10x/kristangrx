@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { WooRobotRoutingModule } from './woo-robot-routing.module';
-import { WooListComponent } from './woo-list/woo-list.component';
+
 import { WooLayoutComponent } from './woo-layout/woo-layout.component';
 
 import { NzTableModule } from 'ng-zorro-antd/table';
@@ -15,16 +15,23 @@ import { WooCustomersComponent } from './woo-customers/woo-customers.component';
 import { WooAnalyticsComponent } from './woo-analytics/woo-analytics.component';
 import { WooCreateComponent } from './woo-create/woo-create.component';
 import { WooBrandsComponent } from './woo-brands/woo-brands.component';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { WooUpdateComponent } from './woo-update/woo-update.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
-  declarations: [WooListComponent, WooLayoutComponent, WooReportsComponent, WooOrdersComponent, WooCustomersComponent, WooAnalyticsComponent, WooCreateComponent, WooBrandsComponent],
+  declarations: [WooUpdateComponent, WooLayoutComponent, WooReportsComponent, WooOrdersComponent, WooCustomersComponent, WooAnalyticsComponent, WooCreateComponent, WooBrandsComponent],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     WooRobotRoutingModule,
     NzTableModule,
     NzSpinModule,
-    NzAlertModule
+    NzAlertModule,
+    NzCheckboxModule
   ]
 })
 export class WooRobotModule { }

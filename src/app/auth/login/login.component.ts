@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private fb: FormBuilder, private toastr: ToastrService) {}
 
   submitForm(form): void {
-    console.log(form.value);
+    // console.log(form.value);
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(form.value).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);
-        console.log(res.token);
+        // console.log(res.token);
         this.router.navigateByUrl('/woo');
       },
       err => {

@@ -56,7 +56,6 @@ export class AuthService {
   roleMatch(allowedRoles): boolean {
     var isMatch = false;
     var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
-    console.log(payLoad.roles);
     var userRole = payLoad.roles;
     
     allowedRoles.forEach(element => {

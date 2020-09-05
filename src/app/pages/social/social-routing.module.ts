@@ -5,6 +5,8 @@ import { SocialLayoutComponent } from './social-layout/social-layout.component';
 import { AuthGuard } from 'src/app/auth/auth.guard';
 import { SocialCreateComponent } from './social-create/social-create.component';
 import { SocialDetailComponent } from './social-detail/social-detail.component';
+import { SocialProfileComponent } from './social-profile/social-profile.component';
+import { SocialModalComponent } from './social-modal/social-modal.component';
 
 
 
@@ -20,8 +22,8 @@ const routes: Routes = [
     canActivate:[AuthGuard],
     children: [
       { path: '', component: SocialFeedComponent },
-      { path: 'detail', component: SocialDetailComponent },
-      { path: 'modal', component: SocialCreateComponent}
+      { path: 'profile', component: SocialProfileComponent},
+      { path: 'profile/:id', component: SocialModalComponent }
     ]
   }
 ]

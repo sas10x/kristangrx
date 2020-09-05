@@ -15,6 +15,6 @@ export class OrderService {
   // GET ALL ORDERS
   getOrders(params) {
     let orderurl:string = this.wooQRY.authenticateApi('GET',this.baseUrl,params);
-    return this.http.get<Order[]>(orderurl);
+    return this.http.get<any>(orderurl, {observe: 'response'});
   }
 }

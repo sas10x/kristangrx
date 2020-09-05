@@ -4,7 +4,7 @@
     <div class="section__control">
       <input type="file" (change)="onFileChange($event)" />
       <button
-        (click)="updateProduct()"
+        (click)="updateProducts()"
         class="section__button focus--box-shadow"
         type="button"
         aria-label="Filter projects"
@@ -21,6 +21,9 @@
       </button>
     </div>
   </header>
+  <div>
+    <nz-checkbox-group [(ngModel)]="updateOne" (ngModelChange)="log(updateOne)"></nz-checkbox-group>
+  </div>
     <nz-table #middleTable nzSize="middle" [nzData]="data">
       <thead>
         <tr>

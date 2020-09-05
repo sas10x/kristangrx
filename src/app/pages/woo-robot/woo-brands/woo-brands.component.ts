@@ -16,7 +16,8 @@ export class WooBrandsComponent implements OnInit {
   data: any[];
   update: any[] = [];
   body: {};
-  barcode: string;
+  barcode:string;
+  brand:string;
   loading: boolean = true;
   constructor(private productService: ProductService) {}
 
@@ -41,7 +42,7 @@ export class WooBrandsComponent implements OnInit {
     }
     reader.readAsBinaryString(file);
   }
-  updateProduct() {
+  updateBarcode() {
     console.log('kristan');
 
     from(this.data)
@@ -77,7 +78,11 @@ export class WooBrandsComponent implements OnInit {
     // this.body = {
     //   "brands": "616"
     // }
-    this.barcode = product.barcode;
+
+    // update gtin
+    // this.barcode = product.barcode;
+
+    this.brand = product.brand;
     return this.productService.getProductbySku(product.sku);
   }
 
@@ -91,7 +96,7 @@ export class WooBrandsComponent implements OnInit {
       {
         this.loading = true;
         if (res && res.length) {
-          var tmpCart = {"id":res[0].id, "brands": "617"};
+          var tmpCart = {"id":res[0].id, "brands": this.brand.toString()};
           this.update = [
             ...this.update, 
             tmpCart

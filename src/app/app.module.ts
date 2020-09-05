@@ -22,6 +22,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppEffects } from './app.effects';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 registerLocaleData(en);
 
@@ -35,6 +38,8 @@ registerLocaleData(en);
     HomeComponent
   ],
   imports: [
+    NzCheckboxModule,
+    NgbModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
@@ -51,7 +56,6 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     EffectsModule.forRoot([AppEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    
   ],
   providers: 
   [

@@ -1,0 +1,11 @@
+<div class="list-group">
+    <div class="list-group-item text-center" *ngFor="let photoId of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+      <!-- <a [routerLink]="photoId"> -->
+        <a [routerLink]="['/social/social/profile', photoId]">
+        <img class="m-3" [src]="getImageUrl(photoId)">
+        <p> Photo : {{photoId}}</p>
+      </a>
+    </div>
+  </div>
+  <!-- Using router outlet at the end of the template -->
+  <!-- [routerLink]="['/product/get', product.id]" -->
