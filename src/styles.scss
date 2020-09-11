@@ -1306,3 +1306,42 @@ input[type=file] {
 .ant-modal-footer {
   display: none!important;
 }
+
+
+
+// activity 
+.activity-detail {
+  display: flex;
+  height: 80vh;
+  width: 60vw;
+}
+.activity-comments {
+  height: 80vh;
+  width: 30vw;
+  background-color:var(--viking);
+}
+
+.profile-thumb {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  text-align: center;
+  // background-color:black;
+}
+
+.profile-thumb__photo {
+  width: 15%;
+  border-radius: 50%;
+  margin: 5px 5px 5px 5px;
+}
+.profile-thumb__name {
+  font-size: 14px;
+}
+.profile-comment-list {
+  // background-color: red;
+
+  margin-right: 5px;
+  margin-left: 5px;
+  height: 400px;
+  overflow: auto;
+}

@@ -13,15 +13,22 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { ActivityStoreModule } from 'src/app/root-store/activity-store/activity-store.module';
 import { SocialDetailComponent } from './social-detail/social-detail.component';
 import { SocialProfileComponent } from './social-profile/social-profile.component';
-import { SocialModalComponent } from './social-modal/social-modal.component';
-
+import { DialogDetailComponent } from './dialog-detail/dialog-detail.component';
+import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
+import { DialogCreateComponent } from './dialog-create/dialog-create.component';
+import {MatDialogModule} from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
+import { SocialBlankComponent } from './social-blank/social-blank.component';
+
+
 
 
 @NgModule({
-  declarations: [SocialLayoutComponent, SocialFeedComponent, SocialCreateComponent, SocialDetailComponent, SocialProfileComponent, SocialModalComponent],
+  declarations: [SocialLayoutComponent, SocialFeedComponent, SocialCreateComponent, SocialDetailComponent, SocialProfileComponent, DialogDetailComponent, DialogEditComponent, DialogCreateComponent, PhotoDetailComponent, SocialBlankComponent],
   imports: [
     NgbModule,
+    MatDialogModule,
     ActivityStoreModule,
     CommonModule,
     SocialRoutingModule,

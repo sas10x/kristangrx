@@ -22,9 +22,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppEffects } from './app.effects';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 registerLocaleData(en);
 
@@ -38,8 +38,8 @@ registerLocaleData(en);
     HomeComponent
   ],
   imports: [
-    NzCheckboxModule,
     NgbModule,
+    NzCheckboxModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

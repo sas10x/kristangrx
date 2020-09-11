@@ -1,11 +1,25 @@
-<div class="list-group">
-    <div class="list-group-item text-center" *ngFor="let photoId of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
-      <!-- <a [routerLink]="photoId"> -->
-        <a [routerLink]="['/social/social/profile', photoId]">
-        <img class="m-3" [src]="getImageUrl(photoId)">
-        <p> Photo : {{photoId}}</p>
-      </a>
-    </div>
+<div class="container">
+
+    <!-- Heading -->
+    <h1>PHOTOS</h1>
+    <hr>
+  
+    <!-- Photo List -->
+    <ul class="list-unstyled">
+      <li class="media mb-4" *ngFor="let photoId of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+  
+        <!-- Image -->
+        <img class="mr-3" [src]="getImageUrl(photoId)">
+  
+        <!-- Photo title & description-->
+        <div class="media-body">
+          <h5 class="mt-0 mb-1">
+            <a [routerLink]="photoId">Photo {{photoId}}</a>
+          </h5>
+          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+        </div>
+  
+      </li>
+    </ul>
+  
   </div>
-  <!-- Using router outlet at the end of the template -->
-  <!-- [routerLink]="['/product/get', product.id]" -->

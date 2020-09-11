@@ -15,6 +15,9 @@ import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";0
 import * as ActivityActions from './activity.actions';
 export const activityStateFeatureKey = 'activityState';
 
+// export interface State extends fromRoot.State {
+//   [booksFeatureKey]: BooksState;
+// }
 export interface ActivityState extends EntityState<Activity>{
   error: any;
   selectedActivity: Activity;
@@ -91,19 +94,29 @@ export const reducers = createReducer(
     };
   })
 );
+// export const selectBooksState = createFeatureSelector<State, BooksState>(
+//   booksFeatureKey
+// );
+// export const selectBookEntitiesState = createSelector(
+//   selectBooksState,
+//   (state) => state.books
+// );
+// export const selectSelectedBookId = createSelector(
+//   selectBookEntitiesState,
+//   fromBooks.selectId
+// );
 
 export const selectActivitiesFeature = createFeatureSelector<ActivityState>(activityStateFeatureKey);
- 
-// export const selectActivities= createSelector(
-//   selectActivitiesFeature,
-//   (state: ActivityState) => state.activities
-// );
 
 export const selectActivities= createSelector(
   selectActivitiesFeature,
   adapter.getSelectors().selectAll
 );
 
+export const selectedActivity= createSelector(
+  selectActivitiesFeature,
+  (state: ActivityState) => state.selectedActivity
+);
 export const selectError= createSelector(
   selectActivitiesFeature,
   (state: ActivityState) => state.error

@@ -7,12 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocialProfileComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   getImageUrl(imageId) {
     return `https://picsum.photos/100?image=${imageId}`;
+  }
+
+  ngOnInit() {
+    console.log('Hi');
   }
 }

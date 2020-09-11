@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { of, from} from 'rxjs';
-import { concatMap, tap, map, mapTo } from 'rxjs/operators';
+import { concatMap, tap, map, mapTo, switchMap } from 'rxjs/operators';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ThrowStmt } from '@angular/compiler';
 
@@ -24,7 +24,7 @@ export class WooUpdateComponent implements OnInit {
     { label: 'Name', value: 'name'},
     { label: 'Description', value: 'description' },
     { label: 'Short Description', value: 'short' },
-    { label: 'Brand', value: 'brand' },
+    { label: 'Brands', value: 'brands' },
     { label: 'Price', value: 'price' },
     { label: 'Barcode', value: 'barcode' }
   ];
@@ -41,6 +41,7 @@ constructor(private productService: ProductService) {}
 
 }
   onFileChange(ev) {
+    console.log('onfileChange');
     let workBook = null;
     let jsonData = null;
     const reader = new FileReader();
@@ -53,44 +54,14 @@ constructor(private productService: ProductService) {}
         initial[name] = XLSX.utils.sheet_to_json(sheet);
         // console.log(initial[name]);
         this.data = (initial[name]);
+        console.log('kristan');
         console.log(this.data)
+        console.log('kristan');
         return initial;
       }, {});
     }
     reader.readAsBinaryString(file);
   }
- 
-  // updateProduct() {
-  //   console.log('kristan');
-  //   from(this.data)
-  //   .pipe(tap(() => this.loading = false))
-  //   .pipe(concatMap(res => this.getProduct(res)))
-  //   .pipe(concatMap(res => this.productService.updateProduct(res[0].id, this.body)))
-  //   .subscribe(res => {console.log(res);this.loading = true})
-  // }
-  // getProduct(product) {
-  //   this.body = {
-  //     // "name": product.name,
-  //     // "description": product.description,
-  //     // "short_description": product.description,
-  //     "meta_data": [
-  //       {
-  //           "key": "_wpm_gtin_code",
-  //           "value": product.barcode.toString()
-  //       }],
-  //   }
-  //   return this.productService.getProductbySku(product.sku);
-  // }
-  // test() {
-  //   console.log(this.loading);
-  //   if (this.loading == true)
-  //   {
-  //     this.loading = false;
-  //   }
-  //   else {
-  //     this.loading = true
-  //   }
-  // }
 
   log(value: any[]): void {
     
@@ -123,16 +94,19 @@ constructor(private productService: ProductService) {}
   updateProducts() {
     from(this.data)
     .pipe(concatMap(res => this.getProductId(res)))
-    .pipe(tap(() => {this.update = [
-      ...this.update, 
-      this.body
-      ];console.log(this.update)}))  
     .subscribe(res => {
-      console.log(res);
-      // console.log(this.body);
-    }),
+      var tmpId = {id:res[0].id};
+      var tmpBody = {...tmpId, ...this.body }
+      this.update = [
+        ...this.update, 
+        tmpBody
+        ];
+        console.log('inside updateProducts');
+        console.log(this.update);
+    },
       err => console.error('Observer got an error: ' + err),
-      () => {console.log('Observer got a complete notification');console.log(this.update)}
+      () => {console.log('Observer got a complete notification');this.updateBatch();}
+    )
   }
 
   getProductId(product) {
@@ -172,7 +146,7 @@ constructor(private productService: ProductService) {}
     // brand
     if (this.updateBrand) {
       let brandobj = {
-        "brand": product.brand
+        "brands": product.brand
      };
      this.body = {
       ...this.body,
@@ -207,13 +181,14 @@ constructor(private productService: ProductService) {}
      }
      
     }
+    console.log('inside getProduct');
     console.log(this.body);
     return this.productService.getProductbySku(product.sku);
   }
-  // updateBatch() {
-  //   const data = {
-  //     update: this.body
-  //   };
-  //   this.productService.updateBatch(data).subscribe(res => console.log(res));
-  // }
+  updateBatch() {
+    const data = {
+      update: this.update
+    };
+    this.productService.updateBatch(data).subscribe(res => console.log(res));
+  }
 }

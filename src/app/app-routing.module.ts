@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'social',
+    canActivate:[AuthGuard],
     loadChildren: () => import('./pages/social/social.module').then(m => m.SocialModule)
   },
   // {path: 'error/:type', component: ErrorPageComponent},

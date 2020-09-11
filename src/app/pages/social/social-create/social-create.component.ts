@@ -13,7 +13,7 @@ import { addActivity } from 'src/app/root-store/activity-store/activity.actions'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SocialCreateComponent implements OnInit {
-
+  textValue: string | null = null;
   validateForm!: FormGroup;
 
   

@@ -1,29 +1,159 @@
-<!-- <div class="modal">
-  <div class="modal-header">
-    <h4 class="modal-title">Photo {{photo}}</h4>
-  </div>
-  <div class="modal-body">
-    <img class="img-fluid" [src]="getLargeImageUrl(photo)">
-  </div>
-  <div class="modal-guts">
-
-  </div>
-</div> -->
-
-
-<div class="modal-overlay" id="modal-overlay"></div>
-
-<div class="modal" id="modal">
-  <button class="close-button" id="close-button">Obvious Close Button</button>
-  <div class="modal-guts">
-    <h1>Modal Example</h1>
-    <div class="modal-header">
-      <h4 class="modal-title">Photo {{photo}}</h4>
+<div class="activity-detail" *ngIf="activity$ | async as activity">
+<div class="project__wrapper" >
+  <div class="project__element project__icon">
+    <div
+      class="icon icon--viking"
+      aria-label="Icon of the 'Showcase Design' project"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        role="presentation"
+      >
+        <path
+          d="M7,10H9A1,1,0,0,0,9,8H7a1,1,0,0,0,0,2ZM21,4H13V3a1,1,0,0,0-2,0V4H3A1,1,0,0,0,2,5V15a3,3,0,0,0,3,3H9.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L11,19.41V21a1,1,0,0,0,2,0V19.41l2.29,2.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L14.41,18H19a3,3,0,0,0,3-3V5A1,1,0,0,0,21,4ZM20,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V6H20ZM7,14h6a1,1,0,0,0,0-2H7a1,1,0,0,0,0,2Z"
+        />
+      </svg>
     </div>
-    <div class="modal-body">
-      <img class="img-fluid" [src]="getLargeImageUrl(photo)">
-    </div>
+  </div>
+  <div class="project__element project__inform">
+    <span class="project__inform-name">
+        <h1>{{activity.title}}</h1>
+        <p>{{activity.description}}</p>
+   </span>
+  </div>
+  <div class="project__element project__photo">
+    <ul class="photo">
+      <li class="photo__item">
+        <span class="photo__substrate">+2</span>
+      </li>
+      <li class="photo__item">
+        <img
+          src="../../../../assets/img/julian-wan-WNoLnJo7tS8-unsplash.jpg"
+          alt="Jack's photo"
+        />
+      </li>
+      <li class="photo__item">
+        <img
+          src="../../../../assets/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
+          alt="Jessica's photo"
+        />
+      </li>
+    </ul>
+  </div>
+  <div class="project__element project__date">
+    <time class="date" datetime="2020-05-05T10:00:00"
+      >08/09/2020</time
+    >
+  </div>
+  <div class="project__element project__status">
+    <span class="status status--published">IT</span>
+  </div>
+  <div class="project__element project__setting">
+    <button
+      class="setting setting--rotate focus--box-shadow"
+      type="button"
+    >
+      <svg
+        enable-background="new 0 0 515.555 515.555"
+        height="512"
+        viewBox="0 0 515.555 515.555"
+        width="512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m303.347 18.875c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0"
+        />
+        <path
+          d="m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0"
+        />
+        <path
+          d="m303.347 405.541c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0"
+        />
+      </svg>
+    </button>
   </div>
 </div>
-
-<button id="open-button" class="open-button">Open Button</button>
+<div class="activity-comments">
+  <div class="profile-thumb">
+    <img
+        class="profile-thumb__photo"
+        src="../../../../assets/img/kristan.jpg"
+        alt="Profile photo"
+    />
+    <h1 class="profile-thumb__name">{{activity.username}}</h1>
+  </div>
+  <div class="profile-comment-list">
+    <div class="single-comment">
+      <div class="profile-thumb">
+        <img
+            class="profile-thumb__photo"
+            src="../../../../assets/img/kristan.jpg"
+            alt="Profile photo"
+        />
+        <h1 class="profile-thumb__name">{{activity.username}}</h1>
+      </div>
+      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+    </div>
+    <div class="single-comment">
+      <div class="profile-thumb">
+        <img
+            class="profile-thumb__photo"
+            src="../../../../assets/img/kristan.jpg"
+            alt="Profile photo"
+        />
+        <h1 class="profile-thumb__name">{{activity.username}}</h1>
+      </div>
+      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+    </div>
+    <div class="single-comment">
+      <div class="profile-thumb">
+        <img
+            class="profile-thumb__photo"
+            src="../../../../assets/img/kristan.jpg"
+            alt="Profile photo"
+        />
+        <h1 class="profile-thumb__name">{{activity.username}}</h1>
+      </div>
+      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+    </div>
+    <div class="single-comment">
+      <div class="profile-thumb">
+        <img
+            class="profile-thumb__photo"
+            src="../../../../assets/img/kristan.jpg"
+            alt="Profile photo"
+        />
+        <h1 class="profile-thumb__name">{{activity.username}}</h1>
+      </div>
+      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+    </div>
+    <div class="single-comment">
+      <div class="profile-thumb">
+        <img
+            class="profile-thumb__photo"
+            src="../../../../assets/img/kristan.jpg"
+            alt="Profile photo"
+        />
+        <h1 class="profile-thumb__name">{{activity.username}}</h1>
+      </div>
+      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+    </div>
+  </div>
+  <div class="profile-comment">
+    <nz-input-group [nzSuffix]="textAreaClearTpl" class="ant-input-affix-wrapper-textarea-with-clear-btn">
+      <textarea nz-input [(ngModel)]="textValue" placeholder="add Comment"></textarea>
+    </nz-input-group>
+    <ng-template #textAreaClearTpl
+      ><i
+        nz-icon
+        class="ant-input-textarea-clear-icon"
+        nzTheme="fill"
+        nzType="close-circle"
+        *ngIf="textValue"
+        (click)="textValue = null"
+      ></i
+    ></ng-template>
+  </div>
+</div>
+</div>

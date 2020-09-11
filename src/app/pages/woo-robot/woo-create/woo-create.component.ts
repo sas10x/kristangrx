@@ -38,23 +38,19 @@ export class WooCreateComponent implements OnInit {
       "regular_price": product.price.toString(),
       "description": product.description.toString(),
       "short_description": product.description.toString(),
-      // "brands": product.brand.toString(),
+      "brands": product.brand.toString(),
       "meta_data": [
         {
             "key": "_wpm_gtin_code",
             "value": product.barcode.toString()
-        }],
-        "categories": [
-          {
-              "id": 445,
-              "name": "Garden Hose and Accessories",
-              "slug": "garden-hose-and-accessories-garden-hose-and-accessories"
-          }
-      ]
+        }]
+        // "categories": [
+        //   {
+        //     id: product.categories.toString()
+        //   }
+        // ]
     }
     this.create = [...this.create, body];
-    // console.log(this.create);
-    // return this.productService.createProduct(body);
     return this.create;
   }
   batchCreate() {
