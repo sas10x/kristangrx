@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ActivitiesService } from 'src/app/services/social/activities.service';
 import { mergeMap, map, catchError, tap, concatMap } from 'rxjs/operators';
-import * as fromActivityActions from'./activity.actions';
+import { ActivitiesService } from 'src/app/services/social/activities.service';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
+
+import * as fromActivityActions from'./activity.actions';
+
 
 
 

@@ -36,6 +36,7 @@ export class WooCreateComponent implements OnInit {
       "name": product.name.toString(),
       "type": "simple",
       "regular_price": product.price.toString(),
+      // "sale_price": product.sale.toString(),
       "description": product.description.toString(),
       "short_description": product.description.toString(),
       "brands": product.brand.toString(),
@@ -43,12 +44,12 @@ export class WooCreateComponent implements OnInit {
         {
             "key": "_wpm_gtin_code",
             "value": product.barcode.toString()
-        }]
-        // "categories": [
-        //   {
-        //     id: product.categories.toString()
-        //   }
-        // ]
+        }],
+        "categories": [
+          {
+            id: product.categories.toString()
+          }
+        ]
     }
     this.create = [...this.create, body];
     return this.create;

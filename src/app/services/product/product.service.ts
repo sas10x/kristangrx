@@ -16,6 +16,9 @@ export class ProductService {
   baseUrl: string = "https://cebuhomebuilders.com/wp-json/wc/v3/products/";
   createUrl: string = "https://cebuhomebuilders.com/wp-json/wc/v3/products";
 
+  // baseUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products/";
+  // createUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products";
+
   // GET ALL PRODUCTS
   getProducts(params) {
     let producturl:string = this.wooQRY.authenticateApi('GET',this.baseUrl,params);

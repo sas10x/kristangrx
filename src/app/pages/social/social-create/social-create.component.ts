@@ -36,9 +36,6 @@ export class SocialCreateComponent implements OnInit {
     }
     this.store.dispatch(addActivity({ activity: form.value}));
     this.modal.destroy();
-    // this.activitiesService.postActivity(form.value).subscribe(
-    //   res => {console.log(res);this.modal.destroy();}
-    // )
 
   }
   handleCancel(): void {

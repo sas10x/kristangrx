@@ -1309,7 +1309,7 @@ input[type=file] {
 
 
 
-// activity 
+// activity
 .activity-detail {
   display: flex;
   height: 80vh;
@@ -1344,4 +1344,57 @@ input[type=file] {
   margin-left: 5px;
   height: 400px;
   overflow: auto;
+}
+
+.addComment {
+  display: flex;
+  align-items: center;
+}
+.addCmtButton{
+
+}
+.single-comment {
+ 
+}
+.section-comment {
+ 
+}
+.profile-comment {
+  
+}
+// like insta
+.li-comment {
+  // list-style-type: none;
+}
+.box {
+  display: flex;
+  width: calc(100% - 28px);
+}
+.imgBx {
+  display: block;
+  height: fit-content;
+  width: fit-content;
+}
+.content {
+  display: inline-block;
+  flex-shrink: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  min-width: 0;
+}
+.comment-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  max-width: none!important;
+  max-height: none!important;
+}
+.msg-username {
+  -webkit-box-align: center;
+  align-items: center;
+  display: inline-flex;
+  font-size: 1.5em;
+}
+.msg-body {
+  // word-break: break-all;
 }

@@ -26,7 +26,8 @@ export class WooUpdateComponent implements OnInit {
     { label: 'Short Description', value: 'short' },
     { label: 'Brands', value: 'brands' },
     { label: 'Price', value: 'price' },
-    { label: 'Barcode', value: 'barcode' }
+    { label: 'Barcode', value: 'barcode' },
+    { label: 'Categories', value: 'categories' }
   ];
 
   updateName: boolean = false;
@@ -35,6 +36,7 @@ export class WooUpdateComponent implements OnInit {
   updateBrand: boolean = false;
   updatePrice: boolean = false;
   updateBarcode: boolean = false;
+  updateCategories: boolean = false;
 
 constructor(private productService: ProductService) {}
   ngOnInit() {
@@ -88,6 +90,10 @@ constructor(private productService: ProductService) {}
       
       this.updateBarcode = true;
     }
+    if (value[6].checked) {
+      
+      this.updateCategories = true;
+    }
   }
 
 
@@ -95,18 +101,22 @@ constructor(private productService: ProductService) {}
     from(this.data)
     .pipe(concatMap(res => this.getProductId(res)))
     .subscribe(res => {
-      var tmpId = {id:res[0].id};
-      var tmpBody = {...tmpId, ...this.body }
-      this.update = [
+      if (res && res.length)
+      {
+        var tmpId = {id:res[0].id};
+        var tmpBody = {...tmpId, ...this.body }
+        this.update = [
         ...this.update, 
         tmpBody
         ];
-        console.log('inside updateProducts');
+        console.log(res[0].sku);
         console.log(this.update);
+      }
     },
       err => console.error('Observer got an error: ' + err),
-      () => {console.log('Observer got a complete notification');this.updateBatch();}
-    )
+      () => {console.log('Observer got a complete notification');
+      this.updateBatch();
+    })
   }
 
   getProductId(product) {
@@ -158,7 +168,7 @@ constructor(private productService: ProductService) {}
     if (this.updatePrice) {
       
       let priceobj = {
-        "regular_price": product.price
+        "sale_price": product.price
      };
      this.body = {
       ...this.body,
@@ -180,6 +190,20 @@ constructor(private productService: ProductService) {}
        ...barcodeobj
      }
      
+    }
+    if (this.updateCategories) {
+      
+      let categoriesobj = {
+        "categories": [
+          {
+            "id": product.categories
+          }
+        ]
+     };
+     this.body = {
+      ...this.body,
+       ...categoriesobj
+     }
     }
     console.log('inside getProduct');
     console.log(this.body);
