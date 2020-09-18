@@ -83,52 +83,32 @@
     />
     <h1 class="profile-thumb__name">{{activity.username}}</h1>
   </div>
-  <div class="mb-2">
-    
-  </div>
   <div class="profile-comment-list" >
-    <ul class="li-comment" *ngFor="let msg of messages">
-      <div class="box" >
-        <div class="imgBx">
-         <img class="comment-thumb"
-          src="../../../../assets/img/kristan-thumbnail.jpg"
-          alt="Profile photo"
-           />
-        </div> 
-        <div class="content">
-          <span class="msg-username">
-            {{msg.userName}}
-          </span>
-          &nbsp;
-          <span class="msg-body">{{msg.body}}</span>
-        </div> 
-      </div>
-    </ul>
+    <div class="single-comment">
+      <ul class="li-comment" *ngFor="let msg of comments$ | async">
+        <div class="box" >
+          <div class="imgBx">
+           <img class="comment-thumb"
+            src="../../../../assets/img/kristan-thumbnail.jpg"
+            alt="Profile photo"
+             />
+          </div> 
+          <div class="content">
+            <span class="msg-username">
+              {{msg.userName}}
+            </span>
+            &nbsp;
+            <span class="msg-body">{{msg.body}}</span>
+          </div> 
+        </div>
+      </ul>
+    </div>
   </div>
-   
   <div class="profile-comment">
-    <!-- <nz-input-group [nzSuffix]="textAreaClearTpl" class="ant-input-affix-wrapper-textarea-with-clear-btn">
-      <textarea nz-input [(ngModel)]="textValue" placeholder="add Comment"></textarea>
-    </nz-input-group>
-    <ng-template #textAreaClearTpl
-      ><i
-        nz-icon
-        class="ant-input-textarea-clear-icon"
-        nzTheme="fill"
-        nzType="close-circle"
-        *ngIf="textValue"
-        (click)="textValue = null"
-      ></i
-    ></ng-template> -->
-    <form class="addComment" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm)">
+    <form class="addComment" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm)" (keyup.enter)="submitForm(validateForm)">
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your title!">
           <textarea nz-input placeholder="add Comment" [nzAutosize]="{ minRows: 2}" maxlength="140" formControlName="body"></textarea>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control>
-          <button class="addCmtButton" nz-button nzType="primary">post</button>
         </nz-form-control>
       </nz-form-item>
     </form>

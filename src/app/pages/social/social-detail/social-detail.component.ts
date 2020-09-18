@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject, NgZone } from '@angular/core';
+import { Component, OnInit, Input, Inject, NgZone, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Activity } from 'src/app/models/social/activity';
@@ -10,14 +10,21 @@ import { Store, select } from '@ngrx/store';
 import { loadActivity } from 'src/app/root-store/activity-store/activity.actions';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'src/app/services/social/message.service';
-import { Comment } from 'src/app/models/social/comment';
+import { Comment} from 'src/app/models/social/comment';
 import * as fromCommentActions from '../../../root-store/comment-store/comment.actions';
+
+import { CommentState} from 'src/app/root-store/comment-store/comment.reducer';
+import { selectComments } from 'src/app/root-store/comment-store/comment.selectors';
+import { addComment } from '../../../root-store/comment-store/comment.actions';
+
 @Component({
   selector: 'app-social-detail',
   templateUrl: './social-detail.component.html',
   styleUrls: ['./social-detail.component.scss']
 })
-export class SocialDetailComponent implements OnInit{
+export class SocialDetailComponent implements OnInit, OnDestroy{
+  comments$: Observable<Comment[]>;
+
   txtMessage: string = '';  
   uniqueID: string = new Date().getTime().toString();  
   messages = new Array<Comment>();  
@@ -40,6 +47,7 @@ export class SocialDetailComponent implements OnInit{
     private route: ActivatedRoute,
     private router: Router,
     private service: ActivitiesService,
+    private commentStore: Store<CommentState>,
     private store: Store<ActivityState>
     ) {
       // console.log('Injected data', data)
@@ -47,17 +55,28 @@ export class SocialDetailComponent implements OnInit{
    }
 
   ngOnInit() {
+    // comment
+    this.commentStore.dispatch(fromCommentActions.loadComments()); 
+    this.loadComments();
+
     console.log(localStorage.getItem('token'));
     this.validateForm = this.fb.group({
       body: [null, [Validators.required]]
     });
-    console.log(this.photo);
+    
+    // activity
     this.store.dispatch(
       loadActivity({id: this.data.id.toString()})
     );
     this.activity$ = this.store.pipe(select(selectedActivity));
   }
+  ngOnDestroy() {
+    this.chatService.stop();
+  }
 
+  loadComments() {
+    this.comments$ = this.commentStore.pipe(select(selectComments));
+  }
   addComment() {
 
   }
@@ -71,15 +90,13 @@ export class SocialDetailComponent implements OnInit{
     this.message.activity = this.data.id.toString()
     this.message.body = form.value.body;
     this.chatService.sendMessage(this.message); 
+    this.validateForm.reset();
   }
 
   private subscribeToEvents(): void {  
-  
     this.chatService.messageReceived.subscribe((comment: Comment) => {  
-      this._ngZone.run(() => { 
-        fromCommentActions.addCommentSuccess({ comment });
-          console.log('KRISTAN');
-          // this.messages.push(message);  
+      this._ngZone.run(() => {  
+          this.commentStore.dispatch(fromCommentActions.addCommentSuccess({ comment }));
       });  
     });  
   }  

@@ -39,17 +39,17 @@ export class WooCreateComponent implements OnInit {
       // "sale_price": product.sale.toString(),
       "description": product.description.toString(),
       "short_description": product.description.toString(),
-      "brands": product.brand.toString(),
-      "meta_data": [
-        {
-            "key": "_wpm_gtin_code",
-            "value": product.barcode.toString()
-        }],
-        "categories": [
-          {
-            id: product.categories.toString()
-          }
-        ]
+      // "brands": product.brand.toString(),
+      // "meta_data": [
+      //   {
+      //       "key": "_wpm_gtin_code",
+      //       "value": product.barcode.toString()
+      //   }],
+        // "categories": [
+        //   {
+        //     id: product.categories.toString()
+        //   }
+        // ]
     }
     this.create = [...this.create, body];
     return this.create;

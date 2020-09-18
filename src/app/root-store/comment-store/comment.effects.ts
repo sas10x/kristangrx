@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import * as fromCommentActions from './comment.actions';
 import { CommentService } from 'src/app/services/social/comment.service';
+import { MessageService } from 'src/app/services/social/message.service';
 
 
 
@@ -35,6 +36,20 @@ export class CommentEffects {
     )
   );
 
-  constructor(private actions$: Actions, private commentsService: CommentService, private router: Router) {}
+  receiveComment$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromCommentActions.addComment),
+      mergeMap(action =>
+        this.commentsService.createComment(action.comment).pipe(
+          map(comment => fromCommentActions.addCommentSuccess({ comment })),
+          catchError(error =>
+            of(fromCommentActions.addCommentFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  constructor(private actions$: Actions, private commentsService: CommentService, private router: Router,private chatService: MessageService) {}
 
 }

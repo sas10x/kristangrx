@@ -1343,18 +1343,19 @@ input[type=file] {
   margin-right: 5px;
   margin-left: 5px;
   height: 400px;
-  overflow: auto;
+  overflow-x: hidden; //horizontal
+  overflow-y: scroll; //vertical
+  // overflow: auto;
 }
 
 .addComment {
-  display: flex;
-  align-items: center;
+ 
 }
 .addCmtButton{
 
 }
 .single-comment {
- 
+ display: block;
 }
 .section-comment {
  

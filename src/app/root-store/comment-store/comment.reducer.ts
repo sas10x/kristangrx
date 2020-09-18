@@ -7,14 +7,14 @@ export const commentsFeatureKey = 'comments';
 
 import { Comment } from 'src/app/models/social/comment';
 
-export interface State extends EntityState<Comment> {
+export interface CommentState extends EntityState<Comment> {
   // additional entities state properties
   error: any;
 }
 
 export const adapter: EntityAdapter<Comment> = createEntityAdapter<Comment>();
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: CommentState = adapter.getInitialState({
   // additional entity state properties
   error: undefined
 });

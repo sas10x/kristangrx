@@ -10,7 +10,10 @@ import { SocialLayoutComponent } from './social-layout/social-layout.component';
 import { SocialFeedComponent } from './social-feed/social-feed.component';
 import { SocialCreateComponent } from './social-create/social-create.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+
 import { ActivityStoreModule } from 'src/app/root-store/activity-store/activity-store.module';
+import { CommentStoreModule } from 'src/app/root-store/comment-store/comment-store.module';
+
 import { SocialDetailComponent } from './social-detail/social-detail.component';
 import { SocialProfileComponent } from './social-profile/social-profile.component';
 import { DialogDetailComponent } from './dialog-detail/dialog-detail.component';
@@ -29,6 +32,7 @@ import { SocialBlankComponent } from './social-blank/social-blank.component';
   imports: [
     NgbModule,
     MatDialogModule,
+    CommentStoreModule,
     ActivityStoreModule,
     CommonModule,
     SocialRoutingModule,

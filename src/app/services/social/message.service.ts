@@ -22,6 +22,10 @@ export class MessageService {
   sendMessage(message: Comment) {
     this._hubConnection!.invoke('SendComment', message);
   }
+  stop() {
+    console.log('stop');
+    this._hubConnection!.stop();
+  }
 
   private createConnection() {
     this._hubConnection = new HubConnectionBuilder()

@@ -78,9 +78,6 @@ export const reducers = createReducer(
       error: action.error
     };
   }),
-  // on(ActivityActions.addActivitySuccess, (state, action) => {
-  //   return adapter.addOne(action.activity, state)
-  //   }),
   on(ActivityActions.updateActivity, (state, action) =>
     adapter.updateOne(action.activity, state)
   ),
