@@ -56,7 +56,7 @@ export class SocialDetailComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     // comment
-    this.commentStore.dispatch(fromCommentActions.loadComments()); 
+    this.commentStore.dispatch(fromCommentActions.loadComments({id: this.data.id.toString()})); 
     this.loadComments();
 
     console.log(localStorage.getItem('token'));

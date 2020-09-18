@@ -7,12 +7,12 @@ import { Comment } from 'src/app/models/social/comment';
   providedIn: 'root'
 })
 export class CommentService {
-  baseUrl: string = "http://localhost:5000/api/comments/28C540E5-0265-4D4C-6711-08D85642F3D1";
+  baseUrl: string = "http://localhost:5000/api/comments/";
 
   constructor(private http: HttpClient) { }
 
-  getComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.baseUrl);
+  getComments(activityId: string): Observable<Comment[]> {
+    return this.http.get<Comment[]>(this.baseUrl + activityId);
   }
 
   getComment(activityId: string): Observable<Comment> {
