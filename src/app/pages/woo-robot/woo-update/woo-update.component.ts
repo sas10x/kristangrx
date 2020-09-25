@@ -16,7 +16,9 @@ export class WooUpdateComponent implements OnInit {
   data: any[];
   product: {};
   body: {} = {};
-  loading: boolean = true;
+  loading: boolean = false;
+
+  variable: any[] = [];
 
   update: any[] = [];
 
@@ -98,24 +100,39 @@ constructor(private productService: ProductService) {}
 
 
   updateProducts() {
+    this.loading = true;
     from(this.data)
     .pipe(concatMap(res => this.getProductId(res)))
     .subscribe(res => {
       if (res && res.length)
       {
-        var tmpId = {id:res[0].id};
-        var tmpBody = {...tmpId, ...this.body }
-        this.update = [
-        ...this.update, 
-        tmpBody
-        ];
-        console.log(res[0].sku);
-        console.log(this.update);
+        if ((res[0].parent_id) == 0)
+        {
+          console.log(res[0].parent_id);
+          var tmpId = {id:res[0].id};
+          var tmpBody = {...tmpId, ...this.body }
+          this.update = [
+          ...this.update, 
+          tmpBody
+          ];
+          console.log(res[0].sku);
+          console.log(this.update);
+        }
+        else {
+          var tmpVariable = {id: res[0].id, sku: res[0].sku, parent_id: res[0].parent_id}
+          this.variable = [
+            ...this.variable,
+            tmpVariable
+          ]
+        }
       }
     },
       err => console.error('Observer got an error: ' + err),
       () => {console.log('Observer got a complete notification');
       this.updateBatch();
+      this.loading = false;
+      console.log(this.variable);
+      console.table(this.variable);
     })
   }
 
@@ -168,7 +185,11 @@ constructor(private productService: ProductService) {}
     if (this.updatePrice) {
       
       let priceobj = {
-        "sale_price": product.price
+        "sale_price": product.price,
+        "date_on_sale_from": "2020-09-15T00:00:00",
+        "date_on_sale_from_gmt": "2020-09-14T16:00:00",
+        "date_on_sale_to": "2020-10-31T23:59:59",
+        "date_on_sale_to_gmt": "2020-10-31T15:59:59",
      };
      this.body = {
       ...this.body,

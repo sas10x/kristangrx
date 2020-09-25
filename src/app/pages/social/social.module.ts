@@ -23,12 +23,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
 import { SocialBlankComponent } from './social-blank/social-blank.component';
+import { UploadAppComponent } from './upload-app/upload-app.component';
+import { UploadImageComponent } from './upload-image/upload-image.component';
 
 
 
 
 @NgModule({
-  declarations: [SocialLayoutComponent, SocialFeedComponent, SocialCreateComponent, SocialDetailComponent, SocialProfileComponent, DialogDetailComponent, DialogEditComponent, DialogCreateComponent, PhotoDetailComponent, SocialBlankComponent],
+  declarations: [SocialLayoutComponent, SocialFeedComponent, SocialCreateComponent, SocialDetailComponent, SocialProfileComponent, DialogDetailComponent, DialogEditComponent, DialogCreateComponent, PhotoDetailComponent, SocialBlankComponent, UploadAppComponent, UploadImageComponent],
   imports: [
     NgbModule,
     MatDialogModule,

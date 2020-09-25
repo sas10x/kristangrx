@@ -18,6 +18,7 @@ import { WooBrandsComponent } from './woo-brands/woo-brands.component';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { WooUpdateComponent } from './woo-update/woo-update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 
 
@@ -31,7 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NzTableModule,
     NzSpinModule,
     NzAlertModule,
-    NzCheckboxModule
+    NzCheckboxModule,
+    NzButtonModule
   ]
 })
 export class WooRobotModule { }

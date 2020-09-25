@@ -11,23 +11,8 @@ import { MessageService } from 'src/app/services/social/message.service';
 
 @Injectable()
 export class CommentEffects {
-   // loadActivity$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(fromActivityActions.loadActivity),
-  //     mergeMap(action =>
-  //       this.activitiesService.getaActivity(action.id).pipe(
-  //         map(activity =>
-  //           fromActivityActions.loadActivitySuccess({ selectedActivity: activity })
-  //         ),
-  //         catchError(error =>
-  //           of(fromActivityActions.loadActivityFailure({ error }))
-  //         )
-  //       )
-  //     )
-  //   )
-  // );
-
-  loadComments$ = createEffect(() => this.actions$.pipe(
+  
+ loadComments$ = createEffect(() => this.actions$.pipe(
     ofType(fromCommentActions.loadComments),
     mergeMap(action => this.commentsService.getComments(action.id)
       .pipe(

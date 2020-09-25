@@ -2,12 +2,6 @@ import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 import { Comment } from 'src/app/models/social/comment';
 
-// load 
-// comments
-// export const loadActivity = createAction(
-//   "[Activity Components] Load Activity",
-//   props<{ id: string }>()
-// );
 export const loadComments = createAction(
   "[Comment List Component] Load Comments",
   props<{ id: string}>()

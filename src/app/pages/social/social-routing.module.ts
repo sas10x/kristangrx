@@ -8,6 +8,7 @@ import { SocialDetailComponent } from './social-detail/social-detail.component';
 import { SocialProfileComponent } from './social-profile/social-profile.component';
 import { DialogDetailComponent } from './dialog-detail/dialog-detail.component';
 import { SocialBlankComponent } from './social-blank/social-blank.component';
+import { UploadAppComponent } from './upload-app/upload-app.component';
 
 
 
@@ -24,6 +25,10 @@ const routes: Routes = [
       { path: '', component: SocialBlankComponent },
       { path: ':id', component: DialogDetailComponent},
     ]
+  },
+  {
+    path: 'upload',
+    component: UploadAppComponent,
   }
 ]
 

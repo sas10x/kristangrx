@@ -56,6 +56,7 @@ export class SocialDetailComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     // comment
+    this.startsignal();
     this.commentStore.dispatch(fromCommentActions.loadComments({id: this.data.id.toString()})); 
     this.loadComments();
 
@@ -74,6 +75,9 @@ export class SocialDetailComponent implements OnInit, OnDestroy{
     this.chatService.stop();
   }
 
+  startsignal() {
+    this.chatService.start();
+  }
   loadComments() {
     this.comments$ = this.commentStore.pipe(select(selectComments));
   }

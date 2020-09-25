@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Authenticate } from 'src/app/models/auth/authenticate';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,10 +45,12 @@ export class AuthService {
     return this.http.post(this.BaseURI + '/user/register', body);
   }
 
-  login(formData) {
-   
-    return this.http.post(this.BaseURI + '/user/login', formData);
+  login(authenticate: Authenticate) : Observable<any> {
+    return this.http.post(this.BaseURI + '/user/login', authenticate);
   }
+  // login(authenticate: Authenticate): Observable<any> {
+  //   return this.httpClient.post('http://localhost:3000/login', authenticate);
+  // }
 
   getUserProfile() {
     return this.http.get(this.BaseURI + '/user');

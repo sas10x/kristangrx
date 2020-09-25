@@ -7,6 +7,7 @@
         (click)="updateProducts()"
         class="section__button focus--box-shadow"
         type="button"
+        *ngIf="!loading else spinner"
         aria-label="Filter projects"
       >
         <svg
@@ -19,6 +20,9 @@
           />
         </svg>
       </button>
+      <ng-template #spinner>
+        <button><nz-spin nzSimple></nz-spin></button>
+    </ng-template>
     </div>
   </header>
   <div>
@@ -33,6 +37,7 @@
           <th>DESCRIPTION</th>
           <th>Brand</th>
           <th>PRICE</th>
+          <th>SALE</th>
         </tr>
       </thead>
       <tbody>
@@ -43,6 +48,7 @@
           <td>{{ data.description }}</td>
           <td>{{ data.brand }}</td>
           <td>{{ data.price }}</td>
+          <td>{{ data.sale }}</td>
         </tr>
       </tbody>
     </nz-table>

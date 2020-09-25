@@ -14,11 +14,11 @@ export class ProductService {
 
   constructor(private http: HttpClient, private wooQRY: WooQryService, private wooCMD: WooCmdService) { }
 
-  // baseUrl: string = "https://cebuhomebuilders.com/wp-json/wc/v3/products/";
-  // createUrl: string = "https://cebuhomebuilders.com/wp-json/wc/v3/products";
+  baseUrl: string = "https://cebuhomebuilders.com/wp-json/wc/v3/products/";
+  createUrl: string = "https://cebuhomebuilders.com/wp-json/wc/v3/products";
 
-  baseUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products/";
-  createUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products";
+  // baseUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products/";
+  // createUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products";
 
   // GET ALL PRODUCTS
   getProducts(params) {
@@ -65,5 +65,9 @@ export class ProductService {
     let producturl:string = this.wooCMD.authenticateApi('POST',this.baseUrl + 'batch', params);
     return this.http.post(producturl, body);
   }
-  
+  createProductVariation(id: string, body) {
+    let params = {}
+    let producturl:string = this.wooCMD.authenticateApi('POST',this.createUrl+'/'+id+'/variations', params);
+    return this.http.post(producturl, body)
+  }
 }

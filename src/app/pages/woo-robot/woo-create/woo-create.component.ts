@@ -40,16 +40,15 @@ export class WooCreateComponent implements OnInit {
       "description": product.description.toString(),
       "short_description": product.description.toString(),
       // "brands": product.brand.toString(),
-      // "meta_data": [
-      //   {
-      //       "key": "_wpm_gtin_code",
-      //       "value": product.barcode.toString()
-      //   }],
-        // "categories": [
-        //   {
-        //     id: product.categories.toString()
-        //   }
-        // ]
+      "meta_data": [
+        {
+            "key": "_wpm_gtin_code",
+            "value": product.barcode.toString()
+        }],
+      "categories": [
+        {
+            id: product.categories.toString()
+        }]
     }
     this.create = [...this.create, body];
     return this.create;
@@ -79,5 +78,38 @@ export class WooCreateComponent implements OnInit {
       }, {});
     }
     reader.readAsBinaryString(file);
+  }
+  runCreateVariable() {
+    this.loading = true;
+    from(this.data)
+    .pipe(concatMap(res => this.createVariable(res)))
+    .subscribe(res => 
+      {
+        console.log(res)
+      },
+      err => console.error('Observer got an error: ' + err),
+      () => {console.log('Observer got a complete notification');this.loading = false;}
+  )}
+  createVariable(product) {
+    let body = {
+      "sku": product.sku.toString(),
+      "regular_price": product.price.toString(),
+      // "sale_price": product.sale.toString(),
+      "description": product.description.toString(),
+      // "short_description": product.description.toString(),
+      "meta_data": [
+        {
+            "key": "_wpm_gtin_code",
+            "value": product.barcode.toString()
+        }],
+        "attributes": [
+          {
+              "id": 1,
+              "name": "Color",
+              "option": product.option.toString()
+          }
+      ]
+    }
+    return this.productService.createProductVariation(product.parent, body);
   }
 }

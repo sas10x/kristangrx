@@ -14,11 +14,15 @@ export class MessageService {
   private _hubConnection: HubConnection;
 
   constructor() {
+    // this.createConnection();
+    // this.registerOnServerEvents();
+    // this.startConnection();
+  }
+  start() {
     this.createConnection();
     this.registerOnServerEvents();
     this.startConnection();
-  }
-
+}
   sendMessage(message: Comment) {
     this._hubConnection!.invoke('SendComment', message);
   }

@@ -1,5 +1,4 @@
 @import '~ngx-toastr/toastr';
-// @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 :root {
   --font-roboto: "Roboto", Arial, sans-serif;
   --font-weight-regular: 400;
@@ -26,7 +25,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-​
 
 html,
 body {
@@ -59,10 +57,8 @@ h5,
 h6 {
   font-size: 1.8rem;
 }
-svg {
-  max-width: 50%;
-  max-height: 50%;
-}
+
+svg,
 img {
   max-width: 100%;
   max-height: 100%;
@@ -160,9 +156,9 @@ button {
 
 /* Wrapper */
 
-
 .wrapper {
   display: flex;
+  justify-content: center;
   width: 100%;
   min-height: 100vh;
 }
@@ -177,8 +173,6 @@ button {
 
 .nav {
   display: flex;
-  top: 0;
-  // position: fixed;
   width: 5.6rem;
   height: calc(100vh - 19.25rem);
   min-height: 40rem;
@@ -187,7 +181,6 @@ button {
   padding: 7.5rem 0.825rem;
   background-color: var(--alabaster);
   border-radius: 20px;
-
 }
 
 .nav__list {
@@ -299,7 +292,6 @@ button {
 /* Main */
 
 .main {
-  // align-self: center;
   width: calc(100% - 46.125rem);
   margin: 0 3.75rem 6rem 1.875rem;
 }
@@ -427,8 +419,6 @@ button {
 }
 
 .profile__name {
-  background: transparent!important;
-  border: none !important;
   margin-right: 1.5rem;
 }
 
@@ -1030,9 +1020,6 @@ button {
   background-color: var(--alabaster);
   padding: 3.05rem 1.875rem;
 }
-.asideshow {
-  display: none!important;
-}
 
 .aside__control {
   display: flex;
@@ -1225,26 +1212,6 @@ button {
     background-color: var(--true-v);
   }
 }
-.banner__button-sm {
-  /* width: 30%; */
-  padding: 1.25rem 2rem;
-  margin: 0;
-  color: var(--alabaster);
-  font-size: 1.2rem;
-  border-radius: 10px;
-  background-color: var(--dune);
-}
-
-.banner__button-sm:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px var(--dune-rgba-5);
-}
-
-@media (hover: hover) {
-  .banner__button-sm:hover {
-    background-color: var(--true-v);
-  }
-}
 
 @media (max-width: 1800px) {
   .banner__title {
@@ -1277,6 +1244,7 @@ button {
     font-size: 1rem;
   }
 }
+
 
 // ********************************************************
 .shwarma-wrap {
@@ -1316,7 +1284,8 @@ input[type=file] {
   width: 60vw;
 }
 .activity-comments {
-  height: 80vh;
+  // height: 80vh;
+  flex-grow: 1;
   width: 30vw;
   background-color:var(--viking);
 }
@@ -1347,26 +1316,11 @@ input[type=file] {
   overflow-y: scroll; //vertical
   // overflow: auto;
 }
-
-.addComment {
- 
-}
-.addCmtButton{
-
-}
-.single-comment {
- display: block;
-}
-.section-comment {
- 
-}
 .profile-comment {
-  
+  // position: absolute; 
+  bottom: 0px; 
 }
-// like insta
-.li-comment {
-  // list-style-type: none;
-}
+
 .box {
   display: flex;
   width: calc(100% - 28px);
@@ -1396,6 +1350,80 @@ input[type=file] {
   display: inline-flex;
   font-size: 1.5em;
 }
-.msg-body {
-  // word-break: break-all;
+
+
+// delaney
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  // height: 350px;
+  width: 30vw;
+  min-width: 250px;
+  padding: 1.5rem;
+}
+.card-author {
+  flex-grow: 1;
+  position: relative;
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  align-items: center;
+  margin: 3rem 0 0;
+}
+
+.author-avatar img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  filter: grayscale(100%);
+  margin: 16px 10px;
+}
+
+.half-circle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 48px;
+  fill: none;
+  stroke: #ff8a00;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.tags {
+  margin: 1rem 0 2rem;
+  padding: .5rem 0 1rem;
+  line-height: 2;
+  margin-bottom: 0;
+}
+
+.tags a {
+  font-style: normal;
+  font-weight: 700;
+  font-size: .5rem;
+  color: #7a7a8c;
+  text-transform: uppercase;
+  font-size: .66rem;
+  border: 3px solid #28242f;
+  border-radius: 2rem;
+  padding: .2rem .85rem .25rem;
+  position: relative;
+}
+
+// upload files function
+.upload{
+  font-weight:bold;
+  color:#28a745;
+  margin-left: 15px;
+  line-height: 36px;
+}
+
+// ng-zorro-ant
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+  background: "red";
+  border-color: "yellow";
 }
