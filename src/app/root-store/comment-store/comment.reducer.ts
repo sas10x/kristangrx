@@ -74,7 +74,7 @@ export const reducer = createReducer(
 
 export const {
   selectIds,
-  selectEntities,
+  selectEntities,                                                                                                                                                                                                                                     
   selectAll,
   selectTotal,
 } = adapter.getSelectors();

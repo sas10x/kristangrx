@@ -25,6 +25,7 @@ import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
 import { SocialBlankComponent } from './social-blank/social-blank.component';
 import { UploadAppComponent } from './upload-app/upload-app.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
+import { AuthStoreModule } from 'src/app/root-store/auth-store/auth-store.module';
 
 
 
@@ -36,6 +37,7 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
     MatDialogModule,
     CommentStoreModule,
     ActivityStoreModule,
+    AuthStoreModule,
     CommonModule,
     SocialRoutingModule,
     NzFormModule,

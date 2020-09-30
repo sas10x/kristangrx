@@ -40,11 +40,11 @@ export class WooCreateComponent implements OnInit {
       "description": product.description.toString(),
       "short_description": product.description.toString(),
       // "brands": product.brand.toString(),
-      "meta_data": [
-        {
-            "key": "_wpm_gtin_code",
-            "value": product.barcode.toString()
-        }],
+      // "meta_data": [
+      //   {
+      //       "key": "_wpm_gtin_code",
+      //       "value": product.barcode.toString()
+      //   }],
       "categories": [
         {
             id: product.categories.toString()
@@ -97,18 +97,18 @@ export class WooCreateComponent implements OnInit {
       // "sale_price": product.sale.toString(),
       "description": product.description.toString(),
       // "short_description": product.description.toString(),
-      "meta_data": [
-        {
-            "key": "_wpm_gtin_code",
-            "value": product.barcode.toString()
-        }],
-        "attributes": [
-          {
-              "id": 1,
-              "name": "Color",
-              "option": product.option.toString()
-          }
-      ]
+      // "meta_data": [
+      //   {
+      //       "key": "_wpm_gtin_code",
+      //       "value": product.barcode.toString()
+      //   }],
+      //   "attributes": [
+      //     {
+      //         "id": 1,
+      //         "name": "Color",
+      //         "option": product.option.toString()
+      //     }
+      // ]
     }
     return this.productService.createProductVariation(product.parent, body);
   }

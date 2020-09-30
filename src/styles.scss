@@ -161,6 +161,8 @@ button {
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+
+  overflow: auto;
 }
 
 @media (max-width: 992px) {
@@ -173,6 +175,12 @@ button {
 
 .nav {
   display: flex;
+
+  // position: fixed;
+  // align-self: flex-start; 
+  // top: 0;
+  // position: -webkit-sticky;
+
   width: 5.6rem;
   height: calc(100vh - 19.25rem);
   min-height: 40rem;
@@ -181,6 +189,7 @@ button {
   padding: 7.5rem 0.825rem;
   background-color: var(--alabaster);
   border-radius: 20px;
+ 
 }
 
 .nav__list {

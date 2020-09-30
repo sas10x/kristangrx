@@ -9,6 +9,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthStoreModule } from '../root-store/auth-store/auth-store.module';
 
 
 
@@ -17,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     CommonModule,
     AuthRoutingModule,
+    AuthStoreModule,
     NzFormModule,
     NzInputModule,
     FormsModule,

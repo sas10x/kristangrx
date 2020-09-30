@@ -60,7 +60,7 @@ export class SocialDetailComponent implements OnInit, OnDestroy{
     this.commentStore.dispatch(fromCommentActions.loadComments({id: this.data.id.toString()})); 
     this.loadComments();
 
-    console.log(localStorage.getItem('token'));
+   
     this.validateForm = this.fb.group({
       body: [null, [Validators.required]]
     });

@@ -14,11 +14,11 @@ export class ProductService {
 
   constructor(private http: HttpClient, private wooQRY: WooQryService, private wooCMD: WooCmdService) { }
 
-  baseUrl: string = "https://cebuhomebuilders.com/wp-json/wc/v3/products/";
-  createUrl: string = "https://cebuhomebuilders.com/wp-json/wc/v3/products";
+  // baseUrl: string = "https://cebuhomebuilders.com/wp-json/wc/v3/products/";
+  // createUrl: string = "https://cebuhomebuilders.com/wp-json/wc/v3/products";
 
-  // baseUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products/";
-  // createUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products";
+  baseUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products/";
+  createUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products";
 
   // GET ALL PRODUCTS
   getProducts(params) {

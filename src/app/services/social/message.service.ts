@@ -32,9 +32,10 @@ export class MessageService {
   }
 
   private createConnection() {
+    var user = JSON.parse(localStorage.getItem('user'));
     this._hubConnection = new HubConnectionBuilder()
       .withUrl('http://localhost:5000/chat', {
-        accessTokenFactory: () =>  localStorage.getItem('token')
+        accessTokenFactory: () =>  user.token
       })
       .configureLogging(LogLevel.Information)
       .build();

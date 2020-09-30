@@ -1,6 +1,7 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import * as AuthActions from './auth.actions';
+import { Action, createReducer, on, createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { User } from 'src/app/models/auth/user';
+import { loginSuccess, loginFailure, logout } from './auth.actions';
 
 export const authsFeatureKey = 'auths';
 
@@ -9,7 +10,8 @@ export const authsFeatureKey = 'auths';
 //   // additional entities state properties
 // }
 export interface UserState {
-  user: User | null;
+  user: User;
+  error: any;
 }
 
 
@@ -18,13 +20,34 @@ export interface UserState {
 //   // additional entity state properties
 // });
 export const initialState: UserState = {
-  user: null,
+  user: undefined,
+  error: undefined
 };
 
 export const reducer = createReducer(
   initialState,
-  on(AuthActions.loginSuccess, (state, { user }) => ({ ...state, user })),
-  on(AuthActions.logout, () => initialState)
+  on(loginSuccess, (state, action) => {
+    return {
+      user: action.user
+    };
+  }),
+  on(loginFailure, (state, action) => {
+    return {
+      user: state.user,
+      error: action.error
+    };
+  }),
+  on(logout, (state, action) => {
+    return {
+        user: undefined
+    }
+})
+);
+export const selectUserFeature = createFeatureSelector<UserState>(authsFeatureKey);
+ 
+export const selectUser = createSelector(
+  selectUserFeature,
+  (state: UserState) => state.user
 );
 
 

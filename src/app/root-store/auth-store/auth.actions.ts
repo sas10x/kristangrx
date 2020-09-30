@@ -19,10 +19,5 @@ export const loginFailure = createAction(
 );
 
 export const logout = createAction(
-  '[Auth] Logout');
-export const logoutConfirmation = createAction(
-  '[Auth] Logout Confirmation');
-export const logoutConfirmationDismiss = createAction(
-  '[Auth] Logout Confirmation Dismiss'
+  "[Top Menu] Logout"
 );
-

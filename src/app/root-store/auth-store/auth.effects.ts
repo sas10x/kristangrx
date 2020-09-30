@@ -1,26 +1,51 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType, Effect } from '@ngrx/effects';
 import * as fromAuthActions from './auth.actions';
-import { mergeMap, map, catchError } from 'rxjs/operators';
+import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 import { User } from 'src/app/models/auth/user';
 import { of } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 
 
 @Injectable()
 export class AuthEffects {
-
-  login$ = this.actions$.pipe(
+ 
+  login$ = createEffect(() => this.actions$.pipe(
     ofType(fromAuthActions.login),
     mergeMap(action => this.authService.login(action.authenticate)
         .pipe(
           map(user => fromAuthActions.loginSuccess({ user })),
           catchError(error => of(fromAuthActions.loginFailure(error)))
         )
+      ),
+      tap((action) => {
+        console.log(action);
+        console.log(action['user']);
+        localStorage.setItem('user', JSON.stringify(action['user']));
+        this.router.navigate(["/social/social"]);
+      })
     )
   );
+  
+  loginSuccess$ = createEffect(() =>
+  this.actions$
+      .pipe(
+          ofType(fromAuthActions.loginSuccess),
+          tap(action => {
+            var url = localStorage.getItem("url");
+            if (url != 'http://localhost:4200/')
+            {
+              var res = url.replace("http://localhost:4200/", "");
+              this.router.navigateByUrl(`${res}`);
+            }
+          })
+      )
+,
+{dispatch: false});
 
-  constructor(private actions$: Actions, private authService: AuthService) {}
+
+  constructor(private actions$: Actions, private authService: AuthService, private router: Router) {}
 
 }

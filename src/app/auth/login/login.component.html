@@ -1,3 +1,10 @@
+<nav *ngIf="user$ | async as user">
+  <ul>
+    <li><a [routerLink]="['/woo']" routerLinkActive="active">{{user.userName}}</a></li>
+    <li><a [routerLink]="['/woo']" routerLinkActive="active">First Component</a></li>
+    <li><a [routerLink]="['/woo']" routerLinkActive="active">Second Component</a></li>
+  </ul>
+</nav>
 <div class="social-wrapper">
     <aside class="aside">
       <section class="section">
@@ -16,7 +23,7 @@
           </button>
         </div>
         <div class="banner">
-            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm(validateForm)">
+            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm(validateForm.value)">
                 <nz-form-item>
                   <nz-form-control nzErrorTip="Please input your username!">
                     <nz-input-group nzPrefixIcon="user">

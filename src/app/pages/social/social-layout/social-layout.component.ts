@@ -7,6 +7,8 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { ActivityState, selectActivities } from 'src/app/root-store/activity-store';
 import { SocialCreateComponent } from '../social-create/social-create.component';
 import * as fromActions from'src/app/root-store/activity-store/activity.actions';
+import { User } from 'src/app/models/auth/user';
+import { getUser, UserState, selectUser } from 'src/app/root-store/auth-store/auth.reducer';
 
 @Component({
   selector: 'app-social-layout',
@@ -14,18 +16,22 @@ import * as fromActions from'src/app/root-store/activity-store/activity.actions'
   styleUrls: ['./social-layout.component.scss']
 })
 export class SocialLayoutComponent implements OnInit {
-
+  user$: Observable<User>;
   isVisible = false;
   isConfirmLoading = false;
   activities$: Observable<Activity[]>;
-  constructor(private activitiesService: ActivitiesService, private modalService: NzModalService, private store: Store<ActivityState>) { }
+  constructor(private activitiesService: ActivitiesService, private modalService: NzModalService, private store: Store<ActivityState>,private userStore: Store<UserState>) { }
 
   ngOnInit(): void {
     this.isVisible = false;
     this.store.dispatch(fromActions.loadActivities()); 
     this.loadActivities();
+    this.loadUser();
   }
 
+  loadUser() {
+    this.user$ = this.userStore.pipe(select(selectUser));
+  }
   loadActivities() {
     this.activities$ = this.store.pipe(select(selectActivities));
   }

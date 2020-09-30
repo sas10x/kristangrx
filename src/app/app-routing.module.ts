@@ -15,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'woo',
+    // canActivate:[AuthGuard],
     loadChildren: () => import('./pages/woo-robot/woo-robot.module').then(m => m.WooRobotModule)
   },
   {
