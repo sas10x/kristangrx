@@ -10,11 +10,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthStoreModule } from '../root-store/auth-store/auth-store.module';
+import { ProfileDropdownComponent } from './profile-dropdown/profile-dropdown.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, ProfileDropdownComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

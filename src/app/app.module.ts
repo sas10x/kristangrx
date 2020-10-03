@@ -11,10 +11,14 @@ import { ZFooterComponent } from './layout/z-footer/z-footer.component';
 import { HomeComponent } from './layout/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+
 import { EffectsModule } from '@ngrx/effects';
 import { AuthInterceptor } from './auth/auth.interceptor';
  
@@ -23,8 +27,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppEffects } from './app.effects';
 
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthStoreModule } from './root-store/auth-store/auth-store.module';
 
 registerLocaleData(en);
 
@@ -41,6 +46,8 @@ registerLocaleData(en);
     NgbModule,
     NzCheckboxModule,
     HttpClientModule,
+    AuthStoreModule,
+    NzModalModule,
     BrowserModule,
     AppRoutingModule,
     ToastrModule.forRoot(),

@@ -1053,6 +1053,7 @@ button {
   width: 30rem;
   background-color: var(--alabaster);
   padding: 3.05rem 1.875rem;
+  margin-top: 10vh!important;
   // flex: 0 0 18%;
 }
 
@@ -1468,16 +1469,13 @@ input[type=file] {
 //   --dune-rgba-5: rgba(36, 34, 33, 0.5);
 .kristan-header {
   font-size: 1.4rem;
-  height: 10vh;
+  height: 4rem;
   background-color: var(--athens-gray);
   border-bottom: var(--line);
 
   position: fixed;
-  width: 100vw;
-  // top: 0;
-  // left: 0;
-  // right: 0;
-
+  width: 100%;
+ 
   z-index: 1;
   display: flex;
   justify-content: space-between;
@@ -1610,4 +1608,30 @@ input[type=file] {
 
 .kristan-container {
   position: relative
+}
+
+// list
+
+.ul-kristan {
+  
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  text-align: center;
+}
+
+.ul-kristan .li-kristan {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  background-color: white;
+}
+
+.li-kristan:hover {
+  background-color:var(--athens-gray);
+  }
+.profile-kristan {
+  text-align: center;
 }
