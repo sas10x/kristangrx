@@ -9,6 +9,7 @@
   --dune: #242221;
   --dune-rgba-2: rgba(36, 34, 33, 0.2);
   --dune-rgba-5: rgba(36, 34, 33, 0.5);
+  --dune-rgba-8: rgba(36, 34, 33, 0.8);
   --alabaster: #f8f8f8;
   --true-v: #9174d8;
   --true-v-rgba-5: rgba(145, 116, 216, 0.5);
@@ -18,8 +19,28 @@
   --geraldine: #f98f8e;
   --cornflower-blue: #727ef7;
   --rajah: #fdd3d6;
-}
 
+  --color-primary: #eb2f64;
+  --color-primary-light: #FF3366;
+  --color-primary-dark: #BA265D;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+    
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+  --shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
+}
+$bp-largest: 75em;     // 1200px
+$bp-large: 68.75em;    // 1100px
+$bp-medium: 56.25em;   // 900px
+$bp-small: 37.5em;     // 600px
+$bp-smallest: 31.25em; // 500px
 * {
   margin: 0;
   padding: 0;
@@ -157,6 +178,8 @@ button {
 /* Wrapper */
 
 .wrapper {
+  position: relative;
+
   display: flex;
   justify-content: center;
   width: 100%;
@@ -174,6 +197,7 @@ button {
 /* Nav */
 
 .nav {
+
   display: flex;
 
   // position: fixed;
@@ -303,6 +327,7 @@ button {
 .main {
   width: calc(100% - 46.125rem);
   margin: 0 3.75rem 6rem 1.875rem;
+  margin-top: 10vh!important;
 }
 
 @media (max-width: 1800px) {
@@ -1028,6 +1053,7 @@ button {
   width: 30rem;
   background-color: var(--alabaster);
   padding: 3.05rem 1.875rem;
+  // flex: 0 0 18%;
 }
 
 .aside__control {
@@ -1435,4 +1461,153 @@ input[type=file] {
   margin-bottom: 12px;
   background: "red";
   border-color: "yellow";
+}
+
+// trillio
+// --dune-rgba-2: rgba(36, 34, 33, 0.2);
+//   --dune-rgba-5: rgba(36, 34, 33, 0.5);
+.kristan-header {
+  font-size: 1.4rem;
+  height: 10vh;
+  background-color: var(--athens-gray);
+  border-bottom: var(--line);
+
+  position: fixed;
+  width: 100vw;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+    @media only screen and (max-width: $bp-smallest) {
+        flex-wrap: wrap;
+        align-content: space-around;
+        height: 11rem;
+    }
+}
+.kristan-logo {
+  height: 3.25rem;
+  margin-left: 2rem;
+}
+
+.kristan-search {
+  flex: 0 0 40%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media only screen and (max-width: $bp-smallest) {
+        order: 1;
+        flex: 0 0 100%;
+        background-color: var(--color-grey-light-2);
+    }
+
+  &__input {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: var(--color-grey-light-2);
+    border: none;
+    padding: .7rem 2rem;
+    border-radius: 100px;
+    width: 90%;
+    transition: all .2s;
+    margin-right: -3.25rem;
+
+    &:focus {
+      outline: none;
+      width: 100%;
+      background-color: var(--color-grey-light-3);
+
+    }
+    &::-webkit-input-placeholder {
+      font-weight: 100;
+      color: var(--color-grey-light-4);
+  }
+  }
+  &__input:focus + &__button {
+    background-color: var(--color-grey-light-3);
+  }
+  &__button {
+    border: none;
+    // background-color: var(--color-grey-light-2);
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        transform: translateY(2px);
+    }
+  }
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: var(--color-grey-dark-3);
+  }
+}
+
+.kristan-user-nav {
+  align-self: stretch;
+    
+  display: flex;
+  align-items: center;
+
+  & > * {
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+  }
+
+  & > *:hover {
+    background-color: var(--color-grey-light-2);
+}
+  &__icon-box {
+    position: relative;
+  }
+  &__icon {
+    height: 2.25rem;
+    width: 2.25rem;
+    fill: var(--color-grey-dark-2);
+  }
+  &__notification {
+    font-size: .8rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: #fff;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+  }
+  &__user-photo {
+    height: 3.75rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+  &__user-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: .4rem;
+  }
+}
+
+.kristan-container {
+  position: relative
 }
