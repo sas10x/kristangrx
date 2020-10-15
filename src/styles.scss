@@ -864,6 +864,7 @@ button {
     order: 1;
     margin-bottom: 1.5rem;
     width: 75px;
+    // background-color: red;
   }
 
   .project__inform {
@@ -871,23 +872,27 @@ button {
     width: calc(100% - 90px);
     margin-bottom: 1.5rem;
     padding-right: 4rem;
+    // background-color: blue;
   }
 
   .project__photo {
     order: 4;
     width: 33.333%;
+    // background-color: yellow;
   }
 
   .project__date {
     order: 5;
     width: 33.333%;
     text-align: center;
+    // background-color: orange;
   }
 
   .project__status {
     order: 6;
     width: 33.333%;
     text-align: right;
+    // background-color: brown;
   }
 
   .project__setting {
@@ -898,6 +903,14 @@ button {
     width: 4rem;
     height: 4rem;
     margin: 0;
+    // background-color: green;
+  }
+  .project__action {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    order: 7;
+    width: 100%;
   }
 }
 
@@ -951,6 +964,7 @@ button {
   .project__inform {
     width: calc(100% - 55px);
   }
+ 
 }
 
 /* Icon */

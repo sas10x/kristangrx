@@ -9,6 +9,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { SocialLayoutComponent } from './social-layout/social-layout.component';
 import { SocialFeedComponent } from './social-feed/social-feed.component';
 import { SocialCreateComponent } from './social-create/social-create.component';
+
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
 import { ActivityStoreModule } from 'src/app/root-store/activity-store/activity-store.module';
@@ -45,7 +47,8 @@ import { AuthStoreModule } from 'src/app/root-store/auth-store/auth-store.module
     FormsModule,
     ReactiveFormsModule,
     NzButtonModule,
-    NzModalModule
+    NzModalModule,
+    NzDropDownModule
   ]
 })
 export class SocialModule { }

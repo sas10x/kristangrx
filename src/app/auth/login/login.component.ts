@@ -72,14 +72,7 @@ export class LoginComponent implements OnInit {
   }
   loadUser() {
     this.user$ = this.userStore.pipe(select(selectUser));
-    // this.user$ = this.store.pipe(select(selectUser));
-    // this.kristan = this.store.pipe(select(selectUser),take(1)).toPromise();
-    // console.log(data);
   }
-  // async ngOnInit() {
-  //   const data = await this.store.pipe(select(selectorForData),
-  //                                take(1)).toPromise();
-  // }
 }
 
 

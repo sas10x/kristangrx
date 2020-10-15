@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReportService } from 'src/app/services/product/report.service';
 
 @Component({
   selector: 'app-woo-reports',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WooReportsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private reportService: ReportService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getTopSellers();
   }
 
+  getTopSellers() {
+    this.reportService.getTopSellers({}).subscribe(
+      res => console.log(res)
+    )
+  }
 }

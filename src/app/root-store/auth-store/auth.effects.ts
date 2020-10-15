@@ -21,8 +21,6 @@ export class AuthEffects {
         )
       ),
       tap((action) => {
-        console.log(action);
-        console.log(action['user']);
         localStorage.setItem('user', JSON.stringify(action['user']));
         this.router.navigate(["/social/social"]);
       })
@@ -35,10 +33,14 @@ export class AuthEffects {
           ofType(fromAuthActions.loginSuccess),
           tap(action => {
             var url = localStorage.getItem("url");
+            console.log(url);
             if (url != 'http://localhost:4200/')
             {
               var res = url.replace("http://localhost:4200/", "");
               this.router.navigateByUrl(`${res}`);
+            }
+            else {
+              this.router.navigateByUrl(`/social/social`);
             }
           })
       )

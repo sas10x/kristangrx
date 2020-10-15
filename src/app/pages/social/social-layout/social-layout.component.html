@@ -99,21 +99,6 @@
       </ul>
     </nav>
     <main class="main">
-      <!-- <header class="header">
-        <div class="header__wrapper">
-          <div class="profile">
-            <button class="profile__button" *ngIf="user$ | async as user">
-              <span class="profile__name">{{user.userName}}</span>
-              <img
-                class="profile__img"
-                src="../../../../assets/img/kristan.jpg"
-                alt="Profile picture"
-                loading="lazy"
-              />
-            </button>
-          </div>
-        </div>
-      </header> -->
       <section class="section">
         <header class="section__header">
           <h2 class="section__title">Home</h2>
@@ -137,8 +122,8 @@
           </div>
         </header>
       <ul class="project">
-      <li class="project__item" *ngFor="let activity of activities$ | async">
-          <a [routerLink]="activity.id" class="project__link focus--box-shadow">
+        <li class="project__item" *ngFor="let activity of activities$ | async">
+          <a class="project__link focus--box-shadow">
             <div class="project__wrapper">
               <div class="project__element project__icon">
                 <div
@@ -157,10 +142,12 @@
                 </div>
               </div>
               <div class="project__element project__inform">
+                <a [routerLink]="activity.id">
                 <span class="project__inform-name">
                     <h1>{{activity.title}}</h1>
                     <p>{{activity.description}}</p>
                </span>
+              </a>
               </div>
               <div class="project__element project__photo">
                 <ul class="photo">
@@ -186,6 +173,20 @@
                   >{{activity.createdAt}}</time
                 >
               </div>
+              <div class="project__element project__action">
+                <svg class="kristan-user-nav__icon">
+                  <path d="M4.254 19.567c0.307-0.982 0.77-2.364 1.391-4.362 2.707-0.429 3.827 0.341 5.546-2.729-1.395 0.427-3.077-0.792-2.987-1.321s3.913 0.381 6.416-3.173c-3.155 0.696-4.164-0.836-3.757-1.067 0.939-0.534 3.726-0.222 5.212-1.669 0.766-0.745 1.125-2.556 0.813-3.202-0.374-0.781-2.656-1.946-3.914-1.836s-3.231 4.79-3.817 4.754c-0.584-0.037-0.703-2.098 0.319-4.013-1.077 0.477-3.051 1.959-3.67 3.226-1.153 2.357 0.108 7.766-0.296 7.958s-1.766-2.481-2.172-3.694c-0.555 1.859-0.568 3.721 1.053 6.194-0.611 1.623-0.945 3.491-0.996 4.441-0.024 0.759 0.724 0.922 0.859 0.493z"></path>
+                </svg>
+                <svg class="kristan-user-nav__icon">
+                  <path d="M18.64 2.634c-0.344 0.121-17.321 6.104-17.656 6.222-0.284 0.1-0.347 0.345-0.010 0.479 0.401 0.161 3.796 1.521 3.796 1.521v0l2.25 0.901c0 0 10.838-7.958 10.984-8.066 0.148-0.108 0.318 0.095 0.211 0.211s-7.871 8.513-7.871 8.513v0.002l-0.452 0.503 0.599 0.322c0 0 4.65 2.504 4.982 2.682 0.291 0.156 0.668 0.027 0.752-0.334 0.099-0.426 2.845-12.261 2.906-12.525 0.079-0.343-0.148-0.552-0.491-0.431zM7 17.162c0 0.246 0.139 0.315 0.331 0.141 0.251-0.229 2.85-2.561 2.85-2.561l-3.181-1.644v4.064z"></path>
+                </svg>
+                <svg class="kristan-user-nav__icon">
+                  <path d="M17.19 4.155c-1.672-1.534-4.383-1.534-6.055 0l-1.135 1.042-1.136-1.042c-1.672-1.534-4.382-1.534-6.054 0-1.881 1.727-1.881 4.52 0 6.246l7.19 6.599 7.19-6.599c1.88-1.726 1.88-4.52 0-6.246z"></path>
+                </svg>
+                <svg class="kristan-user-nav__icon">
+                  <path d="M8 12h4v-6h3l-5-5-5 5h3v6zM19.338 13.532c-0.21-0.224-1.611-1.723-2.011-2.114-0.265-0.259-0.644-0.418-1.042-0.418h-1.757l3.064 2.994h-3.544c-0.102 0-0.194 0.052-0.24 0.133l-0.816 1.873h-5.984l-0.816-1.873c-0.046-0.081-0.139-0.133-0.24-0.133h-3.544l3.063-2.994h-1.756c-0.397 0-0.776 0.159-1.042 0.418-0.4 0.392-1.801 1.891-2.011 2.114-0.489 0.521-0.758 0.936-0.63 1.449l0.561 3.074c0.128 0.514 0.691 0.936 1.252 0.936h16.312c0.561 0 1.124-0.422 1.252-0.936l0.561-3.074c0.126-0.513-0.142-0.928-0.632-1.449z"></path>
+                </svg>
+              </div>
               <div class="project__element project__status">
                 <span class="status status--published">{{activity.category}}</span>
               </div>
@@ -193,6 +194,7 @@
                 <button
                   class="setting setting--rotate focus--box-shadow"
                   type="button"
+                  nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu"
                 >
                   <svg
                     enable-background="new 0 0 515.555 515.555"
@@ -212,6 +214,13 @@
                     />
                   </svg>
                 </button>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                  <ul nz-menu>
+                    <li nz-menu-item>Copy link</li>
+                    <li nz-menu-item>Report post</li>
+                    <li nz-menu-divider></li>
+                  </ul>
+                </nz-dropdown-menu>
               </div>
             </div>
           </a>
