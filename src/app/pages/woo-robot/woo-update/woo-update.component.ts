@@ -14,6 +14,7 @@ import { ThrowStmt } from '@angular/compiler';
 export class WooUpdateComponent implements OnInit {
   params = {} = {}
   data: any[];
+  payload: any[];
   product: {};
   body: {} = {};
   loading: boolean = false;
@@ -29,7 +30,9 @@ export class WooUpdateComponent implements OnInit {
     { label: 'Brands', value: 'brands' },
     { label: 'Price', value: 'price' },
     { label: 'Barcode', value: 'barcode' },
-    { label: 'Categories', value: 'categories' }
+    { label: 'Categories', value: 'categories' },
+    { label: 'Sale Price', value: 'sale' },
+    { label: 'Images', value: 'images' }
   ];
 
   updateName: boolean = false;
@@ -39,33 +42,31 @@ export class WooUpdateComponent implements OnInit {
   updatePrice: boolean = false;
   updateBarcode: boolean = false;
   updateCategories: boolean = false;
+  updateSale: boolean = false;
 
 constructor(private productService: ProductService) {}
   ngOnInit() {
 
 }
-  onFileChange(ev) {
-    console.log('onfileChange');
-    let workBook = null;
-    let jsonData = null;
-    const reader = new FileReader();
-    const file = ev.target.files[0];
-    reader.onload = (event) => {
-      const data = reader.result;
-      workBook = XLSX.read(data, { type: 'binary' });
-      jsonData = workBook.SheetNames.reduce((initial, name) => {
-        const sheet = workBook.Sheets[name];
-        initial[name] = XLSX.utils.sheet_to_json(sheet);
-        // console.log(initial[name]);
-        this.data = (initial[name]);
-        console.log('kristan');
-        console.log(this.data)
-        console.log('kristan');
-        return initial;
-      }, {});
-    }
-    reader.readAsBinaryString(file);
+onFileChange(ev) {
+  console.log('onfileChange');
+  let workBook = null;
+  let jsonData = null;
+  const reader = new FileReader();
+  const file = ev.target.files[0];
+  reader.onload = (event) => {
+    const data = reader.result;
+    workBook = XLSX.read(data, { type: 'binary' });
+    jsonData = workBook.SheetNames.reduce((initial, name) => {
+      const sheet = workBook.Sheets[name];
+      initial[name] = XLSX.utils.sheet_to_json(sheet);
+      this.data = (initial[name]);
+      console.log(this.data)
+      return initial;
+    }, {});
   }
+  reader.readAsBinaryString(file);
+}
 
   log(value: any[]): void {
     
@@ -96,12 +97,19 @@ constructor(private productService: ProductService) {}
       
       this.updateCategories = true;
     }
+    if (value[7].checked) {
+      
+      this.updateSale = true;
+    }
   }
 
 
   updateProducts() {
     this.loading = true;
-    from(this.data)
+
+    this.payload = this.data.splice(100, 100);
+
+    from(this.payload)
     .pipe(concatMap(res => this.getProductId(res)))
     .subscribe(res => {
       if (res && res.length)
@@ -185,11 +193,7 @@ constructor(private productService: ProductService) {}
     if (this.updatePrice) {
       
       let priceobj = {
-        "sale_price": product.price,
-        "date_on_sale_from": "2020-09-15T00:00:00",
-        "date_on_sale_from_gmt": "2020-09-14T16:00:00",
-        "date_on_sale_to": "2020-10-31T23:59:59",
-        "date_on_sale_to_gmt": "2020-10-31T15:59:59",
+        "regular_price": product.price,
      };
      this.body = {
       ...this.body,
@@ -225,6 +229,26 @@ constructor(private productService: ProductService) {}
       ...this.body,
        ...categoriesobj
      }
+     
+    }
+    if (this.updateSale) {
+      
+      let saleobj = {
+        "sale_price": product.sale,
+        "date_on_sale_from": "2020-12-01T00:00:00",
+        "date_on_sale_from_gmt": "2020-12-01T00:00:00",
+        "date_on_sale_to": "2020-12-31T23:59:59",
+        "date_on_sale_to_gmt": "2020-12-31T23:59:59",
+        // "date_on_sale_from": "2020-11-15T00:00:00",
+        // "date_on_sale_from_gmt": "2020-11-14T16:00:00",
+        // "date_on_sale_to": "2020-12-31T23:59:59",
+        // "date_on_sale_to_gmt": "2020-12-31T15:59:59",
+     };
+     this.body = {
+      ...this.body,
+       ...saleobj
+     }
+     
     }
     console.log('inside getProduct');
     console.log(this.body);

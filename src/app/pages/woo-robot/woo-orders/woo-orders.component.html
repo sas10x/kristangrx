@@ -1,6 +1,7 @@
 <h4>Orders</h4>
 
 <nz-table
+class="kristan-table"
 nzShowSizeChanger
 [nzData]="orders"
 [nzFrontPagination]="false"
@@ -23,7 +24,7 @@ nzShowSizeChanger
     <td>{{ data.customer_id}}</td>
     <td>{{ data.date_created_gmt}}</td>
     <td>{{ data.status }}</td>
-    <td>{{ data.total }}</td>
+    <td>{{ data.total | currency:'PHP' }}</td>
   </tr>
 </tbody>
 </nz-table>

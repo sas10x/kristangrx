@@ -15,6 +15,11 @@ export class CustomerService {
   // GET ALL ORDERS
   getCustomers(params) {
     let customerurl:string = this.wooQRY.authenticateApi('GET',this.baseUrl,params);
-    return this.http.get<Customer[]>(customerurl);
+    return this.http.get<any>(customerurl, {observe: 'response'});
   }
+
+  // getOrders(params) {
+  //   let orderurl:string = this.wooQRY.authenticateApi('GET',this.baseUrl,params);
+  //   return this.http.get<any>(orderurl, {observe: 'response'});
+  // }
 }

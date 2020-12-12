@@ -1,4 +1,34 @@
 <h4>Customers</h4>
+
+<nz-table
+class="kristan-table"
+nzShowSizeChanger
+[nzData]="customers"
+[nzFrontPagination]="false"
+[nzLoading]="loading"
+[nzTotal]="total"
+[nzPageSize]="pageSize"
+[nzPageIndex]="pageIndex"
+(nzQueryParams)="onQueryParamsChange($event)"
+>
+<thead>
+  <tr>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Date</th>
+    <th>Email</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let data of customers">
+    <td>{{ data.last_name }}</td>
+    <td>{{ data.first_name }}</td>
+    <td>{{ data.date_created }}</td>
+    <td>{{ data.email }}</td>  
+  </tr>
+</tbody>
+</nz-table>
+<!-- <h4>Customers</h4>
     <nz-table #middleTable nzSize="middle" [nzData]="customers" *ngIf="customers else loading">
       <thead>
         <tr>
@@ -21,4 +51,4 @@
         <nz-spin nzTip="Loading...">
           <nz-alert nzType="info" nzMessage="Roger that!" nzDescription="Highly trained monkeys are still retrieving your data"> </nz-alert>
         </nz-spin>
-    </ng-template>
+    </ng-template> -->

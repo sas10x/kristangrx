@@ -41,7 +41,7 @@ export class WooOrdersComponent implements OnInit {
   onQueryParamsChange(params: NzTableQueryParams): void {
     if (params.filter[0].value < 1) {
      params.filter[0].value = ["any"]
-  }
+    }
     console.log(params.filter[0].value)
     this.loading = true;
     let wooparams = {

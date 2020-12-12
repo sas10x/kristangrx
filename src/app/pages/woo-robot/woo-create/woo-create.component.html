@@ -30,26 +30,28 @@
       <tr>
         <th>SKU</th>
         <th>BARCODE</th>
-        <!-- <th>BRAND</th> -->
+        <th>BRAND</th>
         <th>NAME</th>
         <th>DESCRIPTION</th>
         <th>PRICE</th>
         <th>SALE</th>
         <th>OPTION</th>
         <th>CAT</th>
+        <th>IMG</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of middleTable.data">
         <td>{{ data.sku }}</td>
         <td>{{ data.barcode }}</td>
-        <!-- <td>{{ data.brand }}</td> -->
+        <td>{{ data.brand }}</td>
         <td>{{ data.name }}</td>
         <td>{{ data.description }}</td>
         <td>{{ data.price }}</td>
         <td>{{ data.sale }}</td>
         <td>{{ data.option }}</td>
         <td>{{ data.categories }}</td>
+        <td>{{ data.img }}</td>
       </tr>
     </tbody>
   </nz-table>

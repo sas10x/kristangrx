@@ -9,6 +9,7 @@ import { WooCreateComponent } from './woo-create/woo-create.component';
 import { WooBrandsComponent } from './woo-brands/woo-brands.component';
 import { AuthGuard } from 'src/app/auth/auth.guard';
 import { WooUpdateComponent } from './woo-update/woo-update.component';
+import { ComboWantwoComponent } from './woo-reports-charts/combo-wantwo/combo-wantwo.component';
 
 
 
@@ -30,7 +31,7 @@ const routes: Routes = [
       { path: 'orders', component: WooOrdersComponent },
       { path: 'customers', component: WooCustomersComponent },
       { path: 'analytics', component: WooAnalyticsComponent },
-      
+      { path: 'combo', component: ComboWantwoComponent },
     ]
   }
 ];

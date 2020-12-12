@@ -11,6 +11,7 @@ import * as XLSX from 'xlsx';
 })
 export class WooCreateComponent implements OnInit {
   data: any[];
+  payload: any[];
   create: any[] = [];
   loading: boolean = false;
 
@@ -21,7 +22,11 @@ export class WooCreateComponent implements OnInit {
   }
   runCreate() {
     this.loading = true;
-    from(this.data)
+    // this.data.splice(100, this.data.length);
+    // this.data.splice(0, 100);
+    this.payload = this.data.splice(0, 100);
+    console.log(this.payload);
+    from(this.payload)
     .pipe(concatMap(res => this.createProduct(res)))
     .subscribe(res => 
       {
@@ -40,11 +45,11 @@ export class WooCreateComponent implements OnInit {
       "description": product.description.toString(),
       "short_description": product.description.toString(),
       // "brands": product.brand.toString(),
-      // "meta_data": [
-      //   {
-      //       "key": "_wpm_gtin_code",
-      //       "value": product.barcode.toString()
-      //   }],
+      "meta_data": [
+        {
+            "key": "_wpm_gtin_code",
+            "value": product.barcode.toString()
+        }],
       "categories": [
         {
             id: product.categories.toString()

@@ -29,6 +29,7 @@
     "@ngrx/schematics": "^9.2.0",
     "@ngrx/store": "^9.2.0",
     "@ngrx/store-devtools": "^9.2.0",
+    "@swimlane/ngx-charts": "^16.0.0",
     "bootstrap": "^4.5.2",
     "crypto-js": "^4.0.0",
     "d3": "^6.1.1",
