@@ -118,7 +118,7 @@ button {
   box-shadow: 0 0 0 3px var(--true-v-rgba-5);
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   h1 {
     font-size: 2rem;
   }
@@ -261,7 +261,7 @@ button {
   width: 70%;
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .nav {
     width: 4.6875rem;
     height: calc(100vh - 16.25rem);
@@ -330,7 +330,7 @@ button {
   margin-top: 10vh!important;
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .main {
     width: calc(100% - 38.8125rem);
     margin: 0 3rem 6rem 1.5rem;
@@ -462,7 +462,7 @@ button {
   border-radius: 50%;
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .header {
     padding: 2.5rem 0 4rem;
   }
@@ -576,7 +576,7 @@ button {
   }
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .section__link {
     font-size: 1rem;
   }
@@ -677,7 +677,7 @@ button {
   color: var(--dune);
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .team__header {
     margin-bottom: 2rem;
   }
@@ -764,7 +764,7 @@ button {
   color: var(--dune);
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .date {
     font-size: 1rem;
   }
@@ -836,25 +836,82 @@ button {
   color: var(--dune);
 }
 
-@media (max-width: 1800px) {
-  .project__link {
-    padding: 1.2rem 0.7rem;
-  }
+// @media (max-width: 1920px) {
+//   .project__link {
+//     padding: 1.2rem 0.7rem;
+//   }
 
-  .project__element {
-    padding: 0 0.5rem;
+//   .project__element {
+//     padding: 0 0.5rem;
+//   }
+
+//   .project__icon {
+//     max-width: 80px;
+//     min-width: 70px;
+//   }
+
+//   .project__inform-name {
+//     font-size: 1rem;
+//   }
+// }
+@media (max-width: 1920px) {
+  .project__wrapper {
+    flex-wrap: wrap;
   }
 
   .project__icon {
-    max-width: 80px;
-    min-width: 70px;
+    order: 1;
+    margin-bottom: 1.5rem;
+    width: 75px;
+    // background-color: red;
   }
 
-  .project__inform-name {
-    font-size: 1rem;
+  .project__inform {
+    order: 2;
+    width: calc(100% - 90px);
+    margin-bottom: 1.5rem;
+    padding-right: 4rem;
+    // background-color: blue;
+  }
+
+  .project__photo {
+    order: 4;
+    width: 33.333%;
+    // background-color: yellow;
+  }
+
+  .project__date {
+    order: 5;
+    width: 33.333%;
+    text-align: center;
+    // background-color: orange;
+  }
+
+  .project__status {
+    order: 6;
+    width: 33.333%;
+    text-align: right;
+    // background-color: brown;
+  }
+
+  .project__setting {
+    position: absolute;
+    top: 1.2rem;
+    right: 0.7rem;
+    order: 3;
+    width: 4rem;
+    height: 4rem;
+    margin: 0;
+    // background-color: green;
+  }
+  .project__action {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    order: 7;
+    width: 100%;
   }
 }
-
 @media (max-width: 1400px) {
   .project__wrapper {
     flex-wrap: wrap;
@@ -1008,7 +1065,7 @@ button {
   color: var(--geraldine);
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .status {
     font-size: 1rem;
   }
@@ -1101,7 +1158,7 @@ button {
   border-radius: 50%;
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .aside {
     width: 27rem;
     padding: 2.5rem 1.5rem;
@@ -1147,7 +1204,7 @@ button {
   width: 100%;
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .profile-main__setting {
     max-width: 250px;
   }
@@ -1194,7 +1251,7 @@ button {
   font-weight: var(--font-weight-medium);
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .statistics__entry {
     padding: 1rem 0.5rem;
   }
@@ -1263,7 +1320,7 @@ button {
   }
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
   .banner__title {
     font-size: 2.2rem;
   }
@@ -1335,6 +1392,7 @@ input[type=file] {
 }
 .activity-comments {
   // height: 80vh;
+  position: relative;
   flex-grow: 1;
   width: 30vw;
   background-color:var(--viking);
@@ -1367,8 +1425,9 @@ input[type=file] {
   // overflow: auto;
 }
 .profile-comment {
-  // position: absolute; 
-  align-self: flex-end;
+  position: absolute; 
+  // align-self: flex-end;
+  width: 100%;
   bottom: 0px; 
 }
 

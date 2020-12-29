@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-combo-wantwo',
   templateUrl: './combo-wantwo.component.html',
   styleUrls: ['./combo-wantwo.component.scss']
 })
-export class ComboWantwoComponent {
+export class ComboWantwoComponent implements OnInit{
+  // @Input() sales: any[];
+  @Input() combo: any[];
+  @Input() sales: any[];
+
+  public screenWidth: any;
+
   view = [500,400];
   showXAxis = true;
   showYAxis = true;
@@ -14,9 +20,9 @@ export class ComboWantwoComponent {
   legendTitle = 'Legend';
   legendPosition = 'right';
   showXAxisLabel = true;
-  xAxisLabel = 'Country';
+  xAxisLabel = 'Date';
   showYAxisLabel = true;
-  yAxisLabel = 'GDP Per Capita';
+  yAxisLabel = 'Sales(PHP)';
   showGridLines = true;
   innerPadding = '10%';
   animations: boolean = true;
@@ -26,28 +32,41 @@ export class ComboWantwoComponent {
     name: 'coolthree',
     selectable: true,
     group: 'Ordinal',
-    domain: ['#01579b', '#7aa3e5', '#a8385d', '#00bfa5']
+    domain: ['#488f31', '#97999B', '#f5df4d', '#eb7a52']
   };
 
   comboBarScheme = {
     name: 'singleLightBlue',
     selectable: true,
     group: 'Ordinal',
-    domain: ['#01579b']
+    domain: ['#f5df4d']
   };
-
   showRightYAxisLabel: boolean = true;
   yAxisLabelRight: string = 'Utilization';
+
+  ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+    this.view = [ this.screenWidth - .40 * this.screenWidth, 400];
+    console.log('from combo');
+    console.log(this.combo);
+    console.log(this.sales);
+  }
+
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event) {
+  //   this.screenWidth = window.innerWidth;
+  //   this.view = [ this.screenWidth - .60 * this.screenWidth, 400];
+  // }
 }
 
 export let lineChartSeries = [
   {
     name: 'Tablets',
     series: [
-          {
+      {
       name: 'USA',
       value: 50
-    },
+      },
       {
         value: 80,
         name: 'United Kingdom'

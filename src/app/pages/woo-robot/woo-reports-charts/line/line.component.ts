@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { multi } from './data';
+// import { single } from './data';
 
 @Component({
   selector: 'app-line',

@@ -1,19 +1,21 @@
 <div class="reports">
-    <div>
-        <app-bar></app-bar>
-    </div>
-    <div>
+    <nz-range-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
+    <!-- <div>
         <app-line></app-line>
+    </div> -->
+    <div *ngIf="sales?.length">
+        <app-bar [sales]="sales"></app-bar>
     </div>
-    <div>
-        <app-combo-wantwo></app-combo-wantwo>
+
+    <div *ngIf="combo?.length">
+        <app-combo-wantwo [sales]="sales" [combo]="combo"></app-combo-wantwo>
     </div>
-    <div>
+    <!-- <div>
         <app-gauge></app-gauge>
-    </div>
-    <div>
+    </div> -->
+    <!-- <div>
         <app-number-card></app-number-card>
-    </div>
+    </div> -->
     <!-- <div>
         <app-sparkline></app-sparkline>
     </div> -->

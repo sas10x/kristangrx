@@ -235,14 +235,14 @@ onFileChange(ev) {
       
       let saleobj = {
         "sale_price": product.sale,
-        "date_on_sale_from": "2020-12-01T00:00:00",
-        "date_on_sale_from_gmt": "2020-12-01T00:00:00",
+        // "date_on_sale_from": "",
+        // "date_on_sale_from_gmt": "",
+        // "date_on_sale_to": "",
+        // "date_on_sale_to_gmt": "",
+        "date_on_sale_from": "2020-11-15T00:00:00",
+        "date_on_sale_from_gmt": "2020-11-14T16:00:00",
         "date_on_sale_to": "2020-12-31T23:59:59",
-        "date_on_sale_to_gmt": "2020-12-31T23:59:59",
-        // "date_on_sale_from": "2020-11-15T00:00:00",
-        // "date_on_sale_from_gmt": "2020-11-14T16:00:00",
-        // "date_on_sale_to": "2020-12-31T23:59:59",
-        // "date_on_sale_to_gmt": "2020-12-31T15:59:59",
+        "date_on_sale_to_gmt": "2020-12-31T15:59:59",
      };
      this.body = {
       ...this.body,

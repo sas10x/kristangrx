@@ -8,6 +8,7 @@ import { WooLayoutComponent } from './woo-layout/woo-layout.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 import { WooReportsComponent } from './woo-reports/woo-reports.component';
 import { WooOrdersComponent } from './woo-orders/woo-orders.component';
@@ -21,7 +22,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { AuthStoreModule } from 'src/app/root-store/auth-store/auth-store.module';
 
-import { LineComponent } from './woo-reports-charts/line/line.component';
 import { CardComponent } from './woo-reports-charts/card/card.component';
 import { BarComponent } from './woo-reports-charts/bar/bar.component';
 
@@ -37,9 +37,10 @@ import { NumberCardComponent } from './woo-reports-charts/number-card/number-car
 import { GaugeComponent } from './woo-reports-charts/gauge/gauge.component';
 import { SparklineComponent } from './woo-reports-charts/sparkline/sparkline.component';
 import { TimelineFilterBarComponent } from './woo-reports-charts/timeline-filter-bar/timeline-filter-bar.component';
+import { LineComponent } from './woo-reports-charts/line/line.component';
 
 @NgModule({
-  declarations: [WooUpdateComponent, WooLayoutComponent, WooReportsComponent, WooOrdersComponent, WooCustomersComponent, WooAnalyticsComponent, WooCreateComponent, WooBrandsComponent, LineComponent, CardComponent, BarComponent, ComboWantwoComponent, ComboChartComponent, ComboSeriesVerticalComponent, NumberCardComponent, GaugeComponent, SparklineComponent, TimelineFilterBarComponent],
+  declarations: [WooUpdateComponent, WooLayoutComponent, WooReportsComponent, WooOrdersComponent, WooCustomersComponent, WooAnalyticsComponent, WooCreateComponent, WooBrandsComponent, CardComponent, BarComponent, ComboWantwoComponent, ComboChartComponent, ComboSeriesVerticalComponent, NumberCardComponent, GaugeComponent, SparklineComponent, TimelineFilterBarComponent, LineComponent],
   imports: [
     NgxChartsModule,
     FormsModule,
@@ -52,6 +53,7 @@ import { TimelineFilterBarComponent } from './woo-reports-charts/timeline-filter
     NzCheckboxModule,
     NzButtonModule,
     AuthStoreModule,
+    NzDatePickerModule
   ]
 })
 export class WooRobotModule { }
