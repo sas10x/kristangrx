@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
@@ -13,7 +14,7 @@ import { selectUser, UserState } from 'src/app/root-store/auth-store/auth.reduce
 })
 export class AHeaderComponent implements OnInit {
   user$: Observable<User>;
-  constructor(private modalService: NzModalService, private userStore: Store<UserState>) { }
+  constructor(private router: Router, private modalService: NzModalService, private userStore: Store<UserState>) { }
 
   ngOnInit(): void {
     this.loadUser();
@@ -28,5 +29,8 @@ export class AHeaderComponent implements OnInit {
       nzClassName: 'nz-modal-kristan',
       nzContent: ProfileDropdownComponent
     });
+  }
+
+  showModal3(): void {
   }
 }

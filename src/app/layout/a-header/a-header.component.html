@@ -1,6 +1,6 @@
 <header class="kristan-header" *ngIf="user$ | async as user">
   <img src="../../../../assets/img/logo.png" class="kristan-logo">
-  <form action="" class="search">
+  <!-- <form action="" class="search">
     <button class="search__button focus--box-shadow" type="submit">
       <svg
         class="search__icon"
@@ -17,7 +17,7 @@
       type="text"
       placeholder="Search Post"
     />
-  </form>
+  </form> -->
   <nav class="kristan-user-nav">
     <div class="kristan-user-nav__icon-box">
         <svg class="kristan-user-nav__icon">
@@ -31,8 +31,9 @@
         </svg>
         <span class="kristan-user-nav__notification">13</span>
     </div>
-    <div class="kristan-user-nav__user">
-        <img src="../../../../assets/img/kristan.jpg" alt="User photo" class="kristan-user-nav__user-photo" (click)="showModal2()">
+    <div class="kristan-user-nav__user" [routerLink]="['/profile', user.userName]">
+        <!-- <img src="../../../../assets/img/kristan.jpg" alt="User photo" class="kristan-user-nav__user-photo" (click)="showModal2()"> -->
+        <img src="../../../../assets/img/kristan.jpg" alt="User photo" class="kristan-user-nav__user-photo">
         <span class="kristan-user-nav__user-name">{{user.userName}}</span>
     </div>
   </nav>

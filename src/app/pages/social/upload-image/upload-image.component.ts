@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { Photo } from 'src/app/models/social/photo';
 
 @Component({
   selector: 'app-upload-image',
@@ -7,7 +8,8 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
   styleUrls: ['./upload-image.component.scss']
 })
 export class UploadImageComponent implements OnInit {
-
+  photo: Photo;
+  imgUrl: string;
   public progress: number;
   public message: string;
   @Output() public onUploadFinished = new EventEmitter();
@@ -29,6 +31,7 @@ export class UploadImageComponent implements OnInit {
         else if (event.type === HttpEventType.Response) {
           this.message = 'Upload success.';
           this.onUploadFinished.emit(event.body);
+          console.log('kristan' + event.body);
         }
       });
   }

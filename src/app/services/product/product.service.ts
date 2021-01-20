@@ -20,6 +20,10 @@ export class ProductService {
   // baseUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products/";
   // createUrl: string = "http://livingnstyle.com.ph/wp-json/wc/v3/products";
 
+  // baseUrl: string = "http://kabilya-001-site2.itempurl.com/wp-json/wc/v3/products/";
+  // createUrl: string = "http://kabilya-001-site2.itempurl.com/wp-json/wc/v3/products";
+
+
   // GET ALL PRODUCTS
   getProducts(params) {
     let producturl:string = this.wooQRY.authenticateApi('GET',this.baseUrl,params);

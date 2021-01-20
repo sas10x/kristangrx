@@ -28,12 +28,13 @@ import { SocialBlankComponent } from './social-blank/social-blank.component';
 import { UploadAppComponent } from './upload-app/upload-app.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { AuthStoreModule } from 'src/app/root-store/auth-store/auth-store.module';
+import { ProfileComponent } from '../../layout/profile/profile.component';
 
 
 
 
 @NgModule({
-  declarations: [SocialLayoutComponent, SocialFeedComponent, SocialCreateComponent, SocialDetailComponent, SocialProfileComponent, DialogDetailComponent, DialogEditComponent, DialogCreateComponent, PhotoDetailComponent, SocialBlankComponent, UploadAppComponent, UploadImageComponent],
+  declarations: [SocialLayoutComponent, SocialFeedComponent, SocialCreateComponent, SocialDetailComponent, SocialProfileComponent, DialogDetailComponent, DialogEditComponent, DialogCreateComponent, PhotoDetailComponent, SocialBlankComponent, UploadAppComponent, UploadImageComponent, ProfileComponent],
   imports: [
     NgbModule,
     MatDialogModule,

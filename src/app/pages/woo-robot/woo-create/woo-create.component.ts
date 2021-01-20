@@ -18,7 +18,10 @@ export class WooCreateComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-
+    let params = {}
+    this.productService.getProducts(params).subscribe(
+      res => {console.log(res)}
+    )
   }
   runCreate() {
     this.loading = true;
@@ -50,10 +53,10 @@ export class WooCreateComponent implements OnInit {
             "key": "_wpm_gtin_code",
             "value": product.barcode.toString()
         }],
-      "categories": [
-        {
-            id: product.categories.toString()
-        }]
+      // "categories": [
+      //   {
+      //       id: product.categories.toString()
+      //   }]
     }
     this.create = [...this.create, body];
     return this.create;

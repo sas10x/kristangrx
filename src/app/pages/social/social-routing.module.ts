@@ -9,6 +9,7 @@ import { SocialProfileComponent } from './social-profile/social-profile.componen
 import { DialogDetailComponent } from './dialog-detail/dialog-detail.component';
 import { SocialBlankComponent } from './social-blank/social-blank.component';
 import { UploadAppComponent } from './upload-app/upload-app.component';
+import { ProfileComponent } from '../../layout/profile/profile.component';
 
 
 

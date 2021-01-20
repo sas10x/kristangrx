@@ -38,9 +38,13 @@ import { GaugeComponent } from './woo-reports-charts/gauge/gauge.component';
 import { SparklineComponent } from './woo-reports-charts/sparkline/sparkline.component';
 import { TimelineFilterBarComponent } from './woo-reports-charts/timeline-filter-bar/timeline-filter-bar.component';
 import { LineComponent } from './woo-reports-charts/line/line.component';
+import { PieComponent } from './woo-reports-charts/pie/pie.component';
+import { AdvpieComponent } from './woo-reports-charts/advpie/advpie.component';
+import { PiegridComponent } from './woo-reports-charts/piegrid/piegrid.component';
+
 
 @NgModule({
-  declarations: [WooUpdateComponent, WooLayoutComponent, WooReportsComponent, WooOrdersComponent, WooCustomersComponent, WooAnalyticsComponent, WooCreateComponent, WooBrandsComponent, CardComponent, BarComponent, ComboWantwoComponent, ComboChartComponent, ComboSeriesVerticalComponent, NumberCardComponent, GaugeComponent, SparklineComponent, TimelineFilterBarComponent, LineComponent],
+  declarations: [WooUpdateComponent, WooLayoutComponent, WooReportsComponent, WooOrdersComponent, WooCustomersComponent, WooAnalyticsComponent, WooCreateComponent, WooBrandsComponent, CardComponent, BarComponent, ComboWantwoComponent, ComboChartComponent, ComboSeriesVerticalComponent, NumberCardComponent, GaugeComponent, SparklineComponent, TimelineFilterBarComponent, LineComponent, PieComponent, AdvpieComponent, PiegridComponent],
   imports: [
     NgxChartsModule,
     FormsModule,

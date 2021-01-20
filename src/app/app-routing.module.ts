@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { ProfileComponent } from './layout/profile/profile.component';
 
 
 const routes: Routes = [
@@ -23,9 +24,13 @@ const routes: Routes = [
     canActivate:[AuthGuard],
     loadChildren: () => import('./pages/social/social.module').then(m => m.SocialModule)
   },
+  {
+    path: 'profile/:id',
+    component: ProfileComponent,
+  },
   // {path: 'error/:type', component: ErrorPageComponent},
-	{path: '', redirectTo: 'auth', pathMatch: 'full'},
-	{path: '**', redirectTo: 'auth', pathMatch: 'full'},
+	// {path: '', redirectTo: 'auth', pathMatch: 'full'},
+	// {path: '**', redirectTo: 'auth', pathMatch: 'full'},
 ];
 
 @NgModule({
