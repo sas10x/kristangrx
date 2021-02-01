@@ -1,0 +1,42 @@
+
+<div class="main-div">
+    <div class="div-half-1">
+        <div *ngIf="qty?.length">
+            <app-h-advpie [qty]="qty"></app-h-advpie>
+        </div>
+    </div>
+    <!-- <div class="div-half-1">
+        <div *ngIf="qty?.length">
+            <app-h-pie [qty]="qty"></app-h-pie>
+        </div>
+    </div> -->
+    <div class="div-half-2">
+        <div *ngIf="qty?.length">
+            <app-h-number [rty]="rty"></app-h-number>
+        </div>
+        <!-- <div class="box-1">
+            <h1>Black Label</h1><br>
+            <h1>Black Label</h1><br>
+            <h1>Black Label</h1><br>
+            <h1>Black Label</h1>
+        </div> -->
+    </div>
+</div>
+<div class="gtin-div">
+    <!-- <form (ngSubmit)="onSubmit()">
+        <div>
+          <input id="address" type="text" formControlName="address">
+        </div>
+      
+        <button class="button" type="submit" (click)="inv()">Submit</button>
+      
+      </form> -->
+      <form [formGroup]="profileForm" (keyup.enter)="onChange(profileForm)">
+        <div>
+            <input type="text" formControlName="barcode" autofocus>
+        </div>
+      </form>
+</div>
+<div class="main-div">
+
+</div>

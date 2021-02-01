@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'auth'
+    redirectTo: 'inventory'
   },
   {
     path: 'auth',
@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'social',
     canActivate:[AuthGuard],
     loadChildren: () => import('./pages/social/social.module').then(m => m.SocialModule)
+  },
+  {
+    path: 'inventory',
+    loadChildren: () => import('./pages/inventory/inventory.module').then(m => m.InventoryModule)
   },
   {
     path: 'profile/:id',

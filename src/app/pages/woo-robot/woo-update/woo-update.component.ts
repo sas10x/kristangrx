@@ -107,8 +107,8 @@ onFileChange(ev) {
   updateProducts() {
     this.loading = true;
 
-    this.payload = this.data.splice(100, 100);
-
+    this.payload = this.data.splice(0, 100);
+    
     from(this.payload)
     .pipe(concatMap(res => this.getProductId(res)))
     .subscribe(res => {

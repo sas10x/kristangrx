@@ -18,12 +18,13 @@ export class WooCreateComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    let params = {}
-    this.productService.getProducts(params).subscribe(
-      res => {console.log(res)}
-    )
+    // let params = {}
+    // this.productService.getProducts(params).subscribe(
+    //   res => {console.log(res)}
+    // )
   }
-  runCreate() {
+  runCreate() 
+  {
     this.loading = true;
     // this.data.splice(100, this.data.length);
     // this.data.splice(0, 100);
@@ -36,8 +37,8 @@ export class WooCreateComponent implements OnInit {
         console.log(res)
       },
       err => console.error('Observer got an error: ' + err),
-      () => {console.log('Observer got a complete notification');console.log(this.create);this.loading = false;this.batchCreate()}
-  )}
+      () => {console.log('Observer got a complete notification');console.log(this.create);this.loading = false;this.batchCreate()})
+}
   createProduct(product) {
     let body = {
       "sku": product.sku.toString(),
@@ -53,10 +54,10 @@ export class WooCreateComponent implements OnInit {
             "key": "_wpm_gtin_code",
             "value": product.barcode.toString()
         }],
-      // "categories": [
-      //   {
-      //       id: product.categories.toString()
-      //   }]
+      "categories": [
+        {
+            id: product.categories.toString()
+        }]
     }
     this.create = [...this.create, body];
     return this.create;

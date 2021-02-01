@@ -1,0 +1,58 @@
+.main-div{
+    max-width: 80%;
+    margin: 10vh auto;
+    padding: 12px;
+    background-color:yellow;
+    height: 70vh;
+}
+.gtin-div{
+    width: 30vw;
+    margin: 0 auto;
+    background-color:green;
+}
+
+input[type=text] {
+    width: 100%;
+    margin: 0 auto!important;
+}
+
+.div-half-1{
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding: 0px;
+    overflow: auto;
+    background-color: white;
+    line-height: 0;
+}
+
+
+
+.div-half-2{
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding: 12px;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.box-1{
+    width: 100%;
+    text-align: center;
+    overflow: auto;
+    padding: 4px;
+    margin-top: 6%;
+}
+
+.box-2{
+    width: 100%;
+    text-align: center;
+    overflow: auto;
+    padding: 4px;
+    margin-top: 6%;
+}
+
+
+/* responsive divi */
