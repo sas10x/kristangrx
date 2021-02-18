@@ -1,42 +1,65 @@
 
 <div class="main-div">
-    <div class="div-half-1">
+    <!-- <div class="div-half-1">
         <div *ngIf="qty?.length">
             <app-h-advpie [qty]="qty"></app-h-advpie>
         </div>
-    </div>
+    </div> -->
     <!-- <div class="div-half-1">
         <div *ngIf="qty?.length">
             <app-h-pie [qty]="qty"></app-h-pie>
         </div>
     </div> -->
-    <div class="div-half-2">
+    <div class="div-half-1">
+        <div *ngIf="qty?.length">
+            <app-h-bar [qty]="qty"></app-h-bar>
+        </div>
+    </div>
+    <div class="div-half-1">
         <div *ngIf="qty?.length">
             <app-h-number [rty]="rty"></app-h-number>
         </div>
-        <!-- <div class="box-1">
-            <h1>Black Label</h1><br>
-            <h1>Black Label</h1><br>
-            <h1>Black Label</h1><br>
-            <h1>Black Label</h1>
-        </div> -->
     </div>
-</div>
-<div class="gtin-div">
-    <!-- <form (ngSubmit)="onSubmit()">
-        <div>
-          <input id="address" type="text" formControlName="address">
+    <div class="div-half-1">
+        <div *ngIf="qty?.length">
+            <app-h-pie-grid [qty]="qty"></app-h-pie-grid>
         </div>
-      
-        <button class="button" type="submit" (click)="inv()">Submit</button>
-      
-      </form> -->
-      <form [formGroup]="profileForm" (keyup.enter)="onChange(profileForm)">
-        <div>
-            <input type="text" formControlName="barcode" autofocus>
+    </div>
+    <div class="div-half-1">
+        <div class="example-input1">
+            <form [formGroup]="profileForm" (keyup.enter)="onSubmit(profileForm.value.barcode)">
+                <div>
+                    <input type="text" formControlName="barcode" autofocus>
+                </div>
+              </form>
+              <div class="presyo" *ngIf="price">
+                <h1>Name: {{price.name}}</h1>
+                <h1>Price: <strong>{{price.retailPrice}}</strong></h1>
+                <h1>Article: {{price.refCode}}</h1>
+                <h1>Barcode: {{price.barCode}}</h1>
+              </div>
         </div>
-      </form>
-</div>
-<div class="main-div">
-
+        <div class="example-input2">
+            <nz-input-group nzSize="large" [nzSuffix]="suffixIcon">
+                <input placeholder="input here" nz-input [(ngModel)]="inputValue" (ngModelChange)="onChange($event)" [nzAutocomplete]="auto" />
+              </nz-input-group>
+              <ng-template #suffixIcon>
+                <i nz-icon nzType="search"></i>
+              </ng-template>
+              <nz-autocomplete #auto>
+                <nz-auto-optgroup *ngFor="let group of optionGroups" [nzLabel]="groupTitle">
+                  <ng-template #groupTitle>
+                    <span
+                      >{{ group.description }}
+                      <!-- <a class="more-link" href="https://www.google.com/search?q=ng+zorro" target="_blank">更多</a> -->
+                    </span>
+                  </ng-template>
+                  <nz-auto-option  [nzLabel]="group.description" [nzValue]="group.barcode">
+                    {{ group.article }}
+                    <span class="certain-search-item-count">{{ group.barcode }}</span>
+                  </nz-auto-option>
+                </nz-auto-optgroup>
+              </nz-autocomplete>
+        </div>
+    </div>
 </div>

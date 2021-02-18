@@ -1,31 +1,47 @@
 .main-div{
+    display: flex;
+    flex-wrap: wrap;
     max-width: 80%;
-    margin: 10vh auto;
-    padding: 12px;
-    background-color:yellow;
-    height: 70vh;
+    margin: 1vh auto;
+    // padding: 12px;
+    background-color:#6039ac;
+    height: 100vh;
+    border-radius: 25px;
 }
 .gtin-div{
     width: 30vw;
     margin: 0 auto;
-    background-color:green;
+    background-color:#6039ac;
 }
 
 input[type=text] {
-    width: 100%;
+    position: relative;
+    display: block;
+    width: 10vw;
     margin: 0 auto!important;
 }
 
 .div-half-1{
     width: 50%;
-    height: 100%;
-    float: left;
+    height: 49vh;
     padding: 0px;
     overflow: auto;
     background-color: white;
-    line-height: 0;
-}
 
+    border-radius: 25px;
+    align-items: stretch;
+    display: flex;
+    justify-content: space-between;
+    // border-style: solid;
+}
+input[type="text"] {
+    padding: 5px;
+    margin:10px auto;
+    box-sizing: border-box;
+    border: none;
+    background-color: #bfc5d2;
+    color: white;
+}
 
 
 .div-half-2{
@@ -53,6 +69,22 @@ input[type=text] {
     padding: 4px;
     margin-top: 6%;
 }
-
-
+.presyo {
+    margin-top: 10vh;
+}
+.example-input1 {
+    // align-self: center;
+}
+.example-input2 {
+    // align-self: flex-start;
+}
 /* responsive divi */
+.certain-search-item-count {
+    position: absolute;
+    color: #999;
+    right: 16px;
+  }
+
+  .more-link {
+    float: right;
+  }

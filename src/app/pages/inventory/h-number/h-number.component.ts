@@ -12,7 +12,8 @@ export class HNumberComponent {
   view: any[] = [700, 400];
 
   colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    // domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['#016D98', '#719DAA', '#DFCFDE', '#C51B74', '#690923', '#44111A']
   };
   cardColor: string = '#232837';
   

@@ -12,9 +12,13 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HAdvpieComponent } from './h-advpie/h-advpie.component';
+import { HBarComponent } from './h-bar/h-bar.component';
+import { HPieGridComponent } from './h-pie-grid/h-pie-grid.component';
+import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 @NgModule({
-  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent],
+  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent],
   imports: [
     CommonModule,
     InventoryRoutingModule,
@@ -22,7 +26,9 @@ import { HAdvpieComponent } from './h-advpie/h-advpie.component';
     NzTableModule,
     NzSpinModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzAutocompleteModule,
+    NzInputModule
   ]
 })
 export class InventoryModule { }
