@@ -24,23 +24,6 @@ export class PriceComponent implements OnInit {
 
   subject = new Subject()
   filteredOptions: any[] = [];
-  options = [
-    {
-      description: '话题1',
-      barcode:  201011,
-      article: 101011,
-    },
-    {
-      description: '话题2',
-      barcode:  201012,
-      article: 101012,
-    },
-    {
-      description: '话题3',
-      barcode:  201013,
-      article: 101013,
-    },
-  ];
 
   profileForm = new FormGroup({
     barcode: new FormControl('')
@@ -50,40 +33,15 @@ export class PriceComponent implements OnInit {
   numero : Sap[] = [];
   price: Price;
   constructor(private inventoryService:InventoryService) { 
-    this.filteredOptions = this.options;
-    console.log(this.filteredOptions);
   }
 
   ngOnInit(): void {
-    // this.optionGroups = [
-    //   {
-    //     description: '话题1',
-    //     barcode:  201011,
-    //     article: 101011,
-    //   },
-    //   {
-    //     description: '话题2',
-    //     barcode:  201012,
-    //     article: 101012,
-    //   },
-    //   {
-    //     description: '话题3',
-    //     barcode:  201013,
-    //     article: 101013,
-    //   },
-    // ];
 
   console.log(this.optionGroups);
   }
   onChange(value): void {
     console.log(value);
-    // this.inventoryService.getProduct(value).subscribe(
-    //   res => this.optionGroups = res
-    // )
-    //   this.results$ = this.subject.pipe(
-    //   debounce(() => Rx.Observable.interval(1000)),
-    //   map(searchText => this.httpClient.get("/api/search?q=" + searchText))
-    // )
+
     if (!isNaN(value) && value.length == 13)
     {
       this.onSubmit(value);
@@ -134,9 +92,6 @@ export class PriceComponent implements OnInit {
       })
     )
     combined.subscribe();
-    // posObs.subscribe(
-    //   res => console.log(res)
-    // )
   }
 
   onSubmit(product) {

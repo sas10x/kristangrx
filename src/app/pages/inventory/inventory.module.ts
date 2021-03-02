@@ -16,9 +16,22 @@ import { HBarComponent } from './h-bar/h-bar.component';
 import { HPieGridComponent } from './h-pie-grid/h-pie-grid.component';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { PrimeComponent } from './prime/prime.component';
+
+import {TableModule} from 'primeng/table';
+import {CalendarModule} from 'primeng/calendar';
+import {SliderModule} from 'primeng/slider';
+import {DialogModule} from 'primeng/dialog';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {ButtonModule} from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
+import {InputTextModule} from 'primeng/inputtext';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
-  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent],
+  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent, PrimeComponent],
   imports: [
     CommonModule,
     InventoryRoutingModule,
@@ -28,7 +41,18 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     FormsModule,
     ReactiveFormsModule,
     NzAutocompleteModule,
-    NzInputModule
+    NzInputModule,
+    TableModule,
+    CalendarModule,
+    SliderModule,
+    DialogModule,
+    MultiSelectModule,
+    ContextMenuModule,
+    ButtonModule,
+    ToastModule,
+    InputTextModule,
+    ProgressBarModule,
+    DropdownModule
   ]
 })
 export class InventoryModule { }

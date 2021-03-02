@@ -1,0 +1,114 @@
+<p-table #dt [value]="products" [(selection)]="selectedProducts" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+            [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+            [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [filterDelay]="0" [globalFilterFields]="['description','article','gtin']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    List of Products
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem"></th>
+                    <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+                    <th pSortableColumn="article">Article <p-sortIcon field="article"></p-sortIcon></th>
+                    <th pSortableColumn="gtin">Barcode <p-sortIcon field="gtin"></p-sortIcon></th>
+                    <th pSortableColumn="site">Site <p-sortIcon field="site"></p-sortIcon></th>
+                    <th pSortableColumn="unrestricted">UNR <p-sortIcon field="unrestricted"></p-sortIcon></th>
+                    <th pSortableColumn="confirm">CFM <p-sortIcon field="confirm"></p-sortIcon></th>
+                    <th pSortableColumn="atp">ATP <p-sortIcon field="atp"></p-sortIcon></th>
+                    <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+                    <th pSortableColumn="status">Graph <p-sortIcon field="atp"></p-sortIcon></th>
+                    <th style="width: 8rem"></th>
+                </tr>
+                <!-- <tr>
+                    <th>
+                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                    </th>
+                    <th>
+                        <input pInputText type="text" (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder="Search by Name" class="p-column-filter">
+                    </th>
+                    <th>
+                        <input pInputText type="text" (input)="dt.filter($event.target.value, 'country.name', 'contains')" placeholder="Search by Country" class="p-column-filter">
+                    </th>
+                    <th>
+                        <p-multiSelect [options]="representatives" placeholder="All" (onChange)="onRepresentativeChange($event)" styleClass="p-column-filter" optionLabel="name">
+                            <ng-template let-option pTemplate="item">
+                                <div class="p-multiselect-representative-option">
+                                    <span class="p-ml-1">{{option.label}}</span>
+                                </div>
+                            </ng-template>
+                        </p-multiSelect>
+                    </th>
+                    <th>
+                        <p-calendar (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')" [showButtonBar]="true" styleClass="p-column-filter" placeholder="Registration Date" [readonlyInput]="true" dateFormat="yy-mm-dd"></p-calendar>
+                    </th>
+                    <th>
+                        <p-dropdown [options]="statuses" (onChange)="dt.filter($event.value, 'status', 'equals')" styleClass="p-column-filter" placeholder="Select a Status" [showClear]="true">
+                            <ng-template let-option pTemplate="item">
+                                <span [class]="'customer-badge status-' + option.value">&#123;&#123;option.label&#125;&#125;</span>
+                            </ng-template>
+                        </p-dropdown>
+                    </th>
+                    <th>
+                        <input pInputText type="text" (input)="onActivityChange($event)" placeholder="Minimum" class="p-column-filter" >
+                    </th>
+                    <th></th>
+                </tr> -->
+            </ng-template>
+            <ng-template pTemplate="body" let-sap>
+                <tr class="p-selectable-row">
+                    <td>
+                        <p-tableCheckbox [value]="sap"></p-tableCheckbox>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Description</span>
+                        {{sap.description}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Article</span>
+                        <span class="image-text">{{sap.article}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Barcode</span>
+                        <span class="image-text">{{sap.gtin}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Site</span>
+                        <span class="image-text">{{sap.site}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">UNR</span>
+                        <span class="image-text">{{sap.unrestricted}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">CFM</span>
+                        <span class="image-text">{{sap.confirm}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">ATP</span>
+                        <span class="image-text">{{sap.atp}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Status</span>
+                        <span class="image-text">{{sap.status}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Graph</span>
+                        <p-progressBar [value]="sap.atp" [showValue]="false"></p-progressBar>
+                    </td>
+                    <td style="text-align: center">
+                        <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No customers found.</td>
+                </tr>
+            </ng-template>
+        </p-table>

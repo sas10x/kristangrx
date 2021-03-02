@@ -39,8 +39,8 @@ input[type="text"] {
     margin:10px auto;
     box-sizing: border-box;
     border: none;
-    background-color: #bfc5d2;
-    color: white;
+    background-color: white;
+    color:black;
 }
 
 
@@ -73,9 +73,18 @@ input[type="text"] {
     margin-top: 10vh;
 }
 .example-input1 {
+    // background-color: green;
+    width: 65%;
     // align-self: center;
 }
 .example-input2 {
+    // background-color:blue;
+    width: 35%;
+    // align-self: flex-start;
+}
+.price {
+    background-color:yellow;
+    // width: 40%;
     // align-self: flex-start;
 }
 /* responsive divi */

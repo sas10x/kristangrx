@@ -31,13 +31,13 @@
                 <div>
                     <input type="text" formControlName="barcode" autofocus>
                 </div>
-              </form>
-              <div class="presyo" *ngIf="price">
-                <h1>Name: {{price.name}}</h1>
-                <h1>Price: <strong>{{price.retailPrice}}</strong></h1>
-                <h1>Article: {{price.refCode}}</h1>
-                <h1>Barcode: {{price.barCode}}</h1>
-              </div>
+            </form>
+            <div class="presyo" *ngIf="price">
+              <h2>Name: {{price.name}}</h2>
+              <h2>Price: <strong>{{price.retailPrice}}</strong></h2>
+              <h2>Article: {{price.refCode}}</h2>
+              <h2>Barcode: {{price.barCode}}</h2>
+            </div>
         </div>
         <div class="example-input2">
             <nz-input-group nzSize="large" [nzSuffix]="suffixIcon">
@@ -61,5 +61,8 @@
                 </nz-auto-optgroup>
               </nz-autocomplete>
         </div>
+    </div>
+    <div class="price">
+      
     </div>
 </div>

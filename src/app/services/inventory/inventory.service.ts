@@ -14,7 +14,7 @@ export class InventoryService {
   constructor(private http: HttpClient) { }
   readonly posURL = 'http://heusc:7000/api/pos/';
   readonly sapURL = 'http://localhost:5000/api/sap/';
-  readonly priceURL = 'http://localhost:7000/api/pos/presyo/';
+  readonly priceURL = 'http://heusc:7000/api/pos/presyo/';
   // getaActivity(activityId: string): Observable<Activity> {
   //   return this.http.get<Activity>(this.baseUrl + activityId);
   // }
@@ -42,5 +42,8 @@ export class InventoryService {
   }
   getProduct(search: string) {
     return this.http.get<AutocompleteOptionGroups[]>(this.sapURL + "find/"+ search);
+  }
+  getProducts() {
+    return this.http.get<Sap[]>(this.sapURL + "availability");
   }
 }
