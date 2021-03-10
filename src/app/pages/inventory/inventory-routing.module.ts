@@ -3,6 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { MovementComponent } from './movement/movement.component';
 import { PriceComponent } from './price/price.component';
 import { PrimeComponent } from './prime/prime.component';
+import { ProductsComponent } from './products/products.component';
+import { StocksComponent } from './stocks/stocks.component';
+import { UploadZva05nComponent } from './upload-zva05n/upload-zva05n.component';
+import { XampleComponent } from './xample/xample.component';
 
 
 const routes: Routes = [
@@ -22,6 +26,22 @@ const routes: Routes = [
   {
     path: 'prime',
     component: PrimeComponent,
+  },
+  {
+    path: 'product',
+    component: ProductsComponent,
+  },
+  {
+    path: 'stock',
+    component: StocksComponent,
+  },
+  {
+    path: 'xample',
+    component: XampleComponent,
+  },
+  {
+    path: 'zva05n',
+    component: UploadZva05nComponent,
   }
 ];
 

@@ -32,6 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthStoreModule } from './root-store/auth-store/auth-store.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
+
 registerLocaleData(en);
 
 

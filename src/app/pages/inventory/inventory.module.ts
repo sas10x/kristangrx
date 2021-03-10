@@ -29,9 +29,16 @@ import {ToastModule} from 'primeng/toast';
 import {InputTextModule} from 'primeng/inputtext';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {DropdownModule} from 'primeng/dropdown';
+import { ProductsComponent } from './products/products.component';
+import { StocksComponent } from './stocks/stocks.component';
+import { SalesComponent } from './sales/sales.component';
+import { XampleComponent } from './xample/xample.component';
+import { UploadZva05nComponent } from './upload-zva05n/upload-zva05n.component';
+import { UploadMb51Component } from './upload-mb51/upload-mb51.component';
+
 
 @NgModule({
-  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent, PrimeComponent],
+  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent, PrimeComponent, ProductsComponent, StocksComponent, SalesComponent, XampleComponent, UploadZva05nComponent, UploadMb51Component],
   imports: [
     CommonModule,
     InventoryRoutingModule,

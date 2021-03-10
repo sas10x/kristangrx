@@ -37,6 +37,96 @@ export class InventoryService {
     }
     return this.http.post(this.sapURL, params);
   }
+  addMaterial(body) {
+    // console.log(body);
+    let params = 
+    {
+      "Article" : body.Article,
+      "Description" : body.Description,
+      "Uom" : body.Uom,
+      "Gtin" : body.Gtin,
+      "Status" : body.Status,
+      "Brand" : body.Brand,
+      "Category" : body.Category,
+      "Manager" : body.Manager
+    }
+    console.log(params);
+    return this.http.post(this.sapURL + "material", params);
+  }
+  addSO(body) {
+    console.log(body);
+    let params = 
+    {
+      "Article" : body.Article,
+      "Description" : body.Description,
+      "Uom" : body.Uom,
+      "Gtin" : body.Gtin.toString,
+      "Status" : body.Status,
+      "Brand" : body.Brand,
+      "Category" : body.Category,
+      "Manager" : body.Manager
+    }
+    return this.http.post(this.sapURL + "so", params);
+  }
+  addStock(body) {
+    console.log(body);
+    let params = 
+    {
+      "Article" : body.Article,
+      "Gtin" : body.Gtin,
+      "Description" : body.Description,
+      "BUn" : body.BUn,
+      "Site" : body.Site,
+      "SLoc" : body.SLoc,
+      "Unrestricted" : body.Unrestricted,
+      "Confirm" : body.Confirm,
+      "ATP" : body.ATP,
+      "Brand" : body.Brand,
+      "Status" : body.Status,
+      "Size" : body.Size,
+    }
+    console.log(params);
+    return this.http.post(this.sapURL + "stock", params);
+  }
+
+  addZva05n(body) {
+    // console.log(body);
+    let params = 
+    {
+      "DeliveryStatus" : body.DeliveryStatus,
+      "SO" : body.SO,
+      "Rfr" : body.Rfr,
+      "Site" : body.Site,
+      "SLoc" : body.SLoc,
+      "ShpTyp" : body.ShpTyp,
+      "Docdate" : body.Docdate,
+      "ItemNum" : body.ItemNum,
+      "ArtNum" : body.ArtNum,
+      "ArticleDescription" : body.ArticleDescription,
+      "UoM" : body.UoM,
+      "OrderedQty" : body.OrderedQty,
+      "ConfQty" : body.ConfQty,
+      "PgiQty" : body.PgiQty,
+      "QtyToDeliv" : body.QtyToDeliv,
+      "UnitPrice" : body.UnitPrice,
+      "NetAmt" : body.NetAmt,
+      "NetTax" : body.NetTax,
+      "InvoiceAmt" : body.InvoiceAmt,
+      "TotalPending" : body.TotalPending,
+      "SalesOrg" : body.SalesOrg,
+      "SType" : body.SType,
+      "Salesman" : body.SLoc,
+      "CustCode" : body.CustCode,
+      "SalGrp" : body.SalGrp,
+      "CreatedBy" : body.CreatedBy,
+      "Entrytime" : body.Entrytime,
+      "CCodeToBeBilled" : body.CCodeToBeBilled,
+      "DistChan" : body.DistChan,
+        
+    }
+    console.log(params);
+    return this.http.post(this.sapURL + "zva05n", params);
+  }
   getPrice(barcode: string) {
     return this.http.get<Price>(this.priceURL + barcode);
   }

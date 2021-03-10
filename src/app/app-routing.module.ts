@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { HomeComponent } from './layout/home/home.component';
 import { ProfileComponent } from './layout/profile/profile.component';
 
 
@@ -32,6 +33,10 @@ const routes: Routes = [
     path: 'profile/:id',
     component: ProfileComponent,
   },
+  {
+    path: 'home',
+    component: HomeComponent,
+  }
   // {path: 'error/:type', component: ErrorPageComponent},
 	// {path: '', redirectTo: 'auth', pathMatch: 'full'},
 	// {path: '**', redirectTo: 'auth', pathMatch: 'full'},

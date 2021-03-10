@@ -1,0 +1,43 @@
+<input type="file" (change)="onFileChange($event)" />
+<nz-table #basicTable [nzData]="data">
+    <thead>
+      <tr>
+        <th>Article</th>
+        <th>Gtin</th>
+        <th>Description</th>
+        <th>BUn</th>
+        <th>Site</th>
+        <th>SLoc</th>
+        <th>Unrestricted</th>
+        <th>Confirm</th>
+        <th>ATP</th>
+        <th>Brand</th>
+        <th>Status</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.Article }}</td>
+        <td>{{ data.Gtin }}</td>
+        <td>{{ data.Description }}</td>
+        <td>{{ data.BUn }}</td>
+        <td>{{ data.Site }}</td>
+        <td>{{ data.SLoc }}</td>
+        <td>{{ data.Unrestricted }}</td>
+        <td>{{ data.Confirm }}</td>
+        <td>{{ data.ATP }}</td>
+        <td>{{ data.Brand }}</td>
+        <td>{{ data.Status }}</td>
+        <td>{{ data.Size }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  
+  
+  <div *ngIf="!loading; else spin">
+    <button type="button" (click)="addM()">Add</button>
+  </div>
+  <ng-template #spin>
+    <nz-spin nzSimple></nz-spin>
+  </ng-template>
