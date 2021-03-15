@@ -2,6 +2,7 @@
 <nz-table #basicTable [nzData]="data">
     <thead>
       <tr>
+        <th>SType</th>
         <th>SO</th>
         <th>ArtNum</th>
         <th>DeliveryStatus</th>
@@ -16,6 +17,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.SType }}</td>
         <td>{{ data.SO }}</td>
         <td>{{ data.ArtNum }}</td>
         <td>{{ data.DeliveryStatus }}</td>

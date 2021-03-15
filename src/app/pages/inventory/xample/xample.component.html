@@ -1,0 +1,105 @@
+<div class="sales-timeline">
+    <div class="sub-timeline">
+        <nz-timeline>
+            <nz-timeline-item>Create a services site 2015-09-01</nz-timeline-item>
+            <nz-timeline-item>Solve initial network problems 2015-09-01</nz-timeline-item>
+            <nz-timeline-item>Technical testing 2015-09-01</nz-timeline-item>
+            <nz-timeline-item>Network problems being solved 2015-09-01</nz-timeline-item>
+          </nz-timeline>
+          <ng-template #dotTemplate>
+            <i nz-icon nzType="clock-circle-o" style="font-size: 16px;"></i>
+          </ng-template>
+    </div>
+    <div class="sub-timeline">
+        <!-- <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+            <input type="text" nz-input placeholder="input search text" />
+          </nz-input-group>
+          <ng-template #suffixIconButton>
+            <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+          </ng-template> -->
+        <nz-input-group nzSize="medium">
+            <input placeholder="input here" nz-input [(ngModel)]="inputValue" (ngModelChange)="onChange($event)"/>
+          </nz-input-group>
+          <button nz-button nzType="primary" (click)="getData()">Check</button>
+          <!-- <ng-template #suffixIcon>
+            <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+          </ng-template> -->
+    </div>
+</div>
+<div class="xample">
+    <div class="xample-sub2">
+        <nz-table #zmpqTable [nzData]="zmpq">
+            <thead>
+              <tr>
+                <th>Article</th>
+                <th>Site</th>
+                <th>SLoc</th>
+                <th>ATP</th>
+                <th>Confirm</th>
+                <th>Unrestricted</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data1 of zmpqTable.data">
+                <td>{{ data1.article }}</td>
+                <td>{{ data1.site }}</td>
+                <td>{{ data1.sLoc }}</td>
+                <td>{{ data1.atp }}</td>
+                <td>{{ data1.confirm }}</td>
+                <td>{{ data1.unrestricted }}</td>
+              </tr>
+            </tbody>
+          </nz-table>
+    </div>
+    <div class="xample-sub">
+        <nz-table #zvaTable [nzData]="zva">
+            <thead>
+              <tr>
+                <th>Article</th>
+                <th>SO#</th>
+                <th>OrderedQty</th>
+                <th>ConfQty</th>
+                <th>PgiQty</th>
+                <th>QtyToDeliv</th>
+                <th>SType</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data2 of zvaTable.data">
+                <td>{{ data2.artNum }}</td>
+                <td>{{ data2.so }}</td>
+                <td>{{ data2.orderedQty }}</td>
+                <td>{{ data2.confQty }}</td>
+                <td>{{ data2.pgiQty }}</td>
+                <td>{{ data2.qtyToDeliv }}</td>
+                <td>{{ data2.sType }}</td>
+              </tr>
+            </tbody>
+          </nz-table>
+    </div>
+    <div class="xample-sub2">
+        <nz-table #mbTable [nzData]="mb">
+            <thead>
+              <tr>
+                <th>Article</th>
+                <th>ArtDoc</th>
+                <th>MvT</th>
+                <th>Username</th>
+                <th>Quantity</th>
+                <th>SLoc</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data3 of mbTable.data">
+                <td>{{ data3.article }}</td>
+                <td>{{ data3.artDoc }}</td>
+                <td>{{ data3.mvT }}</td>
+                <td>{{ data3.username }}</td>
+                <td>{{ data3.quantity }}</td>
+                <td>{{ data3.sLoc }}</td>
+              </tr>
+            </tbody>
+          </nz-table>
+        
+    </div>
+</div>

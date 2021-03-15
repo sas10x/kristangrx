@@ -35,10 +35,22 @@ import { SalesComponent } from './sales/sales.component';
 import { XampleComponent } from './xample/xample.component';
 import { UploadZva05nComponent } from './upload-zva05n/upload-zva05n.component';
 import { UploadMb51Component } from './upload-mb51/upload-mb51.component';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+
+import { NzTimelineModule } from 'ng-zorro-antd/timeline';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { HLineComponent } from './h-line/h-line.component';
+import { KAnalyticsComponent } from './k-analytics/k-analytics.component';
+import { KNumberComponent } from './k-number/k-number.component';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 
 @NgModule({
-  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent, PrimeComponent, ProductsComponent, StocksComponent, SalesComponent, XampleComponent, UploadZva05nComponent, UploadMb51Component],
+  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent, PrimeComponent, ProductsComponent, StocksComponent, SalesComponent, XampleComponent, UploadZva05nComponent, UploadMb51Component, HLineComponent, KAnalyticsComponent, KNumberComponent],
   imports: [
     CommonModule,
     InventoryRoutingModule,
@@ -59,7 +71,14 @@ import { UploadMb51Component } from './upload-mb51/upload-mb51.component';
     ToastModule,
     InputTextModule,
     ProgressBarModule,
-    DropdownModule
+    DropdownModule,
+    NzTimelineModule,
+    NzDividerModule,
+    NzTagModule,
+    NzIconModule,
+    NzButtonModule,
+    NzDatePickerModule,
+    NzDropDownModule
   ]
 })
 export class InventoryModule { }

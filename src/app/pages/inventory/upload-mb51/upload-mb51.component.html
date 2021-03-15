@@ -1,1 +1,37 @@
-<p>upload-mb51 works!</p>
+<input type="file" (change)="onFileChange($event)" />
+<nz-table #basicTable [nzData]="data">
+    <thead>
+      <tr>
+        <th>ArtDoc </th>
+        <th>Article</th>
+        <th>BUn</th>
+        <th>Site</th>
+        <th>SLoc</th>
+        <th>MvT</th>
+        <th>MvtTypeText</th>
+        <th>Name1</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.ArtDoc  }}</td>
+        <td>{{ data.Article }}</td>
+        <td>{{ data.BUn }}</td>
+        <td>{{ data.Site }}</td>
+        <td>{{ data.SLoc }}</td>
+        <td>{{ data.MvT }}</td>
+        <td>{{ data.MvtTypeText }}</td>
+        <td>{{ data.Name1 }}</td>
+        <td>{{ data.Username }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  
+  
+  <div *ngIf="!loading; else spin">
+    <button type="button" (click)="addM()">Add</button>
+  </div>
+  <ng-template #spin>
+    <nz-spin nzSimple></nz-spin>
+  </ng-template>

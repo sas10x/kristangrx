@@ -61,6 +61,5 @@ export class WooReportsComponent implements OnInit {
         console.log(this.sales);
       }
     )
-    
   }
 }

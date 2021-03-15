@@ -19,6 +19,11 @@ export class UploadZva05nComponent implements OnInit {
   }
 
   onFileChange(ev) {
+    // const target = e.target.result;
+    // const wb = XLSX.read(target,{type:'binary',cellText:false,cellDates:true});
+    // const wsname = wb.SheetNames[0];
+    // const ws = wb.Sheets[wsname];
+    // const data = XLSX.utils.sheet_to_json(ws, {header:1,raw:false,dateNF:'yyyy-mm-dd'});
     let workBook = null;
     let jsonData = null;
 
@@ -29,7 +34,8 @@ export class UploadZva05nComponent implements OnInit {
       workBook = XLSX.read(data, { type: 'binary' });
       jsonData = workBook.SheetNames.reduce((initial, name) => {
         const sheet = workBook.Sheets[name];
-        initial[name] = XLSX.utils.sheet_to_json(sheet);
+        initial[name] = XLSX.utils.sheet_to_json(sheet, {raw:false,dateNF:'yyyy-mm-dd'});
+        // initial[name] = XLSX.utils.sheet_to_json(sheet);
         // console.log(initial[name]);
         this.data = (initial[name]);
         console.log(this.data)

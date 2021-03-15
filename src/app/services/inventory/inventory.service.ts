@@ -24,6 +24,15 @@ export class InventoryService {
   getSap(barcode: string) {
     return this.http.get<Sap>(this.sapURL + barcode);
   }
+  getZmpq25b(barcode: string) {
+    return this.http.get<[]>(this.sapURL + "zmpq25b/" + barcode);
+  }
+  getZva05n(barcode: string) {
+    return this.http.get<[]>(this.sapURL + "zva05n/" + barcode);
+  }
+  getMb51(barcode: string) {
+    return this.http.get<[]>(this.sapURL + "mb51/" + barcode);
+  }
   addMovement(body) {
     let params = 
     {
@@ -69,7 +78,11 @@ export class InventoryService {
     return this.http.post(this.sapURL + "so", params);
   }
   addStock(body) {
-    console.log(body);
+    console.log(body.SLoc);
+    if (!body.SLoc)
+    {
+      body.SLoc = "";
+    }
     let params = 
     {
       "Article" : body.Article,
@@ -85,12 +98,14 @@ export class InventoryService {
       "Status" : body.Status,
       "Size" : body.Size,
     }
+    console.log('params');
     console.log(params);
-    return this.http.post(this.sapURL + "stock", params);
+    return this.http.post(this.sapURL + "zmpq25b", params);
   }
 
   addZva05n(body) {
     // console.log(body);
+    console.log(body);
     let params = 
     {
       "DeliveryStatus" : body.DeliveryStatus,
@@ -124,8 +139,34 @@ export class InventoryService {
       "DistChan" : body.DistChan,
         
     }
-    console.log(params);
+    // console.log(params);
     return this.http.post(this.sapURL + "zva05n", params);
+  }
+  addMb51(body) {
+    // console.log(body);
+    let params = 
+    {
+      EntryDate : body.EntryDate,
+      PstngDate : body.PstngDate,
+      Time : body.Time,
+      DocDate : body.DocDate,
+      ArtDoc : body.ArtDoc,
+      Article : body.Article,
+      ArticleDescription : body.ArticleDescription,
+      BUn : body.BUn,
+      Quantity : body.Quantity,
+      MvT :  body.MvT,
+      Site : body.Site,
+      SLoc : body.SLoc,
+      Customer : body.Customer,
+      MvtTypeText : body.MvtTypeText,
+      Name1 : body.Name1,
+      Username : body.Username,
+      GtrStatus : "pending"
+        
+    }
+    console.log(params);
+    return this.http.post(this.sapURL + "mb51", params);
   }
   getPrice(barcode: string) {
     return this.http.get<Price>(this.priceURL + barcode);
@@ -135,5 +176,8 @@ export class InventoryService {
   }
   getProducts() {
     return this.http.get<Sap[]>(this.sapURL + "availability");
+  }
+  getSales(article) {
+    return this.http.get<[]>(this.sapURL + "report/" + article);
   }
 }

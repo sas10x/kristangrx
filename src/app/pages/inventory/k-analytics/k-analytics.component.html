@@ -1,0 +1,64 @@
+<div class="main-k">
+    <div class="sidenav-analytics">
+        <div class="sidenav-input">
+            <nz-range-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
+            <br>
+            <br>
+            <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                <input [(ngModel)]="inputValue"  type="text" nz-input placeholder="input search text" />
+              </nz-input-group>
+              <ng-template #suffixIconButton>
+                <button (click)="getSales()" nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+              </ng-template>
+        </div>
+        
+        <!-- <button nz-button nz-dropdown [nzDropdownMenu]="menu4">
+            Button
+            <i nz-icon nzType="down"></i>
+        </button>
+        <nz-dropdown-menu #menu4="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item>menu4 1st menu item</li>
+              <li nz-menu-item>menu4 2nd menu item</li>
+              <li nz-menu-item>menu4 3 menu item</li>
+            </ul>
+          </nz-dropdown-menu> -->
+    </div>
+    <div class="main-analytics">
+        <!-- <div class="search-analytics">
+            <app-h-line></app-h-line>
+        </div> -->
+        <div class="dashboard-analytics">
+            <div class="d-line">
+            <app-h-line></app-h-line>
+            </div>
+            <div class="d-number">
+                <app-k-number></app-k-number>
+            </div>
+        </div>
+        <div class="table-analytics">
+            <nz-table #basicTable [nzData]="listOfData">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of basicTable.data">
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.age }}</td>
+                    <td>{{ data.address }}</td>
+                    <td>
+                        <a>Action 一 {{ data.name }}</a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a>Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>

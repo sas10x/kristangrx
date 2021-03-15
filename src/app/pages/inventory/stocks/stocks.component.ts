@@ -29,7 +29,8 @@ export class StocksComponent implements OnInit {
       workBook = XLSX.read(data, { type: 'binary' });
       jsonData = workBook.SheetNames.reduce((initial, name) => {
         const sheet = workBook.Sheets[name];
-        initial[name] = XLSX.utils.sheet_to_json(sheet);
+        initial[name] = XLSX.utils.sheet_to_json(sheet, {raw:false,dateNF:'yyyy-mm-dd'});
+        // initial[name] = XLSX.utils.sheet_to_json(sheet);
         // console.log(initial[name]);
         this.data = (initial[name]);
         console.log(this.data)
