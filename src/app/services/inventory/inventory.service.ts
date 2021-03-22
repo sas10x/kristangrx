@@ -26,14 +26,14 @@ export class InventoryService {
   getSap(barcode: string) {
     return this.http.get<Sap>(this.sapURL + barcode);
   }
-  getZmpq25b(barcode: string) {
-    return this.http.get<[]>(this.sapURL + "zmpq25b/" + barcode);
+  getZmpq25b(article: string) {
+    return this.http.get<[]>(this.sapURL + "zmpq25b/" + article);
   }
-  getZva05n(barcode: string) {
-    return this.http.get<[]>(this.sapURL + "zva05n/" + barcode);
+  getZva05n(article: string) {
+    return this.http.get<[]>(this.sapURL + "zva05n/" + article);
   }
-  getMb51(barcode: string) {
-    return this.http.get<[]>(this.sapURL + "mb51/" + barcode);
+  getMb51(article: string) {
+    return this.http.get<[]>(this.sapURL + "mb51/" + article);
   }
   addMovement(body) {
     let params = 
@@ -209,6 +209,9 @@ export class InventoryService {
   }
   getReportBubble(category) {
     return this.http.get<Babol[]>(this.sapURL + "report/bubble/" + category );
+  }
+  getReportPetsa(params) {
+    return this.http.get<Babol[]>(this.sapURL + "report/petsa" + "?from=" + params.from + "&to=" + params.to);
   }
   getBrands() {
     return this.http.get<any[]>(this.sapURL + "get/brand/");

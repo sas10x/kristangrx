@@ -24,6 +24,25 @@
             <app-k-bubble [bubbleDatus]="bubbleDatus"></app-k-bubble>
         </div>
     </div>
-    
+    <div class="sidenav-analytics">
+        <div *ngIf="data">
+            <h1>{{header}}</h1>
+            <nz-table #basicTable [nzData]="data">
+                <thead>
+                  <tr>
+                    <th>SLOC</th>
+                    <th>ATP</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of basicTable.data">
+                    <td>{{ data.sLoc }}</td>
+                    <td>{{ data.atp }}</td>
+                  </tr>
+                </tbody>
+              </nz-table>
+        </div>
+    </div>
 </div>
+
 
