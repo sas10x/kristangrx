@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AnyCnameRecord } from 'dns';
+import { AnyCnameRecord, AnyNaptrRecord } from 'dns';
 import { AutocompleteOptionGroups } from 'src/app/models/inventory/AutocompleteOptionGroups';
+import { Babol } from 'src/app/models/inventory/Babol';
+import { Overview } from 'src/app/models/inventory/Overview';
 import { Pos } from 'src/app/models/inventory/Pos';
 import { Price } from 'src/app/models/inventory/Price';
 import { Sap } from 'src/app/models/inventory/Sap';
@@ -137,7 +139,7 @@ export class InventoryService {
       "Entrytime" : body.Entrytime,
       "CCodeToBeBilled" : body.CCodeToBeBilled,
       "DistChan" : body.DistChan,
-        
+      "Division" : body.Division,
     }
     // console.log(params);
     return this.http.post(this.sapURL + "zva05n", params);
@@ -168,6 +170,15 @@ export class InventoryService {
     console.log(params);
     return this.http.post(this.sapURL + "mb51", params);
   }
+  addCategory(body) {
+    // console.log(body);
+    let params = 
+    {
+      Category : body.name,
+    }
+    console.log(params);
+    return this.http.post(this.sapURL + "add/category", params);
+  }
   getPrice(barcode: string) {
     return this.http.get<Price>(this.priceURL + barcode);
   }
@@ -178,6 +189,37 @@ export class InventoryService {
     return this.http.get<Sap[]>(this.sapURL + "availability");
   }
   getSales(article) {
-    return this.http.get<[]>(this.sapURL + "report/" + article);
+    return this.http.get<any[]>(this.sapURL + "report/" + article);
+  }
+
+  getReportOverview(article) {
+    return this.http.get<Overview>(this.sapURL + "report/" + article);
+  }
+  getReportData(article) {
+    return this.http.get<any[]>(this.sapURL + "report/data/" + article);
+  }
+  getReportZor(article) {
+    return this.http.get<any[]>(this.sapURL + "report/zor/" + article);
+  }
+  getReportZqt(article) {
+    return this.http.get<any[]>(this.sapURL + "report/zqt/" + article);
+  }
+  getReportAll(article) {
+    return this.http.get<any[]>(this.sapURL + "report/all/" + article);
+  }
+  getReportBubble(category) {
+    return this.http.get<Babol[]>(this.sapURL + "report/bubble/" + category );
+  }
+  getBrands() {
+    return this.http.get<any[]>(this.sapURL + "get/brand/");
+  }
+  getManagers() {
+    return this.http.get<any[]>(this.sapURL + "get/manager/");
+  }
+  getStatus() {
+    return this.http.get<any[]>(this.sapURL + "get/status/");
+  }
+  getCategories() {
+    return this.http.get<any[]>(this.sapURL + "get/category");
   }
 }

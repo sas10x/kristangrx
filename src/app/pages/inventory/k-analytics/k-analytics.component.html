@@ -1,64 +1,119 @@
 <div class="main-k">
     <div class="sidenav-analytics">
         <div class="sidenav-input">
+            <h2>DocDate</h2>
             <nz-range-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
             <br>
             <br>
+            <h2>Article</h2>
             <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
                 <input [(ngModel)]="inputValue"  type="text" nz-input placeholder="input search text" />
-              </nz-input-group>
-              <ng-template #suffixIconButton>
+            </nz-input-group>
+            <ng-template #suffixIconButton>
                 <button (click)="getSales()" nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
-              </ng-template>
+            </ng-template>
+            <h2>Status</h2>
+            <nz-select
+                [nzMaxTagCount]="3"
+                [nzMaxTagPlaceholder]="tagPlaceHolder"
+                nzMode="multiple"
+                nzPlaceHolder="Please select"
+                [(ngModel)]="status"
+            >
+            <nz-option *ngFor="let item of status" [nzLabel]="item.name" [nzValue]="item.name"></nz-option>
+            </nz-select>
+            <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
+            <h2>Brand</h2>
+            <nz-select
+                [nzMaxTagCount]="3"
+                [nzMaxTagPlaceholder]="tagPlaceHolder"
+                nzMode="multiple"
+                nzPlaceHolder="Please select"
+                [(ngModel)]="brands"
+            >
+            <nz-option *ngFor="let item of brands" [nzLabel]="item.name" [nzValue]="item.name"></nz-option>
+            </nz-select>
+            <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
+            <h2>Category</h2>
+            <nz-select
+                [nzMaxTagCount]="3"
+                [nzMaxTagPlaceholder]="tagPlaceHolder"
+                nzMode="multiple"
+                nzPlaceHolder="Please select"
+                [(ngModel)]="categories"
+            >
+            <nz-option *ngFor="let item of categories" [nzLabel]="item.name" [nzValue]="item.name"></nz-option>
+            </nz-select>
+            <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
+            <h2>Manager</h2>
+            <nz-select
+                [nzMaxTagCount]="3"
+                [nzMaxTagPlaceholder]="tagPlaceHolder"
+                nzMode="multiple"
+                nzPlaceHolder="Please select"
+                [(ngModel)]="managers"
+            >
+            <nz-option *ngFor="let item of managers" [nzLabel]="item.name" [nzValue]="item.name"></nz-option>
+            </nz-select>
+            <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
+            <div class="setting">
+                <i nz-icon [nzType]="'setting'" [nzTheme]="'fill'"></i>
+                <i nz-icon [nzType]="'sync'" [nzSpin]="true"></i>
+            </div>
         </div>
-        
-        <!-- <button nz-button nz-dropdown [nzDropdownMenu]="menu4">
-            Button
-            <i nz-icon nzType="down"></i>
-        </button>
-        <nz-dropdown-menu #menu4="nzDropdownMenu">
-            <ul nz-menu>
-              <li nz-menu-item>menu4 1st menu item</li>
-              <li nz-menu-item>menu4 2nd menu item</li>
-              <li nz-menu-item>menu4 3 menu item</li>
-            </ul>
-          </nz-dropdown-menu> -->
     </div>
     <div class="main-analytics">
-        <!-- <div class="search-analytics">
-            <app-h-line></app-h-line>
-        </div> -->
         <div class="dashboard-analytics">
-            <div class="d-line">
-            <app-h-line></app-h-line>
+            <div class="d-number" *ngIf="sales">
+                <app-h-line [sales]="sales"></app-h-line>
             </div>
-            <div class="d-number">
-                <app-k-number></app-k-number>
-            </div>
+            <div class="d-line" *ngIf="rty">
+                <app-h-number [rty]="rty"></app-h-number>
+            </div>   
         </div>
-        <div class="table-analytics">
-            <nz-table #basicTable [nzData]="listOfData">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let data of basicTable.data">
-                    <td>{{ data.name }}</td>
-                    <td>{{ data.age }}</td>
-                    <td>{{ data.address }}</td>
-                    <td>
-                        <a>Action 一 {{ data.name }}</a>
-                    <nz-divider nzType="vertical"></nz-divider>
-                    <a>Delete</a>
-                    </td>
-                </tr>
-                </tbody>
-            </nz-table>
+        <div class="dashboard-analytics">
+            <div class="d-line" *ngIf="rty">
+                <app-h-line [sales]="sales"></app-h-line>
+            </div>   
+        </div>
+        <div class="dashboard-analytics" *ngIf="bubbleDatus">
+            <app-k-bubble [bubbleDatus]="bubbleDatus"></app-k-bubble>
+        </div>
+        <div class="table-analytics" *ngIf="datus">
+        <nz-table #basicTable [nzData]="datus">
+            <thead>
+              <tr>
+                <th>SType</th>
+                <th>SO</th>
+                <th>ArtNum</th>
+                <th>DeliveryStatus</th>
+                <th>UoM</th>
+                <th>Site</th>
+                <th>SLoc</th>
+                <th>OrderedQty</th>
+                <th>ConfQty</th>
+                <th>PgiQty</th>
+                <th>QtyToDeliv</th>
+                <th>articleDescription</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of datus">
+                <td>{{ data.sType }}</td>
+                <td>{{ data.so }}</td>
+                <td>{{ data.artNum }}</td>
+                <td>{{ data.deliveryStatus }}</td>
+                <td>{{ data.uoM }}</td>
+                <td>{{ data.site }}</td>
+                <td>{{ data.sLoc }}</td>
+                <td>{{ data.orderedQty }}</td>
+                <td>{{ data.confQty }}</td>
+                <td>{{ data.pgiQty }}</td>
+                <td>{{ data.qtyToDeliv }}</td>
+                <td>{{ data.articleDescription }}</td>
+              </tr>
+            </tbody>
+          </nz-table>
         </div>
     </div>
 </div>

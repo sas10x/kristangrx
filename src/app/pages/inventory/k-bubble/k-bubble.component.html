@@ -1,0 +1,21 @@
+<ngx-charts-bubble-chart
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="bubbleDatus"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [xScaleMin]="xScaleMin"
+  [xScaleMax]="xScaleMax"
+  [yScaleMin]="yScaleMin"
+  [yScaleMax]="yScaleMax"
+  [minRadius]="minRadius"
+  [maxRadius]="maxRadius"
+  (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)">
+</ngx-charts-bubble-chart>

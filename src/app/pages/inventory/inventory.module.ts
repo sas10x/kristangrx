@@ -47,10 +47,14 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { AddXComponent } from './add-x/add-x.component';
+import { KBubbleComponent } from './k-bubble/k-bubble.component';
+import { XpacexComponent } from './xpacex/xpacex.component';
 
 
 @NgModule({
-  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent, PrimeComponent, ProductsComponent, StocksComponent, SalesComponent, XampleComponent, UploadZva05nComponent, UploadMb51Component, HLineComponent, KAnalyticsComponent, KNumberComponent],
+  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent, PrimeComponent, ProductsComponent, StocksComponent, SalesComponent, XampleComponent, UploadZva05nComponent, UploadMb51Component, HLineComponent, KAnalyticsComponent, KNumberComponent, AddXComponent, KBubbleComponent, XpacexComponent],
   imports: [
     CommonModule,
     InventoryRoutingModule,
@@ -78,7 +82,8 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     NzIconModule,
     NzButtonModule,
     NzDatePickerModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzSelectModule
   ]
 })
 export class InventoryModule { }

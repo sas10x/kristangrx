@@ -8,7 +8,7 @@
     flex-direction: column;
     height: 80vh;
     width: 80vw;
-    background-color:red;
+    background-color: #f3f3f3;
     padding-top: 15px;
     padding-bottom: 15px;
     // margin: 15px 15px 15px 15px;
@@ -26,28 +26,29 @@
 .dashboard-analytics {
     display: flex;
     justify-content: center;
-    height: 40vh;
-    background-color: #3b4d61;
-
-    border-style: solid;
-    border-color: white;
+    height: 45vh;
+    // background-color: #3b4d61;
+    // border-style: solid;
+    // border-color: white;
 }
 .d-number {
-    border-style: solid;
-    border-color: white;
+    // width: 100%;
+    // border-style: solid;
+    // border-color: white;
 }
 .d-line {
-    border-style: solid;
-    border-color: white;
+    // width: 100%;
+    // border-style: solid;
+    // border-color: white;
 }
 .table-analytics {
-    display: flex;
-    justify-content: center;
-    height: 30vh;
-    background-color: #6b7b8c;
+    // display: flex;
+    // justify-content: center;
+    // height: 30vh;
+    // background-color: #6b7b8c;
 
-    border-style: solid;
-    border-color: white;
+    // border-style: solid;
+    // border-color: white;
 }
 .sidenav-analytics {
     background-color: #ffffe5;
@@ -61,3 +62,9 @@
 nz-button-group {
     margin: 0 8px 8px 0;
   }
+nz-select {
+    width: 100%;
+  }
+.setting {
+    padding-top: 10px;
+}

@@ -1,5 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { select } from '@ngrx/store';
+import { AnyCnameRecord } from 'dns';
+import { Subscription } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Babol } from 'src/app/models/inventory/Babol';
+import { Overview } from 'src/app/models/inventory/Overview';
 import { InventoryService } from 'src/app/services/inventory/inventory.service';
 interface Person {
   key: string;
@@ -14,39 +20,54 @@ interface Person {
   providers: [DatePipe]
 })
 export class KAnalyticsComponent implements OnInit {
+  babol: Babol[];
+  bubbleDatus: any[];
+  bubbleSeries: any[];
+  datus: any[];
+  subbrands: Subscription; 
+  submanagers: Subscription;
+  substatus: Subscription;
+  subcategories: Subscription;
+  brands: any[] = [];
+  managers: any[] = [];
+  status: any[] = [];
+  categories: any[] = [];
+
+  listOfOption: string[] = [];
+  listOfSelectedValue = ['a10', 'c12'];
+  overview: Overview;
+  
+  rty: any[];
+
+  sales: any[];
+
+  zcaspos: any[];
+  zor: any[];
+  zqt: any[];
+
+
+  sale: {};
   inputValue: string = "";
   date = null;
-  listOfData: Person[] = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    }
-  ];
   constructor(private datepipe: DatePipe, private inventoryService: InventoryService) { }
 
   ngOnInit(): void {
-    // this.createSerialNum(44260);
-    this.createDateFromSerial(44260)
+    this.zorroselect();
+    this.getBrands();
+    this.getManagers();
+    this.getStatus();
+    this.getCategories();
+    // this.getReportBubble();
   }
-  getSales() {
-    console.log(this.inputValue);
-    this.inventoryService.getSales(this.inputValue).subscribe(
-      res => console.log(res)
-    )
+ 
+  zorroselect() {
+    const children: string[] = [];
+    for (let i = 10; i < 36; i++) {
+      children.push(`${i.toString(36)}${i}`);
+    }
+    
+    this.listOfOption = children;
+    console.log(this.listOfOption);
   }
   onChange(result: Date[]): void {
     var str =(result[0].toDateString());
@@ -56,97 +77,117 @@ export class KAnalyticsComponent implements OnInit {
     let from =this.datepipe.transform(result[0], 'MM/dd/yyyy');
     let to =this.datepipe.transform(result[1], 'yyyy-MM-dd');
     console.log(from);
-    console.log(this.getJsDateFromExcel(result[0].toDateString()));
-    // let params = {
-    //   "date_min": from,
-    //   "date_max": to
-    // };
+    this.inventoryService.getReportData(this.inputValue).subscribe(
+      res => {
+        
+      }
+    )
   }
-  getJsDateFromExcel(excelDate) {
+  
 
-    // JavaScript dates can be constructed by passing milliseconds
-    // since the Unix epoch (January 1, 1970) example: new Date(12312512312);
-   
-    // 1. Subtract number of days between Jan 1, 1900 and Jan 1, 1970, plus 1  (Google "excel leap year bug")             
-   // 2. Convert to milliseconds.
-   
-    return new Date((excelDate - (25567 + 1))*86400*1000);
-   
-    }
-
-  // getWeek(result: Date[]): void {
-  //   console.log('week: ', result.map(getISOWeek));
-  // }
+  getBrands() {
+    this.subbrands = this.inventoryService.getBrands().subscribe(
+      res => {
+        this.brands = res;
+      })
+  }
+  getManagers() {
+    this.submanagers = this.inventoryService.getManagers().subscribe(
+      res => {
+        this.managers = res;
+      })
+  }
+  getStatus() {
+    this.substatus = this.inventoryService.getStatus().subscribe(
+      res => {
+        this.status = res
+      })
+  }
+  getCategories() {
+    this.subcategories = this.inventoryService.getCategories().subscribe(
+      res => {
+        this.categories = res;
+      })
+  }
+  
   log(){
     console.log(this.inputValue);
     console.log('click dropdown button');
   }
-  convert() {
-    // var start = new Date('1900-01-01')
-    // return (inDate - start)/(1000 * 60 * 60 * 24);
-  }
-  createSerialNum() {
-    // 3/5/2021
 
-    var oneDay = 24 * 60 * 60 * 1000;
-    var firstDate = new Date(1899, 11, 30);
-    var secondDate = new Date(2021, 2, 5+1);
-    console.log(secondDate);
-    var secondDateMidnight = new Date(secondDate.getFullYear(), secondDate.getMonth(), secondDate.getDate());
-    var diff = secondDate.getTime() - secondDateMidnight.getTime();
-    var left = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay))) - 1;
-    var right = diff / oneDay;
-    var result = left + right;
-    console.log(result);
-    return result;
+  getSales() {
+    this.rty = [];
+    this.sales = [];
+    this.zcaspos = [];
+    this.zor = [];
+    this.zqt = [];
+    console.log(this.inputValue);
+    this.inventoryService.getReportData(this.inputValue).subscribe(
+      res => {
+        this.zcaspos.push({"name":"CASH","series":res});
+        this.zcaspos = [...this.zcaspos];
+        this.sales = this.sales.concat(this.zcaspos);
+      }
+    )
+    this.inventoryService.getReportZor(this.inputValue).subscribe(
+      res => {
+        this.zor.push({"name":"ZOR","series":res});
+        this.zor = [...this.zor];
+        this.sales = this.sales.concat(this.zor);
+      }
+    )
+    this.inventoryService.getReportZqt(this.inputValue).subscribe(
+      res => {
+        this.zqt.push({"name":"ZQT","series":res});
+        this.zqt = [...this.zqt];
+        this.sales = this.sales.concat(this.zqt);
+      }
+    )
+    this.getReportOverview();
+    this.getReportAll();
+    
   }
-  createDateFromSerial(serialNum){
-    serialNum = String(serialNum).split(".");
-    var ogDate;
-    var oneDay = 24 * 60 * 60 * 1000;
-    var firstDate = new Date(1899, 11, 30);  
-    var days = serialNum[0];
-    var ms = serialNum[1] * oneDay;
-    var mss = ms.toString();
-    mss = String(ms).substring(0, 8);
-
-    firstDate.setDate(days);
-
-    ogDate = new Date(firstDate.getFullYear(), firstDate.getMonth(), firstDate.getDate(), 0, 0, 0, ms);
-    console.log(ogDate);
-    return ogDate;
+  getReportOverview() {
+    this.rty = [];
+    this.inventoryService.getReportOverview(this.inputValue).subscribe(
+      res => {
+        this.overview = res;
+        this.rty.push({"name":"Average","value":this.overview.average});
+        this.rty.push({"name":"Highest","value":this.overview.highest});
+        this.rty.push({"name":"Lowest","value":this.overview.lowest});
+        this.rty.push({"name":"Total","value":this.overview.total});
+        this.rty.push({"name":"Total Records","value":this.overview.totalRecords});
+        this.rty = [...this.rty];
+      }
+    )
   }
-  // onChange(result: Date[]): void {
-  //   this.sales = [];
-  //   console.log('onChange: ', result);
-  //   let from =this.datepipe.transform(result[0], 'yyyy-MM-dd');
-  //   let to =this.datepipe.transform(result[1], 'yyyy-MM-dd');
-  //   let params = {
-  //     "date_min": from,
-  //     "date_max": to
-  //   };
-  //   this.reportService.getSales(params).subscribe(
+  getReportAll() {
+    this.inventoryService.getReportAll(this.inputValue).subscribe(
+      res => {
+        this.datus = res;
+        console.log(this.datus)
+      }
+    )
+  }
+  // getReportBubble() {
+  //   this.bubbleSeries = [];
+  //   this.inventoryService.getReportBubble().subscribe(
   //     res => {
+  //       console.log('bubble');
   //       console.log(res);
-  //       this.halin = res[0].totals;
-  //       console.log(res[0].totals["2020-12-01"]);
-  //       for (let q = result[0]; q <= result[1]; q.setDate(q.getDate() + 1)) {
-  //         let petsa = this.datepipe.transform(q, 'yyyy-MM-dd');
-  //         this.sales.push({"name":petsa.toString(),"value":+res[0].totals[petsa].sales});
-  //         this.orders.push({"name":petsa.toString(),"value":res[0].totals[petsa].orders});
-  //         this.items.push({"name":petsa.toString(),"value":res[0].totals[petsa].items});
-  //         this.customers.push({"name":petsa.toString(),"value":res[0].totals[petsa].customers});
+  //       for (let i = 0; i < res.length; i++) {
+  //         this.bubbleSeries.push({"name":res[i].description,y:res[i].frequency,x:res[i].total,r: 100});
   //       }
-  //       this.order = { name:'Orders', series: this.orders};
-  //       this.item = { name:'Items', series: this.items};
-  //       this.customer = { name:'Customers', series: this.customers};
-  //       this.combo = [this.order, this.item, this.customer];
-      
-  //       this.combo = [...this.combo];
-  //       this.sales = [...this.sales];
-  //       console.log(this.combo);
-  //       console.log(this.sales);
-  //     }
-  //   )
+  //     })
+  //     this.bubbleSeries = [...this.bubbleSeries];
+  //     console.log(this.bubbleSeries);
+  //     this.bubbleDatus = [{name: "Qty vs Freq", series: this.bubbleSeries},{name: "Freq", series: this.bubbleSeries}]
+  //     console.log(this.bubbleDatus);
   // }
+  ngOnDestroy() {
+    this.subbrands.unsubscribe();
+    this.submanagers.unsubscribe();
+    this.substatus.unsubscribe();
+    this.subcategories.unsubscribe();
+  }
 }

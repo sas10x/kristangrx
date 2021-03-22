@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddXComponent } from './add-x/add-x.component';
 import { KAnalyticsComponent } from './k-analytics/k-analytics.component';
 import { MovementComponent } from './movement/movement.component';
 import { PriceComponent } from './price/price.component';
@@ -9,6 +10,7 @@ import { StocksComponent } from './stocks/stocks.component';
 import { UploadMb51Component } from './upload-mb51/upload-mb51.component';
 import { UploadZva05nComponent } from './upload-zva05n/upload-zva05n.component';
 import { XampleComponent } from './xample/xample.component';
+import { XpacexComponent } from './xpacex/xpacex.component';
 
 
 const routes: Routes = [
@@ -52,6 +54,14 @@ const routes: Routes = [
   {
     path: 'analytics',
     component: KAnalyticsComponent,
+  },
+  {
+    path: 'x',
+    component: AddXComponent,
+  },
+  {
+    path: 'xpace',
+    component: XpacexComponent,
   }
 ];
 

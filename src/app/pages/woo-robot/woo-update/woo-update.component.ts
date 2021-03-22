@@ -107,7 +107,7 @@ onFileChange(ev) {
   updateProducts() {
     this.loading = true;
 
-    this.payload = this.data.splice(0, 100);
+    this.payload = this.data.splice(700, 100);
     
     from(this.payload)
     .pipe(concatMap(res => this.getProductId(res)))
@@ -239,10 +239,10 @@ onFileChange(ev) {
         // "date_on_sale_from_gmt": "",
         // "date_on_sale_to": "",
         // "date_on_sale_to_gmt": "",
-        "date_on_sale_from": "2020-11-15T00:00:00",
-        "date_on_sale_from_gmt": "2020-11-14T16:00:00",
-        "date_on_sale_to": "2020-12-31T23:59:59",
-        "date_on_sale_to_gmt": "2020-12-31T15:59:59",
+        "date_on_sale_from": "2021-03-18T00:00:00",
+        "date_on_sale_from_gmt": "2021-03-18T00:00:00",
+        "date_on_sale_to": "2021-03-28T23:59:59",
+        "date_on_sale_to_gmt": "2021-03-28T23:59:59",
      };
      this.body = {
       ...this.body,

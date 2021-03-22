@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { multi } from './data';
 
 @Component({
@@ -10,7 +10,8 @@ export class HLineComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  @Input() sales: any[];
+  @Input() combo: any[];
   multi: any[];
   view: any[] = [700, 300];
 

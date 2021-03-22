@@ -1,17 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { single } from './data';
+import { bubbleData } from './data';
 
 @Component({
-  selector: 'app-h-bar',
-  templateUrl: './h-bar.component.html',
-  styleUrls: ['./h-bar.component.scss']
+  selector: 'app-k-bubble',
+  templateUrl: './k-bubble.component.html',
+  styleUrls: ['./k-bubble.component.scss']
 })
-export class HBarComponent implements OnInit {
-  @Input() sales: any[];
-  @Input() combo: any[];
-  @Input() qty: any[];
-  single: any[];
-  view: any[] = [700, 400];
+export class KBubbleComponent implements OnInit {
+  @Input() bubbleDatus: any[];
+  bubbleData: any[];
+  view: any[] = [1000, 700];
 
   // options
   showXAxis: boolean = true;
@@ -19,21 +17,29 @@ export class HBarComponent implements OnInit {
   gradient: boolean = false;
   showLegend: boolean = true;
   showXAxisLabel: boolean = true;
-  yAxisLabel: string = 'SLOC';
+  yAxisLabel: string = 'Frequency';
   showYAxisLabel: boolean = true;
-  xAxisLabel: string = 'Number of Items';
+  xAxisLabel: string = 'Quantities Sold';
+  maxRadius: number = 20;
+  minRadius: number = 5;
+  yScaleMin: number = 1;
+  yScaleMax: number = 3000;
+  xScaleMin: number = 1;
+  xScaleMax: number = 10000;
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
   constructor() {
-    Object.assign(this, { single });
+    Object.assign(this, { bubbleData });
+    console.log(bubbleData);
   }
+
   ngOnInit() {
-
+    console.log('from the bubble');
+    console.log(this.bubbleDatus);
   }
-
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }

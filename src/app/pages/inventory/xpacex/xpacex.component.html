@@ -1,0 +1,29 @@
+<div class="main-k">
+    <div class="sidenav-analytics">
+        <div class="sidenav-input">
+            <h2>DocDate</h2>
+            <nz-range-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
+            <button class="b-forward" (click)="onClickDate()" nz-button nzType="primary">Go forward<i nz-icon nzType="right"></i></button>
+            <br>
+            <br>
+            <nz-select
+                [nzMaxTagCount]="3"
+                [nzMaxTagPlaceholder]="tagPlaceHolder"
+                nzMode="multiple"
+                nzPlaceHolder="Please select"
+                [(ngModel)]="selectedCategories"
+            >
+            <nz-option *ngFor="let item of categories" [nzLabel]="item.name" [nzValue]="item.name"></nz-option>
+            </nz-select>
+            <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
+            <button class="b-forward" (click)="onClick()" nz-button nzType="primary">Go forward<i nz-icon nzType="right"></i></button>
+        </div>
+    </div>
+    <div class="main-analytics">
+        <div class="two">
+            <app-k-bubble [bubbleDatus]="bubbleDatus"></app-k-bubble>
+        </div>
+    </div>
+    
+</div>
+
