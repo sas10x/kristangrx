@@ -50,8 +50,14 @@ export class XpacexComponent implements OnInit {
   num: number = 0;
   name: string;
   subcategories: Subscription;
+  submanagers: Subscription;
+  subbrands: Subscription;
   selectedCategories: any[];
+  selectedBrands: any[];
+  selectedManagers: any[];
   categories: any[];
+  brands: any[];
+  managers: any[];
   bubbleRes: any[];
   bubbleSeries: any[];
   bubbleDatus: any[] = [];
@@ -60,6 +66,8 @@ export class XpacexComponent implements OnInit {
   ngOnInit(): void {
     // this.getReportBubble();
     this.getCategories();
+    this.getBrands();
+    this.getManagers();
     // this.getReportBubble();
     this.courier();
   }
@@ -95,8 +103,20 @@ export class XpacexComponent implements OnInit {
         this.categories = res;
       })
   }
-  
+  getBrands() {
+    this.subbrands = this.inventoryService.getBrands().subscribe(
+      res => {
+        this.brands = res;
+      })
+  }
+  getManagers() {
+    this.submanagers = this.inventoryService.getManagers().subscribe(
+      res => {
+        this.managers = res;
+      })
+  }
   onClick() {
+    this.num = 0;
     from(this.selectedCategories)
     .pipe(tap(res => console.log(res)))
     .pipe(concatMap(res => this.inventoryService.getReportBubble(res)))
@@ -121,6 +141,28 @@ export class XpacexComponent implements OnInit {
         this.bubbleDatus = [{name: this.from + " to " + this.to , series: res}];
       }
     )
+  }
+  onClickBrand() {
+    this.num = 0;
+    from(this.selectedBrands)
+    .pipe(tap(res => console.log(res)))
+    .pipe(concatMap(res => this.inventoryService.getReportBrands(res)))
+    .subscribe(res => {
+      this.num = this.num + 1;
+      this.bubbleRes = [{name: this.selectedBrands[this.num-1], series: res}];
+      this.bubbleDatus = this.bubbleDatus.concat(this.bubbleRes);
+    })
+  }
+  onClickManager() {
+    this.num = 0;
+    from(this.selectedManagers)
+    .pipe(tap(res => console.log(res)))
+    .pipe(concatMap(res => this.inventoryService.getReportManagers(res)))
+    .subscribe(res => {
+      this.num = this.num + 1;
+      this.bubbleRes = [{name: this.selectedManagers[this.num-1], series: res}];
+      this.bubbleDatus = this.bubbleDatus.concat(this.bubbleRes);
+    })
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

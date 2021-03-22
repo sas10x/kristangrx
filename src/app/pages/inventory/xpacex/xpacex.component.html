@@ -6,6 +6,7 @@
             <button class="b-forward" (click)="onClickDate()" nz-button nzType="primary">Go forward<i nz-icon nzType="right"></i></button>
             <br>
             <br>
+            <h2>Category</h2>
             <nz-select
                 [nzMaxTagCount]="3"
                 [nzMaxTagPlaceholder]="tagPlaceHolder"
@@ -17,6 +18,30 @@
             </nz-select>
             <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
             <button class="b-forward" (click)="onClick()" nz-button nzType="primary">Go forward<i nz-icon nzType="right"></i></button>
+            <h2>Brand</h2>
+            <nz-select
+                [nzMaxTagCount]="3"
+                [nzMaxTagPlaceholder]="tagPlaceHolder"
+                nzMode="multiple"
+                nzPlaceHolder="Please select"
+                [(ngModel)]="selectedBrands"
+            >
+            <nz-option *ngFor="let item of brands" [nzLabel]="item.name" [nzValue]="item.name"></nz-option>
+            </nz-select>
+            <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
+            <button class="b-forward" (click)="onClickBrand()" nz-button nzType="primary">Go forward<i nz-icon nzType="right"></i></button>
+            <h2>Manager</h2>
+            <nz-select
+                [nzMaxTagCount]="3"
+                [nzMaxTagPlaceholder]="tagPlaceHolder"
+                nzMode="multiple"
+                nzPlaceHolder="Please select"
+                [(ngModel)]="selectedManagers"
+            >
+            <nz-option *ngFor="let item of managers" [nzLabel]="item.name" [nzValue]="item.name"></nz-option>
+            </nz-select>
+            <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
+            <button class="b-forward" (click)="onClickManager()" nz-button nzType="primary">Go forward<i nz-icon nzType="right"></i></button>
         </div>
     </div>
     <div class="main-analytics">

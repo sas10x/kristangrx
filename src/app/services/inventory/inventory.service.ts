@@ -210,6 +210,12 @@ export class InventoryService {
   getReportBubble(category) {
     return this.http.get<Babol[]>(this.sapURL + "report/bubble/" + category );
   }
+  getReportBrands(brand) {
+    return this.http.get<Babol[]>(this.sapURL + "report/brand/" + brand );
+  }
+  getReportManagers(manager) {
+    return this.http.get<Babol[]>(this.sapURL + "report/manager/" + manager );
+  }
   getReportPetsa(params) {
     return this.http.get<Babol[]>(this.sapURL + "report/petsa" + "?from=" + params.from + "&to=" + params.to);
   }
