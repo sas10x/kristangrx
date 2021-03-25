@@ -22,7 +22,26 @@
     </div>
     <div class="div-half-1">
         <div *ngIf="qty?.length">
-            <app-h-pie-grid [qty]="qty"></app-h-pie-grid>
+            <nz-table #basicTable [nzData]="gtr">
+                <thead>
+                  <tr>
+                    <th>SLOC</th>
+                    <th>SITE</th>
+                    <th>Unrestricted</th>
+                    <th>Confirm</th>
+                    <th>ATP</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of basicTable.data">
+                    <td>{{ data.sLoc }}</td>
+                    <td>{{ data.site }}</td>
+                    <td>{{ data.unrestricted }}</td>
+                    <td>{{ data.confirm }}</td>
+                    <td>{{ data.atp }}</td>
+                  </tr>
+                </tbody>
+              </nz-table>
         </div>
     </div>
     <div class="div-half-1">
@@ -40,7 +59,6 @@
             </div>
         </div>
         <div class="example-input2">
-            
             <nz-input-group nzSize="large" [nzSuffix]="suffixIcon">
                 <input placeholder="input here" nz-input [(ngModel)]="inputValue" (ngModelChange)="onChange($event)" [nzAutocomplete]="auto" />
               </nz-input-group>

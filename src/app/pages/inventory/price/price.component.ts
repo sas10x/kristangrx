@@ -19,6 +19,9 @@ export interface AutocompleteOptionGroups {
   styleUrls: ['./price.component.scss']
 })
 export class PriceComponent implements OnInit {
+  gtr: any[];
+  mustang: any[];
+
   inputValue?: string;
   optionGroups: AutocompleteOptionGroups[] = [];
 
@@ -67,23 +70,55 @@ export class PriceComponent implements OnInit {
           tap(posqty => {
             console.log('POS', posqty);
             console.log('SAP', sapqty);
+            console.log('gtr');
+            this.gtr = sapqty;
+            console.log(this.gtr);
             if (posqty)
             {
+              
               console.log(posqty.quantity);
               sapqty[0].atp = sapqty[0].atp - posqty.quantity;
               sapqty[0].unrestricted = sapqty[0].unrestricted - posqty.quantity;
               sapqty[1].atp = sapqty[1].atp - posqty.quantity;
             }
-            this.rty.push({"name":"ATP","value":+sapqty[0].atp});
-            this.rty.push({"name":"Confirm","value":+sapqty[0].confirm});
-            this.rty.push({"name":"Unrestricted","value":+sapqty[0].unrestricted});
+            // NUMBER CARD ATP, Unrestricted, Confirm
+            console.log('marvel')
+            var marvelHeroes =  sapqty.filter(function(hero) {
+              return hero.site == "8200" && hero.sLoc=="";
+            });
+            console.log(marvelHeroes);
+            console.log('marvel')
+            this.rty.push({"name":"Unrestricted","value":+marvelHeroes[0].unrestricted});
+            this.rty.push({"name":"Confirm","value":+marvelHeroes[0].confirm});
+            this.rty.push({"name":"ATP","value":+marvelHeroes[0].atp});
+            // NUMBER CARD ATP, Unrestricted, Confirm
 
-            this.qty.push({"name":"8201"+"("+sapqty[1].atp.toString()+")","value":+sapqty[1].atp});
-            this.qty.push({"name":"8202"+"("+sapqty[2].atp.toString()+")","value":+sapqty[2].atp});
-            if (sapqty[3])
-            {
-              this.qty.push({"name":"8206","value":+sapqty[3].atp});
+            // PIE CHART SLOC
+            console.log('DC')
+            var dcHeroes =  sapqty.filter(function(hero) {
+              return hero.site == "8200" && hero.sLoc!="";
+            });
+            console.log(dcHeroes);
+            console.log('DC')
+            for (var val of dcHeroes) {
+              this.qty.push({"name":val.sLoc+"("+val.atp.toString()+")","value":+val.atp});
             }
+             // PIE CHART SLOC
+
+            // this.qty.push({"name":"8201"+"("+sapqty[1].atp.toString()+")","value":+sapqty[1].atp});
+            // this.qty.push({"name":"8202"+"("+sapqty[2].atp.toString()+")","value":+sapqty[2].atp});
+            // if (sapqty[1])
+            // {
+
+            // }
+            // if (sapqty[2])
+            // {
+
+            // }
+            // if (sapqty[3])
+            // {
+            //   this.qty.push({"name":"8206","value":+sapqty[3].atp});
+            // }
             
             this.qty = [...this.qty];
             this.rty = [...this.rty];
@@ -107,30 +142,50 @@ export class PriceComponent implements OnInit {
         console.log(sapqty);
         if (sapqty)
         {
-              this.rty.push({"name":"Unrestricted","value":+sapqty[0].unrestricted});
-              this.rty.push({"name":"Confirm","value":+sapqty[0].confirm});
-              this.rty.push({"name":"ATP","value":+sapqty[0].atp});
-              if (sapqty[1])
-              {
-                this.qty.push({"name":sapqty[1].sLoc+"("+sapqty[1].atp.toString()+")","value":+sapqty[1].atp});
+              this.gtr = sapqty;
+              console.log(this.gtr);
+              console.log('marvel')
+              var marvelHeroes =  sapqty.filter(function(hero) {
+                return hero.site == "8200" && hero.sLoc=="";
+              });
+              console.log(marvelHeroes);
+              console.log('marvel')
+              this.rty.push({"name":"Unrestricted","value":+marvelHeroes[0].unrestricted});
+              this.rty.push({"name":"Confirm","value":+marvelHeroes[0].confirm});
+              this.rty.push({"name":"ATP","value":+marvelHeroes[0].atp});
+               // PIE CHART SLOC
+              console.log('DC')
+              var dcHeroes =  sapqty.filter(function(hero) {
+                return hero.site == "8200" && hero.sLoc!="";
+              });
+              console.log(dcHeroes);
+              console.log('DC')
+              for (var val of dcHeroes) {
+                this.qty.push({"name":val.sLoc+"("+val.atp.toString()+")","value":+val.atp});
               }
-              else {
-                this.qty.push({"name":"8201"+"("+0+")","value":0});
-              }
-              if (sapqty[2])
-              {
-                this.qty.push({"name":sapqty[2].sLoc+"("+sapqty[2].atp.toString()+")","value":+sapqty[2].atp});
-              }
-              else {
-                this.qty.push({"name":"8202"+"("+0+")","value":0});
-              }
-              if (sapqty[3])
-              {
-                this.qty.push({"name":sapqty[3].sLoc+"("+sapqty[3].atp.toString()+")","value":+sapqty[3].atp});
-              }
-              else {
-                this.qty.push({"name":"8203"+"("+0+")","value":0});
-              }
+             // PIE CHART SLOC
+
+              // if (sapqty[1])
+              // {
+              //   this.qty.push({"name":sapqty[1].sLoc+"("+sapqty[1].atp.toString()+")","value":+sapqty[1].atp});
+              // }
+              // else {
+              //   this.qty.push({"name":"8201"+"("+0+")","value":0});
+              // }
+              // if (sapqty[2])
+              // {
+              //   this.qty.push({"name":sapqty[2].sLoc+"("+sapqty[2].atp.toString()+")","value":+sapqty[2].atp});
+              // }
+              // else {
+              //   this.qty.push({"name":"8202"+"("+0+")","value":0});
+              // }
+              // if (sapqty[3])
+              // {
+              //   this.qty.push({"name":sapqty[3].sLoc+"("+sapqty[3].atp.toString()+")","value":+sapqty[3].atp});
+              // }
+              // else {
+              //   this.qty.push({"name":"8203"+"("+0+")","value":0});
+              // }
                 this.qty = [...this.qty];
                 this.rty = [...this.rty];
                 console.log(this.qty);

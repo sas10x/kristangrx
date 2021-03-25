@@ -12,7 +12,7 @@ import { Sap } from 'src/app/models/inventory/Sap';
   providedIn: 'root'
 })
 export class InventoryService {
-
+  pos : any = {};
   constructor(private http: HttpClient) { }
   readonly posURL = 'http://heusc:7000/api/pos/';
   readonly sapURL = 'http://localhost:5000/api/sap/';
@@ -24,7 +24,7 @@ export class InventoryService {
     return this.http.get<Pos>(this.posURL + barcode);
   }
   getSap(barcode: string) {
-    return this.http.get<Sap>(this.sapURL + barcode);
+    return this.http.get<any[]>(this.sapURL + barcode);
   }
   getZmpq25b(article: string) {
     return this.http.get<[]>(this.sapURL + "zmpq25b/" + article);
@@ -230,5 +230,11 @@ export class InventoryService {
   }
   getCategories() {
     return this.http.get<any[]>(this.sapURL + "get/category");
+  }
+  getReportComboLine(article) {
+    return this.http.get<any[]>(this.sapURL + "report/move/" + article);
+  }
+  getReportComboBar(article) {
+    return this.http.get<any[]>(this.sapURL + "report/total/" + article);
   }
 }

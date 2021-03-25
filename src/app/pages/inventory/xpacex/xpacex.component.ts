@@ -19,10 +19,13 @@ interface Person {
   providers: [DatePipe]
 })
 export class XpacexComponent implements OnInit {
+  scala: any = {};
+  xScaleMax: number;
+  yScaleMax: number;
   header: string;
   data: any[];
   hide: boolean = false;
-  message:string;
+  message: any = {};
   subscription: Subscription;
   listOfData: Person[] = [
     {
@@ -73,10 +76,10 @@ export class XpacexComponent implements OnInit {
   }
   courier() {
     this.subscription = this.courierService.currentMessage.subscribe(message => {
-      if (message != "default")
-      {
+      if (message.article)
+      { 
         this.data=[];
-        this.inventoryService.getZmpq25b(message).subscribe(
+        this.inventoryService.getZmpq25b(message.article).subscribe(
           res => {
             this.data = res;
             this.header = this.data[0].description;
@@ -121,6 +124,11 @@ export class XpacexComponent implements OnInit {
     .pipe(tap(res => console.log(res)))
     .pipe(concatMap(res => this.inventoryService.getReportBubble(res)))
     .subscribe(res => {
+      let bar: any = {};
+      bar.xScaleMax = Math.max.apply(Math, res.map(function(o) { return o.x; }));
+      bar.yScaleMax = Math.max.apply(Math, res.map(function(o) { return o.y; }));
+      this.newMessage(bar);
+      
       this.num = this.num + 1;
       this.bubbleRes = [{name: this.selectedCategories[this.num-1], series: res}];
       this.bubbleDatus = this.bubbleDatus.concat(this.bubbleRes);
@@ -138,6 +146,11 @@ export class XpacexComponent implements OnInit {
     }
     this.inventoryService.getReportPetsa(params).subscribe(
       res => {
+        let bar: any = {};
+        bar.xScaleMax = Math.max.apply(Math, res.map(function(o) { return o.x; }));
+        bar.yScaleMax = Math.max.apply(Math, res.map(function(o) { return o.y; }));
+        this.newMessage(bar);
+
         this.bubbleDatus = [{name: this.from + " to " + this.to , series: res}];
       }
     )
@@ -148,6 +161,11 @@ export class XpacexComponent implements OnInit {
     .pipe(tap(res => console.log(res)))
     .pipe(concatMap(res => this.inventoryService.getReportBrands(res)))
     .subscribe(res => {
+      let bar: any = {};
+      bar.xScaleMax = Math.max.apply(Math, res.map(function(o) { return o.x; }));
+      bar.yScaleMax = Math.max.apply(Math, res.map(function(o) { return o.y; }));
+      this.newMessage(bar);
+
       this.num = this.num + 1;
       this.bubbleRes = [{name: this.selectedBrands[this.num-1], series: res}];
       this.bubbleDatus = this.bubbleDatus.concat(this.bubbleRes);
@@ -159,10 +177,18 @@ export class XpacexComponent implements OnInit {
     .pipe(tap(res => console.log(res)))
     .pipe(concatMap(res => this.inventoryService.getReportManagers(res)))
     .subscribe(res => {
+      let bar: any = {};
+      bar.xScaleMax = Math.max.apply(Math, res.map(function(o) { return o.x; }));
+      bar.yScaleMax = Math.max.apply(Math, res.map(function(o) { return o.y; }));
+      this.newMessage(bar);
+
       this.num = this.num + 1;
-      this.bubbleRes = [{name: this.selectedManagers[this.num-1], series: res}];
+      this.bubbleRes = [{name: this.selectedManagers[this.num-1], series: res, xScaleMax:this.xScaleMax, yScaleMax: this.yScaleMax }];
       this.bubbleDatus = this.bubbleDatus.concat(this.bubbleRes);
     })
+  }
+  newMessage(scala) {
+    this.courierService.changeMessage(scala);
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

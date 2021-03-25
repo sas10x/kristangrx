@@ -51,10 +51,16 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { AddXComponent } from './add-x/add-x.component';
 import { KBubbleComponent } from './k-bubble/k-bubble.component';
 import { XpacexComponent } from './xpacex/xpacex.component';
+import { KComboComponent } from './k-combo/k-combo.component';
+import { ComboChartComponent } from './k-combo/combo-chart/combo-chart.component';
+import { ComboSeriesVerticalComponent } from './k-combo/combo-chart/combo-series-vertical.component';
+import { KBarComponent } from './k-bar/k-bar.component';
+
+
 
 
 @NgModule({
-  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent, PrimeComponent, ProductsComponent, StocksComponent, SalesComponent, XampleComponent, UploadZva05nComponent, UploadMb51Component, HLineComponent, KAnalyticsComponent, KNumberComponent, AddXComponent, KBubbleComponent, XpacexComponent],
+  declarations: [PriceComponent, HPieComponent, HNumberComponent, MovementComponent, HAdvpieComponent, HBarComponent, HPieGridComponent, PrimeComponent, ProductsComponent, StocksComponent, SalesComponent, XampleComponent, UploadZva05nComponent, UploadMb51Component, HLineComponent, KAnalyticsComponent, KNumberComponent, AddXComponent, KBubbleComponent, XpacexComponent, KComboComponent, ComboChartComponent, ComboSeriesVerticalComponent, KBarComponent],
   imports: [
     CommonModule,
     InventoryRoutingModule,

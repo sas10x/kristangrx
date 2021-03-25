@@ -15,6 +15,7 @@
 }
 
 input[type=text] {
+    border: 1px solid black!important;
     position: relative;
     display: block;
     width: 10vw;
@@ -34,14 +35,14 @@ input[type=text] {
     justify-content: space-between;
     // border-style: solid;
 }
-input[type="text"] {
-    padding: 5px;
-    margin:10px auto;
-    box-sizing: border-box;
-    border: none;
-    background-color: white;
-    color:black;
-}
+// input[type="text"] {
+//     padding: 5px;
+//     margin:10px auto;
+//     box-sizing: border-box;
+//     border: none;
+//     background-color: white;
+//     color:black;
+// }
 
 
 .div-half-2{

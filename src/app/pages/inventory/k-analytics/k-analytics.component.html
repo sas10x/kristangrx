@@ -56,10 +56,10 @@
             <nz-option *ngFor="let item of managers" [nzLabel]="item.name" [nzValue]="item.name"></nz-option>
             </nz-select>
             <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
-            <div class="setting">
+            <!-- <div class="setting">
                 <i nz-icon [nzType]="'setting'" [nzTheme]="'fill'"></i>
                 <i nz-icon [nzType]="'sync'" [nzSpin]="true"></i>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="main-analytics">
@@ -72,6 +72,9 @@
             </div>   
         </div>
         <div class="dashboard-analytics">
+            <div class="d-number" *ngIf="baron">
+                <app-k-combo [baron]="baron" [lineon]="lineon"></app-k-combo>
+            </div>
             <div class="d-line" *ngIf="rty">
                 <app-h-line [sales]="sales"></app-h-line>
             </div>   

@@ -10,6 +10,14 @@ import { ReportService } from 'src/app/services/report/report.service';
   providers: [DatePipe]
 })
 export class WooReportsComponent implements OnInit {
+  mvt641: any[];
+  mvt101: any[];
+  mvt311: any[];
+  mvt301: any[];
+  mvt161: any[];
+  mvt601: any[];
+  mvt251: any[];
+
   date = null;
   sales = [];
 

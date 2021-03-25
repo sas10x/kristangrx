@@ -20,6 +20,19 @@ interface Person {
   providers: [DatePipe]
 })
 export class KAnalyticsComponent implements OnInit {
+  mvt641: any[];
+  mvt101: any[];
+  mvt311: any[];
+  mvt301: any[];
+  mvt161: any[];
+  mvt601: any[];
+  mvt251: any[];
+
+  lineon: any[];
+  baron: any[];
+  movit: any[];
+  temp: any[];
+
   babol: Babol[];
   bubbleDatus: any[];
   bubbleSeries: any[];
@@ -127,25 +140,32 @@ export class KAnalyticsComponent implements OnInit {
         this.zcaspos.push({"name":"CASH","series":res});
         this.zcaspos = [...this.zcaspos];
         this.sales = this.sales.concat(this.zcaspos);
-      }
+      },
+      err => console.error('Observer got an error: ' + err),
+      () => console.log('Observer got a complete notification')
     )
     this.inventoryService.getReportZor(this.inputValue).subscribe(
       res => {
         this.zor.push({"name":"ZOR","series":res});
         this.zor = [...this.zor];
         this.sales = this.sales.concat(this.zor);
-      }
+      },
+      err => console.error('Observer got an error: ' + err),
+      () => console.log('Observer got a complete notification')
     )
     this.inventoryService.getReportZqt(this.inputValue).subscribe(
       res => {
         this.zqt.push({"name":"ZQT","series":res});
         this.zqt = [...this.zqt];
         this.sales = this.sales.concat(this.zqt);
-      }
+      },
+      err => console.error('Observer got an error: ' + err),
+      () => console.log('Observer got a complete notification')
     )
     this.getReportOverview();
     this.getReportAll();
-    
+    this.getReportBar();
+    // this.getReportBar();
   }
   getReportOverview() {
     this.rty = [];
@@ -158,7 +178,9 @@ export class KAnalyticsComponent implements OnInit {
         this.rty.push({"name":"Total","value":this.overview.total});
         this.rty.push({"name":"Total Records","value":this.overview.totalRecords});
         this.rty = [...this.rty];
-      }
+      },
+      err => console.error('Observer got an error: ' + err),
+      () => console.log('Observer got a complete notification')
     )
   }
   getReportAll() {
@@ -166,9 +188,114 @@ export class KAnalyticsComponent implements OnInit {
       res => {
         this.datus = res;
         console.log(this.datus)
-      }
+      },
+      err => console.error('Observer got an error: ' + err),
+      () => console.log('Observer got a complete notification')
     )
   }
+  getReportBar() {
+    console.log('bar');
+    this.mvt641 = [];
+    this.mvt101 = [];
+    this.mvt311= [];
+    this.mvt301= [];
+    this.mvt161= [];
+    this.mvt601= [];
+    this.mvt251= [];
+
+    this.lineon = [];
+    this.movit = [];
+    this.baron = [];
+    this.inventoryService.getReportComboBar(this.inputValue).subscribe(
+      res => {
+        this.lineon = res;
+      }
+    )
+    this.inventoryService.getReportComboLine(this.inputValue).subscribe(
+      res => {
+        console.log(res);
+        for (var val of res) {
+          if (val.mvT == "641")
+          {
+            this.mvt641.push({"name":val.pstngDate,"value":val.quantity,"sloc":val.sLoc});
+          }
+          if (val.mvT == "101")
+          {
+            this.mvt101.push({"name":val.pstngDate,"value":val.quantity,"sloc":val.sLoc});
+          }
+          if (val.mvT == "311")
+          {
+            this.mvt311.push({"name":val.pstngDate,"value":val.quantity,"sloc":val.sLoc});
+          }
+          if (val.mvT == "301")
+          {
+            this.mvt301.push({"name":val.pstngDate,"value":val.quantity,"sloc":val.sLoc});
+          }
+          if (val.mvT == "161")
+          {
+            this.mvt161.push({"name":val.pstngDate,"value":val.quantity,"sloc":val.sLoc});
+          }
+          if (val.mvT == "601")
+          {
+            this.mvt601.push({"name":val.pstngDate,"value":val.quantity,"sloc":val.sLoc});
+          }
+          if (val.mvT == "251")
+          {
+            this.mvt251.push({"name":val.pstngDate,"value":val.quantity,"sloc":val.sLoc});
+          }
+        }
+
+        if (this.mvt641.length >= 1)
+        {
+          this.baron.push({"name":"641","series":this.mvt641});
+        }
+        if (this.mvt101.length >= 1)
+        {
+          this.baron.push({"name":"101","series":this.mvt101});
+        }
+        if (this.mvt311.length >= 1)
+        {
+          this.baron.push({"name":"311","series":this.mvt311});
+        }
+        if (this.mvt301.length >= 1)
+        {
+          this.baron.push({"name":"641","series":this.mvt301});
+        }
+        if (this.mvt161.length >= 1)
+        {
+          this.baron.push({"name":"641","series":this.mvt161});
+        }
+        if (this.mvt601.length >= 1)
+        {
+          this.baron.push({"name":"641","series":this.mvt601});
+        }
+        if (this.mvt251.length >= 1)
+        {
+          this.baron.push({"name":"641","series":this.mvt251});
+        }
+        console.log('BARON');
+        console.log(this.baron);
+        // console.log(this.mvt641);
+        // console.log(this.mvt101);
+        // console.log(this.mvt311);
+        // console.log(this.mvt301);
+        // console.log(this.mvt161);
+        // console.log(this.mvt601);
+        // console.log(this.mvt251);    
+      },
+      err => console.error('Observer got an error: ' + err),
+      () => console.log('Observer got a complete notification')
+    )
+  }
+  kfilterArray(array, check) {
+    var newArray = array.filter(function (el) {
+      return el.mvT == check 
+    });
+  }
+  // }
+  // checkDate(petsa, array) {
+  //   return petsa == array.pstngDate
+  // }
   // getReportBubble() {
   //   this.bubbleSeries = [];
   //   this.inventoryService.getReportBubble().subscribe(
