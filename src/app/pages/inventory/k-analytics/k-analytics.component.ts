@@ -92,7 +92,7 @@ export class KAnalyticsComponent implements OnInit {
     console.log(from);
     this.inventoryService.getReportData(this.inputValue).subscribe(
       res => {
-        
+        console.log(res)
       }
     )
   }

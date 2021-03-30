@@ -1,0 +1,34 @@
+<nz-table #basicTable [nzData]="data">
+    <thead>
+      <tr>
+        <th>SType</th>
+        <th>SO</th>
+        <th>ArtNum</th>
+        <th>DeliveryStatus</th>
+        <th>UoM</th>
+        <th>Site</th>
+        <th>SLoc</th>
+        <th>OrderedQty</th>
+        <th>ConfQty</th>
+        <th>PgiQty</th>
+        <th>QtyToDeliv</th>
+        <th>articleDescription</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of data">
+        <td>{{ data.sType }}</td>
+        <td>{{ data.so }}</td>
+        <td>{{ data.artNum }}</td>
+        <td>{{ data.deliveryStatus }}</td>
+        <td>{{ data.uoM }}</td>
+        <td>{{ data.site }}</td>
+        <td>{{ data.sLoc }}</td>
+        <td>{{ data.orderedQty }}</td>
+        <td>{{ data.confQty }}</td>
+        <td>{{ data.pgiQty }}</td>
+        <td>{{ data.qtyToDeliv }}</td>
+        <td>{{ data.articleDescription }}</td>
+      </tr>
+    </tbody>
+  </nz-table>

@@ -237,4 +237,8 @@ export class InventoryService {
   getReportComboBar(article) {
     return this.http.get<any[]>(this.sapURL + "report/total/" + article);
   }
+
+  getPendingZva05n() {
+    return this.http.get<any[]>(this.sapURL + "pendingzva");
+  }
 }

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddXComponent } from './add-x/add-x.component';
 import { KAnalyticsComponent } from './k-analytics/k-analytics.component';
 import { MovementComponent } from './movement/movement.component';
+import { PendingComponent } from './pending/pending.component';
 import { PriceComponent } from './price/price.component';
 import { PrimeComponent } from './prime/prime.component';
 import { ProductsComponent } from './products/products.component';
@@ -62,6 +63,10 @@ const routes: Routes = [
   {
     path: 'xpace',
     component: XpacexComponent,
+  },
+  {
+    path: 'pending',
+    component: PendingComponent,
   }
 ];
 
